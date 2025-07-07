@@ -1,0 +1,88 @@
+```json
+[
+  {
+    "instruction": "What is the basic syntax of the `show` rule when targeting a specific string? Provide an example where the string \"Hello\" is replaced by bold \"Greetings\" wherever it appears.",
+    "answer": "The `show` rule can target specific string literals. When the `show` rule encounters the specified string, it applies the transformation defined by the rule. This is a very powerful feature that can be used for text replacement or reformatting.\n\nHere's how you can replace \"Hello\" with bold \"Greetings\":\ntyp```\n#show \"Hello\": strong[Greetings]\n\nHello, world!\nThis is a test. Hello again.\n```"
+  },
+  {
+    "instruction": "How can I use the `show` rule to change the default color of all emphasized text (`emph`) to blue?",
+    "answer": "You can use the `show` rule with an element function as a selector. To change the color of all emphasized text to blue, you would target the `emph` element and use `set text(blue)`.\n\ntyp```\n#show emph: set text(blue)\n\nNow if I want to _emphasize_ something,\nit will be both _emphasized_ and _blue_.\nIsn't that cool?\n```"
+  },
+  {
+    "instruction": "Explain how to use the `show` rule to apply a `set` rule to all subsequent text, making it blue.",
+    "answer": "The `show` rule can be used globally without a specific selector to apply a `set` rule to all elements that follow it. This is useful for setting default properties for large parts of your document.\n\nTo make all subsequent text blue:\ntyp```\n#show: set text(blue)\n\nThis text is blue.\nAnd so is this one.\n\n#set text(black)[This text is black because it's locally overridden.]\n\nThis text is blue again.\n```"
+  },
+  {
+    "instruction": "Create a custom function `highlight(content)` that wraps its content in a yellow rectangle with a thin orange stroke, and then use the `show` rule to apply this function to all `strong` elements in the document.",
+    "answer": "You can define a custom function and then use the `show` rule to apply it to a specific element type. The `rect` function can be used to draw a rectangle.\n\ntyp```\n#let highlight(content) = rect(fill: yellow.lighten(80%), stroke: orange.darken(30%), content)\n\n#show strong: highlight\n\nThis is some _normal_ text. This is a *very important* message. And this is *another highlighted* phrase.\n```"
+  },
+  {
+    "instruction": "Show how the `with` method can be used to create a new function `red_text` that always produces red text, and then use it with the `show` rule to make all text starting with \"Important\" red.",
+    "answer": "The `with` method creates a new function by partially applying arguments to an existing function. This is a concise way to create specialized versions of functions. Then, you can use `show` rule with a string selector to apply it.\n\ntyp```\n// Create a new function 'red_text' that is 'text' with color 'red' pre-set.\n#let red_text = text.with(red)\n\n// Apply 'red_text' to the string \"Important\" wherever it appears.\n#show \"Important\": red_text\n\nThis is some regular text.\nImportant note: Please read this.\nAnother Important fact to consider.\n```"
+  },
+  {
+    "instruction": "How can I use the `show` rule to universally adjust the spacing around all `heading` elements to `1em`?",
+    "answer": "The `show` rule can modify properties of block elements, including their spacing. You target the `heading` element and use `set block(spacing: ...)` to apply the desired spacing.\n\ntyp```\nText before\n= Heading One\nText after\n\n#show heading: set block(spacing: 1em)\n\nText before\n= Heading Two\nText after\n\n```"
+  },
+  {
+    "instruction": "Demonstrate how to use a selector with the `where` clause to make only level 1 headings centered, while level 2 headings remain default aligned.",
+    "answer": "The `where` clause allows you to filter elements based on their properties. For headings, you can filter by `level`.\n\ntyp```\n#show heading.where(level: 1): set align(center)\n\n= Chapter One\nThis is the content of chapter one.\n\n== Section 1.1\nThis is a subsection.\n\n= Chapter Two\nMore content.\n```"
+  },
+  {
+    "instruction": "Write a `show` rule that custom formats all level 2 headings. They should be italic, 10pt size, regular weight, and have a colon appended to their body.",
+    "answer": "You can use a custom function (`it => { ... }`) within the `show` rule to apply multiple formatting properties and modify the content. The `it.body` gives you access to the heading's text.\n\ntyp```\n#show heading.where(level: 2): it => {\n  set text(size: 10pt, weight: \"regular\", style: \"italic\")\n  // Access the heading's content using it.body and append a colon\n  it.body + [: ]\n}\n\n= Main Section\nThis is the main text.\n\n== Sub-Section A\nContent for sub-section A.\n\n== Sub-Section B\nContent for sub-section B.\n```"
+  },
+  {
+    "instruction": "Suppose you want all `list` items (bullet points) to appear in a smaller font size (9pt) and be prefixed with a custom bullet point like a filled circle (`\u{2022}`). How would you achieve this using a `show` rule and custom formatting?",
+    "answer": "You can apply a `show` rule to the `list` element, which will affect all its items. Inside the rule, you can use `set text` for styling and `set list` to change the bullet point style. The `item` property of the `list` function allows setting a custom bullet.\n\ntyp```\n#show list: set text(size: 9pt)\n#show list: set list(marker: text(\u{2022}))\n\n- First item\n- Second item\n  - Nested item\n- Third item\n```"
+  },
+  {
+    "instruction": "How can I quickly convert the main content of my document into a two-column layout using a `show` rule?",
+    "answer": "The `show` rule with a generic selector (`#show: rest => ...`) can encapsulate all remaining content and apply a layout transformation like `columns` to it. This effectively puts everything after the `show` rule into columns.\n\ntyp```\n#set page(height: 12cm)\n\n#align(center, text(17pt)[*My Two-Column Article*])\n\nNow let's split text into two columns:\n\n#show: rest => columns(2, rest)\n\n#lorem(100) \n\nThis content is now automatically flowed into two columns.\n```"
+  },
+  {
+    "instruction": "Configure your Typst document to have a custom header \"My Document Title\" aligned to the right, and set the page height to 15cm.",
+    "answer": "Page layout properties like header and height are configured using the `#set page` rule. The `header` argument accepts content that will be placed at the top of each page, and you can use `align` for its positioning.\n\ntyp```\n#set page(\n  header: align(\n    right + horizon,\n    [My Document Title]\n  ),\n  height: 15cm\n)\n\nThis is the content of the page.\n#lorem(50)\n```"
+  },
+  {
+    "instruction": "Provide Typst code to create a two-column grid for displaying author information, including their name, institution, and an email link, similar to an article's author block.",
+    "answer": "You can use the `grid` layout function to arrange content into columns and rows. Each cell in the grid can contain text, links, and other elements. `align(center)` is useful for centralizing text within each author's block.\n\ntyp```\n#grid(\n  columns: (1fr, 1fr),\n  align(center)[\n    Some Author One \\\\\n    Some Institute One \\\\\n    #link(\"mailto:one@mail.edu\")[one@mail.edu]\n  ],\n  align(center)[\n    Another Author Two \\\\\n    Another Institute Two \\\\\n    #link(\"mailto:two@mail.edu\")[two@mail.edu]\n  ]\n)\n\nNow, the rest of the document content...\n```"
+  },
+  {
+    "instruction": "Define a `show` rule for level 1 headings to appear centered, in small caps, with a font size of 14pt and regular weight.",
+    "answer": "This requires a `show` rule targeting `heading.where(level: 1)` and a custom function that uses `set align`, `set text`, and `smallcaps` on the `it.body`.\n\ntyp```\n#show heading.where(level: 1): it => block(width: 100%)[\n  #set align(center)\n  #set text(14pt, weight: \"regular\")\n  #smallcaps(it.body)\n]\n\n= Main Heading Example\nThis is some content under the main heading.\n\n== Sub-Heading\nThis is a sub-heading, which will not be affected by the rule above.\n```"
+  },
+  {
+    "instruction": "Define a `show` rule for level 2 headings to be italic, 12pt size, regular weight, and have their body followed by a period.",
+    "answer": "Similar to the level 1 heading example, you use `heading.where(level: 2)` and then apply `set text` for styling, and concatenate `it.body` with a period.\n\ntyp```\n#show heading.where(level: 2): it => {\n  set text(\n    size: 12pt,\n    weight: \"regular\",\n    style: \"italic\"\n  )\n  it.body + [.]\n}\n\n= Top Level Heading\n\n== First Subchapter\nThis is text under the first subchapter.\n\n== Second Subchapter\nMore text for the second subchapter.\n```"
+  },
+  {
+    "instruction": "You have a global `show` rule making all text blue. How would you write a specific line of text that *must* be red, overriding the global rule for that instance?",
+    "answer": "Typst's `set` rules are typically scoped. A `set` rule applied directly to a block or within a function will override a global `show` rule for that specific scope or element. The simplest way is to apply `text(red, ...)` directly or enclose the text in a block with a local `set` rule.\n\ntyp```\n#show: set text(blue)\n\nThis is blue text because of the global show rule.\n\n#text(red)[This specific text is red because of direct application.]\n\n#set text(green)[This block of text is green because of local scope.]\n\nThis is blue text again.\n```"
+  },
+  {
+    "instruction": "Imagine you want all images in your document to be centered automatically and have a caption \"Figure: \" followed by their description. How would you implement this using the `show` rule? Assume the image source is `../image.png`.",
+    "answer": "You can target the `image` element with a `show` rule and wrap it in a `figure` element for captions and `align` for centering. The `it.alt` property can be used for the image's alternative text as the caption.\n\ntyp```\n#show image: it => {\n  align(center, figure(it, caption: [Figure: #it.alt]))\n}\n\n#image(\"../image.png\", alt: \"A sample image for demonstration.\")\n\nHere is some text after the image.\n```"
+  },
+  {
+    "instruction": "How can you use a single `show` rule to make all `paragraph` elements have a larger font size (11pt) and increased line spacing (1.5 times the default)?",
+    "answer": "You can target the `par` (paragraph) element with the `show` rule. Within the rule, you can use `set text` for font size and `set par` for line spacing (`leading`).\n\ntyp```\n#show par: set text(size: 11pt)\n#show par: set par(leading: 1.5em)\n\nThis is the first paragraph with 11pt font and increased line spacing. It will automatically flow.\n\nThis is the second paragraph, also styled with the global show rule.\n\n#set text(size: 10pt)[This paragraph has a locally set smaller font size, overriding the show rule.]\n```"
+  },
+  {
+    "instruction": "How can you apply a specific font family, like \"Arial\", to all text in your document using the `show` rule?",
+    "answer": "To apply a font family globally, you can use a `show` rule that targets all text (`#show: set text(font: \"Arial\")`). This rule will apply to all text elements unless specifically overridden later.\n\ntyp```\n#show: set text(font: \"Arial\")\n\nThis text should now appear in Arial font.\n\n_Emphasis_ and *strong* text will also be in Arial.\n\n#set text(font: \"Times New Roman\")[This specific text is in Times New Roman.]\n\nThis text is Arial again.\n```"
+  },
+  {
+    "instruction": "Create a `show` rule that puts a thin black border around every `raw` block in your document.",
+    "answer": "You can target the `raw` element with a `show` rule and wrap its content (`it.body`) in a `box` with a stroke. This is useful for visually distinguishing code blocks or raw text from regular content.\n\ntyp```\n#show raw: it => box(stroke: 0.5pt, it.body)\n\nThis is regular text.\n\n```typ\n// This is a raw code block\nlet x = 10;\nprintln(\"Hello, world!\");\n```\n\nAnother raw block:\n```json\n{\n  \"key\": \"value\"\n}\n```\n\nText after raw blocks.\n```"
+  },
+  {
+    "instruction": "If you have two `show` rules, one to make all `strong` text green, and another to make all `strong` text italic, what will be the final effect? Demonstrate this with an example.",
+    "answer": "When multiple `show` rules target the same elements, they are applied sequentially in the order they appear in the document. This means later rules can add to or override effects of earlier rules. In this case, the text will be both green and italic.\n\ntyp```\n#show strong: set text(green)\n#show strong: set text(style: \"italic\")\n\nThis is some *important* text.\n\nIt should appear both green and italic due to the sequential application of the show rules.\n```"
+  },
+  {
+    "instruction": "How can you format all `enum` (numbered list) items to use uppercase Roman numerals instead of default numbers?",
+    "answer": "You can modify the numbering style of `enum` elements using the `set enum` rule within a `show` rule. The `numbering` argument accepts a pattern string, where `I.` corresponds to uppercase Roman numerals.\n\ntyp```\n#show enum: set enum(numbering: \"I.\")\n\n#enum(\n  [First item],\n  [Second item],\n  [Third item]\n)\n\n#enum(\n  start: 5,\n  [Fifth item],\n  [Sixth item]\n)\n```"
+  }
+]
+```

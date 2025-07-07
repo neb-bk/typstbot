@@ -1,0 +1,44 @@
+```json
+[
+  {
+    "instruction": "What is the purpose of the `physica` package in Typst, and where can I find its detailed manual?",
+    "answer": "The `physica` package, which stands for 'natural sciences' in Latin, provides utilities to simplify complex and repetitive mathematical expressions commonly found in natural sciences. It aims to make such expressions easier to write and read. You can find its full manual on GitHub at: [https://github.com/Leedehai/typst-physics/blob/master/physica-manual.pdf](https://github.com/Leedehai/typst-physics/blob/master/physica-manual.pdf)"
+  },
+  {
+    "instruction": "How can I perform various calculus operations, such as ordinary and partial derivatives with customizable symbols, using the `physica` package in Typst?",
+    "answer": "The `physica` package offers functions for differential, ordinary, and partial derivatives. You can specify the function name, order of derivation, and even customize the 'd' symbol or product joiner. For instance, `dd` is for ordinary derivatives, `dv` for differential, and `pdv` for partial derivatives.\n\ntyp```typ\n#import \"@preview/physica:0.9.1\": *\n\n$ dd(x,y,2) quad dv(f,x,d:Delta) quad pdv(,x,y,[2i+1,2+i]) $\n```"
+  },
+  {
+    "instruction": "Explain how to represent vectors, vector fields (like divergence, gradient, curl), and tensors with abstract index notations using `physica`. Provide examples.",
+    "answer": "`physica` provides shorthand for vector components, operations like div, grad, curl, and a dedicated function for tensors with abstract index notations.\n\nHere are some examples:\n\ntyp```typ\n#import \"@preview/physica:0.9.1\": *\n\n$ vb(a) va(a) vu(a_i)  quad mat(laplacian, div; grad, curl)     quad\n  tensor(T,+a,-b,+c) $\n```\n\n*   `vb(a)`, `va(a)`, `vu(a_i)` are likely for vector notation (bold, arrow, underscore for components). \n*   `mat(laplacian, div; grad, curl)` shows a matrix of operators.\n*   `tensor(T,+a,-b,+c)` represents a tensor `T` with abstract indices `a` (contravariant), `b` (covariant), `c` (contravariant)."
+  },
+  {
+    "instruction": "How can I enable global remapping for matrix transpose and conjugate transpose symbols (`T` and `+`) when using the `physica` package in Typst?",
+    "answer": "The `physica` package allows you to remap the default superscript `T` to the transpose symbol and `+` to the conjugate transpose (dagger) globally using `#show` rules. This simplifies the syntax for these common matrix operations.\n\ntyp```typ\n#import \"@preview/physica:0.9.1\": *\n#show: super-T-as-transpose // This will make A^T render as A with a proper transpose symbol\n#show: super-plus-as-dagger // This will make A^+ render as A with a proper dagger symbol\n\n$ A^+ e^scripts(+) A^T integral^T $\n```\n\nNote that these `#show` rules apply to the scope in which they are placed. To limit their scope, you could put them inside a `#[...]` block."
+  },
+  {
+    "instruction": "Demonstrate how to represent isotopes in Typst using the `isotope` function from `physica`, including specifying mass and atomic numbers, and how to show a nuclear decay equation.",
+    "answer": "The `isotope` function from `physica` allows you to correctly format isotope notation by specifying the element symbol, mass number (a), and atomic number (z).\n\nHere's how to use it for individual isotopes and a decay reaction:\n\ntyp```typ\n#import \"@preview/physica:0.9.1\": isotope\n\n$ \nisotope(I, a:127), quad isotope(\"Fe\", z:26), quad\nisotope(\"Tl\",a:207,z:81) --> isotope(\"Pb\",a:207,z:82) + isotope(e,a:0,z:-1)\n$\n```\n\nThis code shows an iodine isotope with mass number 127, an iron isotope with atomic number 26, and a beta decay reaction where Thallium-207 decays into Lead-207 and an electron."
+  },
+  {
+    "instruction": "What is the problem with Typst's built-in `planck.reduce` symbol, and how does `physica`'s `hbar` function provide a better alternative for the reduced Planck constant?",
+    "answer": "Typst's built-in `planck.reduce` symbol often renders with a slash instead of a horizontal bar over the 'h', which is contrary to the symbol's colloquial name 'h-bar' and its standard appearance in physics. The `physica` package provides an `hbar` function that renders the symbol in the familiar form with a horizontal bar, making it visually consistent with common physics notation.\n\nHere's a comparison:\n\ntyp```typ\n#import \"@preview/physica:0.9.1\": hbar\n\n$ E = planck.reduce omega => E = hbar omega, wide\n  frac(planck.reduce^2, 2m) => frac(hbar^2, 2m), wide\n  (pi G^2) / (planck.reduce c^4) => (pi G^2) / (hbar c^4), wide\n  e^(frac(i(p x - E t), planck.reduce)) => e^(frac(i(p x - E t), hbar)) $\n```"
+  },
+  {
+    "instruction": "What is the `quill` package used for in Typst, and where can I find its documentation?",
+    "answer": "The `quill` package is designed for creating quantum diagrams in Typst. It provides functionalities to draw quantum circuits with various gates, wires, controls, and measurements. You can find its detailed documentation on GitHub at: [https://github.com/Mc-Zen/quill/tree/main](https://github.com/Mc-Zen/quill/tree/main)."
+  },
+  {
+    "instruction": "How do I create a simple quantum circuit diagram in Typst using `quill`, including an initial state, a gate, a control, and a final state with multiple qubits?",
+    "answer": "You can use the `quantum-circuit` function from `quill` to draw quantum diagrams. It allows you to specify initial states (`lstick`), gates (`gate`), control wires (`ctrl`), target operations (`targ`), and final states (`rstick`).\n\nHere's an example of a simple circuit creating an entangled Bell state:\n\ntyp```typ\n#import \"@preview/quill:0.2.0\": *\n#quantum-circuit(\n  lstick($|0〉$), gate($H$), ctrl(1), rstick($(|00〉+|11〉)/√2$, n: 2), [\ ],\n  lstick($|0〉$), 1, targ(), 1\n)\n```\n\nThis circuit shows two initial `|0〉` states, with a Hadamard gate on the first qubit followed by a CNOT (controlled-X) gate, resulting in an entangled `(|00〉+|11〉)/√2` state. The `[\ ]` indicates a new row in the circuit."
+  },
+  {
+    "instruction": "Can I draw a more complex quantum circuit with `quill`, including features like scaling, multiple lines of operations, and repeating patterns of wires?",
+    "answer": "Yes, `quill` allows for complex quantum circuit diagrams. You can adjust the `scale-factor`, add multiple lines of operations, and even reuse common circuit elements by defining them with `#let` and using the spread operator (`..`). You can also use `setwire` to explicitly manage wire positions.\n\nHere's an example demonstrating these features:\n\ntyp```typ\n#import \"@preview/quill:0.2.0\": *\n\n#let ancillas = (setwire(0), 5, lstick($|0〉$), setwire(1), targ(), 2, [\ ],\nsetwire(0), 5, lstick($|0〉$), setwire(1), 1, targ(), 1)\n\n#quantum-circuit(\n  scale-factor: 80%,\n  lstick($|ψ〉$), 1, 10pt, ctrl(3), ctrl(6), $H$, 1, 15pt, \n    ctrl(1), ctrl(2), 1, [\ ],\n  ..ancillas, [\ ],\n  lstick($|0〉$), 1, targ(), 1, $H$, 1, ctrl(1), ctrl(2), \n    1, [\ ],\n  ..ancillas, [\ ],\n  lstick($|0〉$), 2, targ(),  $H$, 1, ctrl(1), ctrl(2), \n    1, [\ ],\n  ..ancillas\n)\n```\n\nThis example shows how to scale the circuit, use `lstick` to label input qubits, define an `ancillas` block for repeated circuit elements, and use `setwire` to position elements on specific quantum wires."
+  },
+  {
+    "instruction": "How do I include measurement operations (`meter()`) and mid-circuit state labels (`midstick()`) within a `quill` quantum circuit diagram?",
+    "answer": "The `quill` package provides `meter()` to represent a measurement operation on a qubit and `midstick()` to add a state label in the middle of a circuit diagram, useful for indicating an intermediate state or a classical bit line.\n\nHere's an example demonstrating both:\n\ntyp```typ\n#import \"@preview/quill:0.2.0\": *\n\n#quantum-circuit(\n  lstick($|psi〉$),  ctrl(1), gate($H$), 1, ctrl(2), meter(), [\ ],\n  lstick($|beta_00〉$, n: 2), targ(), 1, ctrl(1), 1, meter(), [\ ],\n  3, gate($X$), gate($Z$),  midstick($|psi〉$)\n)\n```\n\nThis circuit includes a measurement at the end of the first line, another on the second line after some operations, and a `midstick` label showing `|psi〉` on the third line, demonstrating where a classical output might be indicated or an intermediate quantum state labeled."
+  }
+]
+```

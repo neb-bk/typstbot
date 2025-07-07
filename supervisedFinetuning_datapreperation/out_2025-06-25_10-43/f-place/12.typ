@@ -1,0 +1,2 @@
+
+Hello #hide[world] everyone!

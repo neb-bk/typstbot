@@ -1,0 +1,116 @@
+```json
+[
+  {
+    "instruction": "How do you embed a code expression directly into your Typst markup, and what is the purpose of the hash symbol (`#`)?",
+    "answer": "In Typst, the hash symbol (`#`) is used to introduce a code expression into markup. Markup parsing resumes after the expression is finished. This allows for seamless integration of dynamic values or function calls directly within your text.\n\nHere's an example:\ntyp```\n#emph[Hello] from #{\"Typst\"}.len() characters.\n```"
+  },
+  {
+    "instruction": "Sometimes, a character that could continue an expression needs to be interpreted as text. How can you explicitly end a Typst code expression within markup?",
+    "answer": "You can explicitly end a Typst code expression within markup by using a semicolon (`;`). This tells Typst to stop interpreting the following characters as part of the expression and resume normal markup parsing.\n\nExample:\ntyp```\n#emoji.face; This is a happy face symbol.\n```"
+  },
+  {
+    "instruction": "Explain the difference between a 'code block' and a 'content block' in Typst scripting, and provide an example demonstrating their basic syntax.",
+    "answer": "Typst provides two types of blocks for structuring code and embedding markup:\n\n*   **Code block:** Delimited by curly braces `{{ ... }}`. Used for writing multiple statements, defining intermediate variables, and performing computations. The individual expressions are separated by line breaks or semicolons, and their output values are joined to determine the block's final value.\n\n*   **Content block:** Delimited by square brackets `{[ ... ]}`. Used to treat markup/content as a programmatic value, store it in variables, and pass it to functions. It results in a value of type `content`.\n\nHere's an example illustrating both:\ntyp```\n#let name = \"World\"\n#{\n  // This is a code block\n  let greeting = [Hello]\n  let exclamation = [!]\n  \n  // This content block is used within the code block and its result is joined\n  greeting + [ ] + [from the ] + name + exclamation\n}\n```"
+  },
+  {
+    "instruction": "Show how you can nest a content block inside a code block, and demonstrate how values from a code block can be combined with content.",
+    "answer": "You can nest content and code blocks arbitrarily. The output values of expressions within a code block are joined, allowing you to combine generated content with static markup.\n\nExample:\ntyp```\n#{ \n  let adjective = [*beautiful*]\n  let noun = [world]\n  \n  [Hello, ] + adjective + [ ] + noun + [! This is from a nested block.]\n}\n```"
+  },
+  {
+    "instruction": "How do you define a variable and a custom function using the `let` binding in Typst? Provide a simple example.",
+    "answer": "Variables and custom functions are defined using the `#let` binding. Variables are assigned a value with `=`, while functions are defined by specifying arguments followed by `=`.\n\nExample:\ntyp```\n#let conference_name = \"Typst Summit\"\n#let current_year = 2024\n\nWelcome to the #conference_name #current_year!\n\n#let greet(name) = [\n  Hello, #name! Glad you're here.\n]\n\n#greet(\"Attendee\")\n```"
+  },
+  {
+    "instruction": "Explain how to destructure an array in Typst using the `let` binding, including examples for basic destructuring, collecting the remainder, and discarding elements.",
+    "answer": "Typst's `let` binding allows for destructuring arrays directly into variables. This simplifies assigning multiple values from an array.\n\n*   **Basic Destructuring:** Assigns elements by position.\n*   **Collecting Remainder (`..`):** Gathers the rest of the array elements into a new array.\n*   **Discarding Elements (`_`):** Ignores specific elements you don't need.\n\nExample:\ntyp```\n#let coords = (10, 20, 30)\n#let (x, y, z) = coords\nThe 3D coordinates are (x: #x, y: #y, z: #z).\n\n#let numbers = (1, 2, 3, 4, 5)\n#let (first, second, ..rest_of_numbers) = numbers\nFirst two numbers: #first, #second. Remaining numbers: #rest_of_numbers.\n\n#let (_, _, important_value) = (100, 200, 300)\nThe important value is #important_value.\n```"
+  },
+  {
+    "instruction": "How can you destructure a dictionary in Typst using the `let` binding? Show examples for extracting specific keys, aliasing a key, and collecting the remaining key-value pairs.",
+    "answer": "Dictionary destructuring with `let` allows you to extract values based on their keys. You can specify the key directly, alias it to a new variable name, or use `..` to collect all other key-value pairs into a new dictionary.\n\nExample:\ntyp```\n#let item = (\n  name: \"Book\",\n  price: 25.50,\n  currency: \"USD\",\n  in_stock: true\n)\n\n#let (name, price) = item\nItem: #name, Price: #price.\n\n#let (currency: unit) = item\nThe unit is #unit.\n\n#let (name: n, ..other_details) = item\nName: #n. Other details: #other_details.\n```"
+  },
+  {
+    "instruction": "Demonstrate how destructuring can be used directly in the argument list of a function in Typst.",
+    "answer": "Destructuring can be very useful when defining functions that expect arguments structured as arrays or dictionaries. This directly assigns parts of the input to named parameters.\n\nExample:\ntyp```\n#let points = ((1, 2), (3, 4), (5, 6))\n\n#let calculate_distance((x1, y1), (x2, y2)) = {\n  let dx = x2 - x1\n  let dy = y2 - y1\n  (\"Distance: \" + calc.sqrt(dx*dx + dy*dy).repr())\n}\n\n#for (p1, p2) in points.zip(points.slice(1)) [\n  #calculate_distance(p1, p2)\n]\n```"
+  },
+  {
+    "instruction": "How do you swap the values of two variables in Typst using destructuring assignment?",
+    "answer": "You can elegantly swap the values of two variables in Typst by using a destructuring assignment on the left-hand side of a normal assignment. This works for arrays/tuples.\n\nExample:\ntyp```\n#{ \n  let a = \"First\"\n  let b = \"Second\"\n  \n  [Before swap: a = #a, b = #b]\n  \n  (a, b) = (b, a) // Swap operation\n  \n  [After swap: a = #a, b = #b]\n}\n```"
+  },
+  {
+    "instruction": "How do you implement conditional logic in Typst using `if`, `else if`, and `else` statements? Provide an example that returns different content based on a numeric condition.",
+    "answer": "Typst supports `if`, `else if`, and `else` for conditional execution. Each branch can have either a code block (`{...}`) or a content block (`[...]`) as its body, and the result of the satisfied branch is yielded.\n\nExample:\ntyp```\n#let score = 85\n\n#if score >= 90 [\n  Excellent! Your grade is A.\n] else if score >= 80 [\n  Very Good! Your grade is B.\n] else if score >= 70 [\n  Good! Your grade is C.\n] else [\n  You can do better. Your grade is D or F.\n]\n```"
+  },
+  {
+    "instruction": "Show how to use a `for` loop to iterate over an array of items and generate content for each item in Typst.",
+    "answer": "The `for` loop iterates over a specified collection. When iterating over an array, the loop variable takes on the value of each item in sequence, and the results from each iteration are joined into one value.\n\nExample:\ntyp```\n#let fruits = (\"Apple\", \"Banana\", \"Cherry\")\n\n#for fruit in fruits [\n  - I like #fruit.\n]\n```"
+  },
+  {
+    "instruction": "How can you iterate over the key-value pairs of a dictionary using a `for` loop in Typst?",
+    "answer": "When iterating over a dictionary with a `for` loop, you can destructure each element into its `key` and `value` directly, which is more efficient than calling `.pairs()`.\n\nExample:\ntyp```\n#let book_authors = (\n  \"The Lord of the Rings\": \"J.R.R. Tolkien\",\n  \"Pride and Prejudice\": \"Jane Austen\",\n  \"1984\": \"George Orwell\"\n)\n\n#for (title, author) in book_authors [\n  \"#title\" was written by #author.\n]\n```"
+  },
+  {
+    "instruction": "Demonstrate how to use a `while` loop in Typst to perform a calculation iteratively until a condition is met. Ensure the loop's output is joined.",
+    "answer": "A `while` loop continues to execute its body as long as a given condition remains `true`. Like `for` loops, it joins the results of each iteration.\n\nExample:\ntyp```\n#let n = 1\n#let result = () // Initialize an empty array to collect results\n\n#while n < 100 {\n  n = n * 2\n  result.push(n) // Add the current value of n to the array\n  [#n, ] // Output the current value, which will be joined\n}\n\nFinal values generated: #result\n```"
+  },
+  {
+    "instruction": "How can you control the execution of a loop in Typst using `break` and `continue` statements? Provide an example where `break` stops the loop early.",
+    "answer": "Typst provides `break` to exit a loop immediately and `continue` to skip the rest of the current iteration and proceed to the next. \n\nHere's an example using `break`:\ntyp```\n#let items = (\"Apple\", \"Banana\", \"STOP\", \"Cherry\", \"Date\")\n#for item in items [\n  #if item == \"STOP\" {\n    break // Exit the loop if \"STOP\" is encountered\n  }\n  - Processing #item.\n]\n\nLoop finished.\n```"
+  },
+  {
+    "instruction": "Provide an example demonstrating the use of `continue` within a `for` loop to skip certain iterations based on a condition.",
+    "answer": "The `continue` statement is used within a loop to immediately jump to the next iteration, skipping any code remaining in the current iteration's body.\n\nExample:\ntyp```\n#let numbers = (1, 2, 3, 4, 5, 6)\n#for num in numbers [\n  #if calc.rem-euclid(num, 2) == 0 {\n    continue // Skip even numbers\n  }\n  - Odd number found: #num.\n]\n```"
+  },
+  {
+    "instruction": "How do you access fields of a Typst content element, and how can you list all available fields for a content value?",
+    "answer": "You can access fields of a content element using dot notation, similar to accessing properties of an object. The available fields correspond to the arguments used when the element function was constructed. To list all fields, use the `fields()` method on the content value.\n\nExample:\ntyp```\n#let my_heading = [= My Section Title]\n\nThis heading's body is \"#my_heading.body\".\nIts depth is #my_heading.depth.\n\nAvailable fields: #my_heading.fields().join(\", \")\n```"
+  },
+  {
+    "instruction": "Show how to use a method call to get the length of a string and how to chain multiple string methods together, such as splitting and joining.",
+    "answer": "Method calls provide a convenient, object-oriented way to call functions associated with a value's type. You can also chain multiple method calls for complex operations.\n\nExample:\ntyp```\n#let sentence = \"This is a sample sentence.\"\n\nLength of the sentence: #sentence.len() characters.\n\n#let words = sentence.split(\" \")\nWords separated by commas: #words.join(\", \")\n\n#(\"Typst documentation is awesome!\"\n    .lower() // Convert to lowercase\n    .split(\" \") // Split by space\n    .at(0) // Get the first word\n    .upper() // Convert to uppercase\n) \n```"
+  },
+  {
+    "instruction": "When should you use the method form (`value.method()`) for functions that modify a value (like `array.push`), and how do you properly discard the return value if it's not needed?",
+    "answer": "Functions that modify the value they are called on (e.g., `array.push`, `array.pop`, `array.remove`) *must* be called in method form. If the return value of such a method is not needed (because you're only interested in the side effect), you should discard it using a `let _ = ...` binding to prevent it from being joined with other values in a block.\n\nExample:\ntyp```\n#{ \n  let my_array = (1, 2, 3)\n  [Original array: #my_array]\n\n  // Using array.push, must be method form\n  let _ = my_array.push(4) \n  [Array after push: #my_array]\n  \n  // Using array.pop, must be method form, discarding return value\n  let _ = my_array.pop() \n  [Array after pop: #my_array]\n}\n```"
+  },
+  {
+    "instruction": "What is the difference between `include` and `import` when working with Typst modules, and when would you choose one over the other?",
+    "answer": "Both `include` and `import` bring content/definitions from other Typst files (modules) into your current document, but they serve different purposes:\n\n*   **`include \"file.typ\"`**: Evaluates the specified file and inserts its *resulting content* directly at the point of inclusion. It's like copy-pasting the compiled output of that file. Use it for boilerplate text, pre-defined sections, or elements that generate visual output.\n\n*   **`import \"file.typ\"`**: Evaluates the specified file and makes its *definitions* (variables, functions, etc.) available in the current scope as a module. It does *not* insert content directly. Use it for sharing reusable code, styles, or configuration across different parts of your project without generating immediate output.\n\nExample:\nAssume `header.typ` contains: `[= My Document Title]`\nAssume `config.typ` contains: `\#let author = \"John Doe\"`\n\ntyp```\n// Use include to insert the content of header.typ directly\n#include \"header.typ\"\n\n// Use import to make definitions from config.typ available\n#import \"config.typ\": author\n\nThis document was authored by #author.\n```"
+  },
+  {
+    "instruction": "How do you import specific variables or all variables from another Typst module, and how can you rename them during the import process?",
+    "answer": "You can import specific variables or all variables from a module using the `import` statement with a colon. The `as` keyword allows you to rename the imported items or the module itself.\n\nAssume `utils.typ` contains:\ntyp```\n#let pi = 3.14159\n#let e = 2.718\n#let welcome_message(name) = [Hello, #name!]\n```\n\nExample Usage:\ntyp```\n// Import specific items and rename one\n#import \"utils.typ\": pi, welcome_message as greet\n\nValue of pi: #pi\n#greet(\"Alice\")\n\n// Import all items and use them via the module name\n#import \"utils.typ\"\n\nValue of e: #utils.e\n\n// Import all items directly into scope with renaming the module\n#import \"utils.typ\" as my_lib: *\n\nValue of pi (from my_lib): #my_lib.pi\n```"
+  },
+  {
+    "instruction": "Explain how to use a Typst package from the community, providing an example of importing and using a hypothetical package.",
+    "answer": "Typst packages allow you to reuse building blocks across projects. Community packages are typically found in the `preview` namespace. You import them using a triple of `namespace/name:version`.\n\nExample: Importing and using a hypothetical `example` package.\n\n```typ\n#import \"@preview/example:0.1.0\": add\n\nThe sum of 5 and 7 is: #add(5, 7).\n```\n\nThis would assume that the `example` package version `0.1.0` defines an `add` function. You can find available community packages on [Typst Universe](https://typst.app/universe)."
+  },
+  {
+    "instruction": "List the common binary arithmetic operators available in Typst and provide a simple expression demonstrating their use and precedence.",
+    "answer": "Typst supports standard binary arithmetic operators:\n*   `*` (Multiplication)\n*   `/` (Division)\n*   `+` (Addition)\n*   `-` (Subtraction)\n\nMultiplication and Division have higher precedence (6) than Addition and Subtraction (5).\n\nExample:\ntyp```\nResult of 5 + 3 * 2 - 10 / 5: #{5 + 3 * 2 - 10 / 5}\n```\nThis evaluates to `5 + 6 - 2 = 11 - 2 = 9`."
+  },
+  {
+    "instruction": "Demonstrate the use of comparison operators (`==`, `!=`, `<`, `<=`, `>`, `>=`) and the membership operators (`in`, `not in`) in Typst with practical examples.",
+    "answer": "Typst provides a comprehensive set of comparison and membership operators to evaluate conditions.\n\n*   **Comparison Operators (Precedence 4):**\n    *   `==` (Equality)\n    *   `!=` (Inequality)\n    *   `<` (Less than)\n    *   `<=` (Less than or equal to)\n    *   `>` (Greater than)\n    *   `>=` (Greater than or equal to)\n\n*   **Membership Operators (Precedence 4):**\n    *   `in` (Check if an element is in a collection)\n    *   `not in` (Check if an element is not in a collection)\n\nExamples:\ntyp```\n#let x = 10\n#let y = 5\n\nIs x equal to y? #{x == y}\nIs x not equal to y? #{x != y}\nIs x greater than y? #{x > y}\nIs x less than or equal to y? #{x <= y}\n\n#let colors = (\"red\", \"green\", \"blue\")\n\nIs \"red\" in colors? #{\"red\" in colors}\nIs \"yellow\" not in colors? #{\"yellow\" not in colors}\n```"
+  },
+  {
+    "instruction": "How do logical operators (`not`, `and`, `or`) work in Typst, and what is meant by 'short-circuiting' for `and` and `or`?",
+    "answer": "Typst includes logical operators for combining boolean conditions:\n*   `not` (Logical NOT, Unary, Precedence 3)\n*   `and` (Logical AND, Binary, Precedence 3)\n*   `or` (Logical OR, Binary, Precedence 2)\n\n**Short-circuiting** means that the second operand of `and` or `or` is only evaluated if necessary. For `and`, if the first operand is `false`, the whole expression is `false`, so the second operand isn't checked. For `or`, if the first operand is `true`, the whole expression is `true`, so the second operand isn't checked. This can prevent errors (e.g., division by zero) or improve performance.\n\nExample:\ntyp```\n#let is_admin = true\n#let has_permission = false\n#let age = 25\n\nCan access: #{is_admin and has_permission}\nCan proceed: #{is_admin or has_permission}\nNot an admin: #{not is_admin}\n\n#let divisor = 0\n// This will not cause an error due to short-circuiting\n#if divisor != 0 and (10 / divisor) > 1 { \"Calculation successful\" } else { \"Cannot divide by zero or condition not met\" }\n```"
+  },
+  {
+    "instruction": "Explain and demonstrate the assignment operators available in Typst, including simple assignment and compound assignment operators.",
+    "answer": "Typst supports both simple and compound assignment operators, all with the lowest precedence (1).\n\n*   **Simple Assignment:**\n    *   `=` : Assigns the value of the right-hand side to the variable on the left-hand side.\n\n*   **Compound Assignment:** These perform an operation and then assign the result.\n    *   `+=` : Add and assign\n    *   `-=` : Subtract and assign\n    *   `*=` : Multiply and assign\n    *   `/=` : Divide and assign\n\nExample:\ntyp```\n#{ \n  let x = 10\n  [Initial x: #x]\n\n  x += 5 // x becomes 15\n  [x after += 5: #x]\n\n  x -= 3 // x becomes 12\n  [x after -= 3: #x]\n\n  x *= 2 // x becomes 24\n  [x after *= 2: #x]\n\n  x /= 4 // x becomes 6.0 (division results in float) \n  [x after /= 4: #x]\n}\n```"
+  },
+  {
+    "instruction": "Create a Typst script that defines an array of products, then uses a `for` loop with destructuring to display each product's name and price, and calculates the total price of all products.",
+    "answer": "This script demonstrates iterating over an array of dictionaries, destructuring each dictionary to access its fields, and performing a calculation to sum up a specific field.\n\ntyp```\n#let products = (\n  (name: \"Laptop\", price: 1200, quantity: 1),\n  (name: \"Mouse\", price: 25, quantity: 2),\n  (name: \"Keyboard\", price: 75, quantity: 1)\n)\n\n= Product List\n\n#let total_price = 0\n\n#for (product) in products [\n  #let (name, price, quantity) = product\n  - #name: $#price (Quantity: #quantity)\n  #{\n    total_price += price * quantity\n    none // Explicitly return none so it doesn't print in the loop\n  }\n]\n\n--- \nTotal price for all items: $#total_price.\n```"
+  },
+  {
+    "instruction": "Write a Typst function that takes a number and categorizes it as 'Positive', 'Negative', or 'Zero' using `if`/`else if`/`else` and returns the appropriate string. Then call the function with different numbers.",
+    "answer": "This demonstrates defining a function and using conditional logic to return different content based on the input.\n\ntyp```\n#let categorize_number(num) = [\n  #if num > 0 [\n    The number #num is Positive.\n  ] else if num < 0 [\n    The number #num is Negative.\n  ] else [\n    The number #num is Zero.\n  ]\n]\n\n#categorize_number(10)\n#categorize_number(-5)\n#categorize_number(0)\n#categorize_number(3.14)\n```"
+  },
+  {
+    "instruction": "Imagine you have an image file named `../image.png`. How would you display it using Typst's image function, and then dynamically adjust its width based on a variable defined in a code block?",
+    "answer": "You can display an image using the `#image()` function. To dynamically adjust its properties, you can pass variables or expressions as arguments.\n\ntyp```\n#set page(width: 200pt) // Set a small page width for better demo\n\n#{\n  let image_width = 70%\n  image(\"../image.png\", width: image_width)\n}\n\n#{\n  let image_width_px = 150pt\n  image(\"../image.png\", width: image_width_px)\n}\n\n#image(\"../image.png\", height: 50pt) // Also works for height\n```"
+  }
+]
+```

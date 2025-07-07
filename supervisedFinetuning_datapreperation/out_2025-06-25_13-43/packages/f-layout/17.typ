@@ -1,0 +1,7 @@
+
+#import "@preview/droplet:0.3.1": dropcap
+
+#set text(size: 12pt)
+#dropcap[
+  #lorem(50)
+]

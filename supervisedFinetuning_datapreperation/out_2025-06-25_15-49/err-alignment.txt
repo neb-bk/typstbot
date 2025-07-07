@@ -1,0 +1,28 @@
+```json
+[
+  {
+    "instruction": "How can I globally change the default alignment of all display math equations in Typst, for example, to align them to the right?",
+    "answer": "By default, display math is center-aligned. To globally set the alignment of all display math equations to the right, you can use a `show` rule targeting `math.equation` and apply the `set align(right)` function.\n\n```typ\n#show math.equation: set align(right)\n\n$\n(a + b)/2\n$\n```"
+  },
+  {
+    "instruction": "I have a specific math block that I want to align to the left, regardless of the global math alignment setting. How can I achieve this in Typst?",
+    "answer": "You can achieve specific alignment for an individual math block using the `align` element. You provide the desired alignment (e.g., `left`, `center`, `right`) and wrap your math expression within a `block` element as the content.\n\n```typ\n// Even if global math is centered or right-aligned, this block will be left-aligned.\n#align(left, block($ x = 5 $))\n\n// Example with default center alignment for others\n$ y = mx + b $\n```"
+  },
+  {
+    "instruction": "Explain the role and behavior of alignment points (`&`) within multi-line display math equations in Typst.",
+    "answer": "When equations include multiple alignment points (`&`), they create columns that alternate between right-aligned and left-aligned. Each `&` acts as a toggle, changing the alignment for the subsequent column.\n\nFor example, in a common setup for solving equations, the expressions before the `&` (like `3x + y`) are typically right-aligned, and the parts after it (like `= 63`) are left-aligned.\n\n```typ\n$ a + b &= c \\ // 'a + b' is right-aligned, 'c' is left-aligned\n  d &= e - f $\n```"
+  },
+  {
+    "instruction": "What is the effect of using `&&` (or `& &`) in a multi-line Typst math equation, and how does it differ from a single `&`?",
+    "answer": "Both `&&` and `& &` behave exactly the same way: they create two alignment points in a row. This means they cause the alignment to alternate twice. If a single `&` switches from right to left, then `&&` would switch from right to left, and then from left to right again.\n\nThis is particularly useful when you want to align an annotation (like \"given\" or \"multiply by 7\") while maintaining the primary alignment of the equation. The text explains that the first `&` (of `&&`) aligns the next column right (if there were content), and the second `&` then aligns the subsequent content (like \"given\") left.\n\n```typ\n$ (3x + y) / 7 &= 9 && \"given\" \\ // '9' is left-aligned, 'given' is also left-aligned\n  3x + y &= 63 & \"multiply by 7\" // '63' is left-aligned, 'multiply by 7' is left-aligned\n$\n```"
+  },
+  {
+    "instruction": "Provide a comprehensive example of a multi-line math equation in Typst demonstrating the use of both `&` and `&&` for various alignments and annotations.",
+    "answer": "Here's an example that shows how `&` and `&&` manage alignment in a step-by-step equation. Remember, each `&` alternates the alignment of columns (right-aligned then left-aligned).\n\n```typ\n$ (3x + y) / 7 &= 9 && \"given\" \\ // (3x+y)/7 is right, =9 is left, \"given\" is left\n  3x + y &= 63 & \"multiply by 7\" \\ // 3x+y is right, =63 is left, \"multiply by 7\" is left\n  3x &= 63 - y && \"subtract y\" \\ // 3x is right, =63-y is left, \"subtract y\" is left\n  x &= 21 - y/3 & \"divide by 3\" $ // x is right, =21-y/3 is left, \"divide by 3\" is left\n```\nIn this example:\n*   The first `&` always aligns the primary equality (`=`) and the value (`9`, `63`, `63 - y`, `21 - y/3`) to the left.\n*   When `&&` is used (e.g., `&& \"given\"`), the `&&` effectively creates two alignment points. The first `&` (of `&&`) would make the column *after* `9` right-aligned, and the second `&` then makes the text `\"given\"` left-aligned. This ensures the annotation also aligns correctly with the subsequent left-aligned content."
+  },
+  {
+    "instruction": "What is the default alignment for display math in Typst, and what options are available to change it?",
+    "answer": "By default, display math in Typst is center-aligned. You have two primary options to change this:\n\n1.  **Globally via `show` rule**: Apply `set align(...)` to `math.equation` for all subsequent display math.\n2.  **Locally via `align` element**: Use the `align` element with `block(...)` for specific math expressions.\n\n```typ\n// Default center alignment\n$ x^2 + y^2 = r^2 $\n\n// Global right alignment\n#show math.equation: set align(right)\n$ E = mc^2 $\n\n// Local left alignment (overrides global for this block)\n#align(left, block($ F = ma $))\n\n// Subsequent math will still be right-aligned due to the show rule\n$ \int x dx = x^2/2 + C $\n```"
+  }
+]
+```

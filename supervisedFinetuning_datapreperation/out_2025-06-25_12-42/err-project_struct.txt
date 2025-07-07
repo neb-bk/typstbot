@@ -1,0 +1,44 @@
+```json
+[
+  {
+    "instruction": "Describe the recommended project structure for large Typst documents, including the purpose of each file. Provide example code for each file.",
+    "answer": "For large Typst documents, it's recommended to split the document into chapters to improve navigation and organization. The suggested structure includes:\n\n1.  **chapters/**: This directory contains the individual chapter files (e.g., `chapter_1.typ`, `chapter_2.typ`).\n2.  **main.typ**: This file serves as the entry point for compiling the entire document. It imports the template and includes all the chapter files.\n3.  **template.typ**: This file houses all useful functions, variables, and formatting settings that are used across all chapters.\n\nHere's the example code for each file:\n\n**template.typ**:\n\n```typ\n// template.typ\n\n#let template = doc => {\n    set page(header: \"My super document\")\n    show \"physics\": \"magic\"\n    doc\n}\n\n#let info-block = block.with(stroke: blue, fill: blue.lighten(70%))\n#let author = \"@sitandr\"\n```\n\n**main.typ**:\n\n```typ\n// main.typ\n\n#import \"template.typ\": *\n// if you have a template\n#show: template\n\n= This is the document title\n\n// some additional formatting\n\n#show emph: set text(blue)\n\n// but don't define functions or variables there!\n// chapters will not see it\n\n// Now the chapters themselves as some Typst content\n#include(\"chapters/chapter_1.typ\")\n#include(\"chapters/chapter_1.typ\")\n```\n\n**chapter\_1.typ**:\n\n```typ\n// chapter_1.typ\n\n#import \"../template.typ\": *\n\nThat's just content with _styling_ and blocks:\n\n#infoblock[Some information].\n\n// just any content you want to include in the document\n```"
+  },
+  {
+    "instruction": "Explain the purpose of the `template.typ` file in a large Typst project and provide an example of what it might contain.",
+    "answer": "The `template.typ` file is used to store all of the useful functions and variables that will be used across all chapters of your document. This centralizes definitions and ensures consistency. It allows you to define custom styles, helper functions, and global variables used throughout the entire document. \n\nHere's an example of what a `template.typ` file might contain:\n\n```typ\n// template.typ\n\n#let template = doc => {\n    set page(header: \"My super document\")\n    show \"physics\": \"magic\"\n    doc\n}\n\n#let info-block = block.with(stroke: blue, fill: blue.lighten(70%))\n#let author = \"@sitandr\"\n```"
+  },
+  {
+    "instruction": "Describe the role of the `main.typ` file in a multi-chapter Typst project. Include example code showing how to import the template and include chapters.",
+    "answer": "The `main.typ` file serves as the entry point for compiling the entire Typst document. It imports the template file, sets global document settings, and includes all the chapter files. You compile this file to generate the final document.\n\nHere's example code:\n\n```typ\n// main.typ\n\n#import \"template.typ\": *\n// if you have a template\n#show: template\n\n= This is the document title\n\n// some additional formatting\n\n#show emph: set text(blue)\n\n// but don't define functions or variables there!\n// chapters will not see it\n\n// Now the chapters themselves as some Typst content\n#include(\"chapters/chapter_1.typ\")\n#include(\"chapters/chapter_1.typ\")\n```"
+  },
+  {
+    "instruction": "How should you structure your chapter files in a multi-chapter Typst project? Provide an example of a chapter file and explain what it should contain.",
+    "answer": "Chapter files should focus on the content of a specific chapter. They should import the `template.typ` to access the shared functions and variables. Each chapter contains its unique content.  They should not contain function or variable definitions meant to be shared with other chapters; those should be in the template. \n\nHere's example code for a `chapter_1.typ` file:\n\n```typ\n// chapter_1.typ\n\n#import \"../template.typ\": *\n\nThat's just content with _styling_ and blocks:\n\n#infoblock[Some information].\n\n// just any content you want to include in the document\n```"
+  },
+  {
+    "instruction": "What is the scope of variables and functions in Typst modules (e.g., chapter files and the template)?",
+    "answer": "In Typst, modules (like chapter files) can only see what they create themselves or what they import. Chapters don't see each other directly; they can only access definitions that are provided in the `template.typ` file. This means that for variables and functions to be shared across multiple chapters, they must be defined in the template and imported into the chapters."
+  },
+  {
+    "instruction": "Explain the limitations regarding import statements in Typst, particularly the issue of cyclic imports. Provide an example.",
+    "answer": "Typst forbids cyclic imports. This means you cannot have a situation where `chapter_1.typ` imports from `chapter_2.typ`, and simultaneously, `chapter_2.typ` imports from `chapter_1.typ`. This can lead to infinite loops during compilation. Instead, create a separate file to hold variables that are needed by both chapters.\n\nFor example, this is forbidden:\n\n`chapter_1.typ`:\n\n```typ\n#import \"chapter_2.typ\": *\n```\n\n`chapter_2.typ`:\n\n```typ\n#import \"chapter_1.typ\": *\n```"
+  },
+  {
+    "instruction": "How can you structure a multi-chapter Typst document to include a custom document title and styling for emphasis within the document, given the project structure?",
+    "answer": "First, define a template to apply global settings like the title. Then, import the template in `main.typ` and apply it. The emphasis styling can be declared in `main.typ` or in template. The chapters themself include the content.\n\nHere's the relevant snippets:\n\n`template.typ`:\n\n```typ\n#let template = doc => {\n    set page(header: \"My Document\")\n    doc\n}\n```\n\n`main.typ`:\n\n```typ\n#import \"template.typ\": *\n\n#show: template\n\n= My Awesome Document\n\n#show emph: set text(blue)\n\n#include(\"chapters/chapter_1.typ\")\n#include(\"chapters/chapter_2.typ\")\n```\n\n`chapter_1.typ`:\n\n```typ\n#import \"../template.typ\": *\n\nThis is some text with _emphasis_.\n```"
+  },
+  {
+    "instruction": "Describe the role of the `info-block` function used in the provided example project structure, if it was defined in the template file.",
+    "answer": "If the `info-block` function is defined within `template.typ`, it would likely be a custom function that styles a block of text to highlight information. In the example provided, it is used to set the stroke and fill color of the text, indicating a specific style for information. In the `chapter_1.typ` file, the `#infoblock[Some information].` call would use this function to format the given text."
+  },
+  {
+    "instruction": "Assuming you are working on a large Typst document with multiple chapters, explain how you would apply a consistent font style across all the chapters. Include code examples.",
+    "answer": "To ensure a consistent font style throughout all chapters, you should define and apply the font style in the `template.typ` file. This way, every chapter imports the template and inherits the font settings. \n\nHere's the code for `template.typ`:\n\n```typ\n// template.typ\n#let template = doc => {\n  set text(font: \"Arial\", size: 12pt)\n  doc\n}\n```\n\nThen in `main.typ`:\n\n```typ\n#import \"template.typ\": *\n#show: template\n\n#include(\"chapters/chapter_1.typ\")\n#include(\"chapters/chapter_2.typ\")\n```\n\nAll text content in the chapters will now use the Arial font with a size of 12 points."
+  },
+  {
+    "instruction": "You want to include the author's name in the document's header. How would you accomplish this, given the suggested project structure? Provide code examples.",
+    "answer": "To include the author's name in the document's header, define an author variable in the `template.typ` file, and then use it within the page header definition. The `main.typ` file and all chapter files import the template and thus can use the author variable.\n\nHere's the code:\n\n`template.typ`:\n\n```typ\n// template.typ\n\n#let author = \"@sitandr\"\n#let template = doc => {\n  set page(header: [Author: #author])\n  doc\n}\n```\n\n`main.typ`:\n\n```typ\n#import \"template.typ\": *\n#show: template\n\n#include(\"chapters/chapter_1.typ\")\n#include(\"chapters/chapter_2.typ\")\n```\n\nNow, the author's name will appear in the header of every page of the document. If you update the author in template.typ it applies to the whole document."
+  }
+]
+```

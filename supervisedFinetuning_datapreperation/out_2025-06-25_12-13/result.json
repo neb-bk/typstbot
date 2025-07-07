@@ -1,0 +1,82 @@
+[
+  {
+    "instruction": "How can I create a box around an image in Typst?",
+    "answer": "You can use the `box` function to wrap anything, including an image, within a box. For example:\n\n```typ\n#box(image(\"../tiger.jpg\", height: 2em))\n```",
+    "id": 0,
+    "code": "\n#box(image(\"../../image.png\", height: 2em))\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What's the difference between `box` and `block` in Typst?",
+    "answer": "`box` wraps content within a text flow, while `block` creates a separate paragraph. Blocks do not fit into the text flow.\n\nExample:\n\n```typ\n#box(image(\"../tiger.jpg\", height: 2em))\n#block(image(\"../tiger.jpg\", height: 2em))\n```",
+    "id": 1,
+    "code": "\n#box(image(\"../../image.png\", height: 2em))\n#block(image(\"../../image.png\", height: 2em))\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I add a red stroke and inset to a box or block in Typst?",
+    "answer": "You can set the `stroke` and `inset` properties to customize the appearance of boxes and blocks. For instance:\n\n```typ\n#box(stroke: red, inset: 1em)[Box text]\n#block(stroke: red, inset: 1em)[Block text]\n```",
+    "id": 2,
+    "code": "\n#box(stroke: red, inset: 1em)[Box text]\n#block(stroke: red, inset: 1em)[Block text]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What is the `rect` function in Typst, and how does it differ from `block`?",
+    "answer": "`rect` is similar to `block` but includes useful default settings for inset and stroke, providing a convenient way to create rectangular blocks.  Here's how to use it:\n\n```typ\n#rect[Block text]\n```",
+    "id": 3,
+    "code": "\n#rect[Block text]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I create a figure with a centered image and caption in Typst?",
+    "answer": "Use the `figure` function to create figures, which are often used for centered images, tables, or other content with captions.  Don't use `box` or `block` for figures.\n\n```typ\n#figure(\n  image(\"../tiger.jpg\", width: 80%),\n  caption: [A tiger.],\n)\n```",
+    "id": 4,
+    "code": "\n#figure(\n  image(\"../../image.png\", width: 80%),\n  caption: [A tiger.],\n)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Can I put anything inside a `figure` environment in Typst? Give an example.",
+    "answer": "Yes, you can put various content inside a `figure`. It's not limited to images.  Here's an example with text:\n\n```typ\n#figure(\n  text(size: 5em)[I],\n  caption: [I'm cool, right?],\n)\n```",
+    "id": 5,
+    "code": "\n#figure(\n  text(size: 5em)[I],\n  caption: [I'm cool, right?],\n)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How would you display an image in a box with a blue stroke and 0.5em inset?",
+    "answer": "You can achieve this using the `box` function with the `stroke` and `inset` properties:\n\n```typ\n#box(stroke: blue, inset: 0.5em)[image(\"../tiger.jpg\", height: 5em)]\n```",
+    "id": 6,
+    "code": "\n#box(stroke: blue, inset: 0.5em)[image(\"../../image.png\", height: 5em)]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "I want to display the text 'Important Note' in a block with a yellow background and a thick black stroke. How can I do that?",
+    "answer": "While the documentation does not explicitly mention a `background` property, you can achieve this using a combination of the `block`, `stroke`, and `inset` properties.  You might need to nest a `rect` within the block or use other techniques for background color.\n\n```typ\n#rect(stroke: black, inset: 0.5em, [Important Note])\n```",
+    "id": 7,
+    "code": "\n#rect(stroke: black, inset: 0.5em, [Important Note])\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I create a figure that references another part of the document using a label?",
+    "answer": "You can use the `figure` function along with a label. Although labels are not shown in the documentation, a typical use case would involve using the `<label>` syntax, like so:\n\n```typ\n#figure(\n  image(\"../tiger.jpg\", width: 80%),\n  caption: [A tiger.],\n) <tiger>\n```",
+    "id": 8,
+    "code": "\n#figure(\n  image(\"../../image.png\", width: 80%),\n  caption: [A tiger.],\n) <tiger>\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Give an example of using a figure to display a large letter 'A'.",
+    "answer": "You can create a figure that displays a large letter 'A' using the `text` function and adjust the size with the `size` property.\n\n```typ\n#figure(\n  text(size: 5em)[A],\n  caption: [Letter A],\n)\n```",
+    "id": 9,
+    "code": "\n#figure(\n  text(size: 5em)[A],\n  caption: [Letter A],\n)\n",
+    "compiler": "",
+    "usable": true
+  }
+]

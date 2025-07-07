@@ -1,0 +1,1130 @@
+[
+  {
+    "instruction": "How can I create a simple box around some text in Typst?",
+    "answer": "You can use the `box` function to create a box around text. Here's an example:\n\n```typ\n#box[This text is in a box.]\n```",
+    "id": 0,
+    "code": "\n#box[This text is in a box.]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What is the difference between `box` and `block` in Typst?",
+    "answer": "`box` wraps content within the flow of text, while `block` creates a separate paragraph.  `block` elements are always displayed on their own line, similar to paragraphs.\n\n```typ\n#box(image(\"../tiger.jpg\", height: 2em))\n#block(image(\"../tiger.jpg\", height: 2em))\n```",
+    "id": 1,
+    "code": "\n#box(image(\"../../image.png\", height: 2em))\n#block(image(\"../../image.png\", height: 2em))\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I add a red stroke and inset to a box and a block in Typst?",
+    "answer": "You can customize boxes and blocks using the `stroke` and `inset` arguments.  Here's how:\n\n```typ\n#box(stroke: red, inset: 1em)[Box text]\n#block(stroke: red, inset: 1em)[Block text]\n```",
+    "id": 2,
+    "code": "\n#box(stroke: red, inset: 1em)[Box text]\n#block(stroke: red, inset: 1em)[Block text]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain the `rect` function in Typst and how it differs from `block`.",
+    "answer": "`rect` is similar to `block` but has default values for `inset` and `stroke`, making it easier to create rectangular blocks.  It's a simplified way to create a rectangular block.\n\n```typ\n#rect[Block text]\n```",
+    "id": 3,
+    "code": "\n#rect[Block text]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I add a figure with a caption in Typst?",
+    "answer": "Use the `figure` function to create figures, which are typically used for images, tables, or other content with captions. Here's an example with an image and a caption:\n\n```typ\n#figure(\n  image(\"../tiger.jpg\", width: 80%),\n  caption: [A tiger.]\n)\n```",
+    "id": 4,
+    "code": "\n#figure(\n  image(\"../../image.png\", width: 80%),\n  caption: [A tiger.]\n)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Can I put any content inside a figure in Typst? Give an example.",
+    "answer": "Yes, you can put any content inside a figure. This can include text, images, or other Typst elements. Here's an example with large text:\n\n```typ\n#figure(\n  text(size: 5em)[I],\n  caption: [I'm cool, right?]\n)\n```",
+    "id": 5,
+    "code": "\n#figure(\n  text(size: 5em)[I],\n  caption: [I'm cool, right?]\n)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I include an image inside a box, and what are the properties I can define?",
+    "answer": "You can include an image inside a box.  You can define properties like `stroke` and `inset` to style the box, as well as properties specific to the image like `height` or `width`.\n\n```typ\n#box(stroke: blue, inset: 0.5em)[image(\"../tiger.jpg\", height: 2em)]\n```",
+    "id": 6,
+    "code": "\n#box(stroke: blue, inset: 0.5em)[image(\"../../image.png\", height: 2em)]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Create a figure that contains text. The figure should have a caption.",
+    "answer": "Here's how you can create a figure with text and a caption:\n\n```typ\n#figure(\n  [This is text inside a figure],\n  caption: [Text Figure]\n)\n```",
+    "id": 7,
+    "code": "\n#figure(\n  [This is text inside a figure],\n  caption: [Text Figure]\n)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "I want to create a figure with an image, a caption, and a reference to the figure. How would I do that?",
+    "answer": "You can create a figure with an image, a caption, and a reference using the following code:\n\n```typ\n@myImage shows a tiger.\n\n#figure(\n  image(\"../tiger.jpg\", width: 80%),\n  caption: [A tiger.]\n) <myImage>\n```",
+    "id": 8,
+    "code": "\n@myImage shows a tiger.\n\n#figure(\n  image(\"../../image.png\", width: 80%),\n  caption: [A tiger.]\n) <myImage>\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How would I use a `block` to separate two paragraphs, and what can I customize for the block?",
+    "answer": "You can use the `block` function to create a separate paragraph. You can customize it with properties like `stroke` and `inset`.\n\n```typ\n#block(stroke: gray, inset: 0.5em)[This is the first paragraph.]\n\n#block(stroke: gray, inset: 0.5em)[This is the second paragraph.]\n```",
+    "id": 9,
+    "code": "\n#block(stroke: gray, inset: 0.5em)[This is the first paragraph.]\n\n#block(stroke: gray, inset: 0.5em)[This is the second paragraph.]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I create a rectangular block with a default stroke and inset?",
+    "answer": "You can use the `rect` function to create a rectangular block with default stroke and inset:\n\n```typ\n#rect[This is a rectangular block.]\n```",
+    "id": 10,
+    "code": "\n#rect[This is a rectangular block.]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How does the `figure` function help in organizing content in a document?",
+    "answer": "The `figure` function is designed for adding elements like images, tables, or other content that should be displayed separately and often with a caption. It provides a semantic way to mark content as a figure.\n\n```typ\n#figure(image(\"../tiger.jpg\", width: 80%), caption: [A tiger.])\n```",
+    "id": 11,
+    "code": "\n#figure(image(\"../../image.png\", width: 80%), caption: [A tiger.])\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain the purpose of the `context` keyword in Typst and provide a simple example demonstrating its usage.",
+    "answer": "The `context` keyword in Typst is used to create content that reacts to its location within the document. It allows access to contextual information such as style properties and location-related data.  \n\n```typ\n#set text(lang: \"de\")\n#let value = context text.lang\n#value\n\n#set text(lang: \"fr\")\n#value\n```",
+    "id": 0,
+    "code": "\n#set text(lang: \"de\")\n#let value = context text.lang\n#value\n\n#set text(lang: \"fr\")\n#value\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can you access style properties within a context? Give an example using the text language.",
+    "answer": "You can access style properties within a context by referencing them as fields on the respective element function. Here's how to access the text language within a context:\n\n```typ\n#set text(lang: \"de\")\n#context text.lang\n```",
+    "id": 1,
+    "code": "\n#set text(lang: \"de\")\n#context text.lang\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain what happens when a context expression is created and used multiple times in a document. How does its behavior change?",
+    "answer": "Upon creation, a context expression becomes opaque and cannot be directly accessed or peeked into. Its body may be evaluated zero, one, or multiple times, depending on how many different places it's used. Each use properly reacts to the current surroundings and context available at that specific location.\n\n```typ\n#let value = context text.lang\n#value\n\n#set text(lang: \"de\")\n#value\n\n#set text(lang: \"fr\")\n#value\n```",
+    "id": 2,
+    "code": "\n#let value = context text.lang\n#value\n\n#set text(lang: \"de\")\n#value\n\n#set text(lang: \"fr\")\n#value\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Describe how location context works in Typst and provide an example using heading numbering.",
+    "answer": "Location context allows you to access the document's structure and element positions. Functions like `counter.get` implicitly access the current location.  Here's an example with heading numbering:\n\n```typ\n#set heading(numbering: \"1.\")\n\n= Introduction\n#lorem(5)\n\n#context counter(heading).get()\n\n= Background\n#lorem(5)\n\n#context counter(heading).get()\n```",
+    "id": 3,
+    "code": "\n#set heading(numbering: \"1.\")\n\n= Introduction\n#lorem(5)\n\n#context counter(heading).get()\n\n= Background\n#lorem(5)\n\n#context counter(heading).get()\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain the difference between `counter.get()` and `counter.at()` and provide an example to demonstrate their use.",
+    "answer": "`counter.get()` retrieves the value of a counter at its current location, while `counter.at()` retrieves the counter's value at a specified location. `counter.at()` takes a location (like a label). \n\n```typ\n#set heading(numbering: \"1.\")\n\n= Introduction <intro>\n#lorem(5)\n\n= Background <back>\n#lorem(5)\n\n#context [\n  #counter(heading).get() \\ \n  #counter(heading).at(here()) \\ \n  #counter(heading).at(<intro>)\n]\n```",
+    "id": 4,
+    "code": "\n#set heading(numbering: \"1.\")\n\n= Introduction <intro>\n#lorem(5)\n\n= Background <back>\n#lorem(5)\n\n#context [\n  #counter(heading).get() \\ \n  #counter(heading).at(here()) \\ \n  #counter(heading).at(<intro>)\n]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can you get the physical position of an element on the pages in Typst?",
+    "answer": "You can use the `locate` function to get the physical position of an element. It takes a location or other selector (like a label) and returns the position on the pages for that element.\n\n```typ\n#set heading(numbering: \"1.\")\n\n= Introduction <intro>\n#lorem(5)\n#pagebreak()\n\n= Background <back>\n#lorem(5)\n\nBackground is at: \\ \n#context locate(<back>).position()\n```",
+    "id": 5,
+    "code": "\n#set heading(numbering: \"1.\")\n\n= Introduction <intro>\n#lorem(5)\n#pagebreak()\n\n= Background <back>\n#lorem(5)\n\nBackground is at: \\ \n#context locate(<back>).position()\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What are nested contexts and how do they work? Provide an example.",
+    "answer": "Context blocks can be nested.  Contextual code will always access the innermost context.  Here's an example:\n\n```typ\n#set text(lang: \"de\")\n#context [\n  #set text(lang: \"fr\")\n  #text.lang \\ \n  #context text.lang\n]\n```\nThe first `text.lang` will access the outer context, and therefore, not see the effect of the `set text(lang: \"fr\")`.  The nested context block around the second `text.lang`, however, starts after the set rule and will thus show its effect.",
+    "id": 6,
+    "code": "\n#set text(lang: \"de\")\n#context [\n  #set text(lang: \"fr\")\n  #text.lang \\ \n  #context text.lang\n]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how Typst handles contextual interactions in multiple passes, and what might happen if it cannot resolve everything within a certain number of attempts.",
+    "answer": "Typst resolves contextual interactions by processing the document multiple times (iterations). For example, resolving `locate` requires an initial placeholder, layout, and then a recompile with known positions. The same applies to counters, states, and queries. If Typst cannot resolve everything within five attempts, it stops and outputs the warning \"layout did not converge within 5 attempts.\"",
+    "id": 7,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Why do some functions like `counter.at()` still require context even if they don't directly depend on the current location?",
+    "answer": "`counter.at()` requires context because its value, while constant within a compilation iteration, might change across multiple iterations. Allowing it at the top level of a module could cause the module and its exports to change across iterations, which is undesirable. Context ensures consistency across iterations.",
+    "id": 8,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how the order of execution affects the evaluation of context expressions, especially in conjunction with show rules and template functions. Provide an example.",
+    "answer": "Context expressions are evaluated based on the order of execution. Show rules provide context. If a context expression appears before a show rule that alters the context (e.g., language), the context expression won't see the effect of the show rule. Conversely, context expressions defined within the scope of a show rule *will* be affected.\n\n```typ\n#let template(body) = {\n  set text(lang: \"fr\")\n  upper(body)\n}\n\n#set text(lang: \"de\")\n#context [\n  #show: template\n  #text.lang \\\n  #context text.lang\n]\n```\nThe first `text.lang` won't be affected by the French language setting, but the second will.",
+    "id": 9,
+    "code": "\n#let template(body) = {\n  set text(lang: \"fr\")\n  upper(body)\n}\n\n#set text(lang: \"de\")\n#context [\n  #show: template\n  #text.lang \\\n  #context text.lang\n]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can you use a counter within a context to react to changes in the document?",
+    "answer": "You can use the context combined with counter functions like `counter.get()`, `counter.at()`, and `counter.display()` to react to changes in the document. Using `counter.get()` within a context block ensures the correct counter value is retrieved based on the current location. Combining context with `counter.update()` allows dynamic counter manipulation within different parts of the document.\n\n```typ\n#let c = counter(\"mycounter\")\n#c.update(1)\n#context [\n  #c.update(2)\n  #c.display() \\\n  #context c.display()\n]\n```",
+    "id": 10,
+    "code": "\n#let c = counter(\"mycounter\")\n#c.update(1)\n#context [\n  #c.update(2)\n  #c.display() \\\n  #context c.display()\n]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Demonstrate the use of the `locate` function to find the position of a specific paragraph with the label \"my-paragraph\" and display its position.",
+    "answer": "You can use `locate` with a label to find the position of an element and display it within a context:\n\n```typ\n#set heading(numbering: \"1.\")\n= Introduction\n#lorem(5) <my-paragraph>\n\n#context locate(<my-paragraph>).position()\n```",
+    "id": 11,
+    "code": "\n#set heading(numbering: \"1.\")\n= Introduction\n#lorem(5) <my-paragraph>\n\n#context locate(<my-paragraph>).position()\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain the importance of the 'Must-know' section in Typst documentation and why it's crucial for effective typesetting. Provide an example of a concept from this section.",
+    "answer": "The 'Must-know' section in the Typst documentation highlights essential concepts that are not covered in the general tutorial but are critical for proper typesetting. These are often foundational elements required for advanced formatting and document structure. Understanding these concepts is vital for creating well-structured and visually appealing documents.\n\nAs an example, a 'must-know' concept could be the proper use of sectioning elements. Here is how to define a level one section in Typst:\n\ntyp```typ\n#section[My First Section]\n```",
+    "id": 0,
+    "code": "\n#section[My First Section]\n",
+    "compiler": "error: unknown variable: section\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-index\\0.typ:2:1\n  \u2502\n2 \u2502 #section[My First Section]\n  \u2502  ^^^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "Describe the role of sectioning elements in a Typst document and provide a Typst code snippet demonstrating how to create a level-two section.",
+    "answer": "Sectioning elements are crucial for organizing a Typst document's structure, making it easier to navigate and understand. They define the hierarchy of content, enabling features like automatic table of contents generation. Level-two sections are defined using the `#subsection` function.\n\nHere's how to create a level-two section:\n\ntyp```typ\n#subsection[Introduction to the Topic]\n```",
+    "id": 1,
+    "code": "\n#subsection[Introduction to the Topic]\n",
+    "compiler": "error: unknown variable: subsection\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-index\\1.typ:2:1\n  \u2502\n2 \u2502 #subsection[Introduction to the Topic]\n  \u2502  ^^^^^^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How would you create a document with a title, an author, and a date using Typst? Provide a complete, compilable Typst code example.",
+    "answer": "You can define the document's metadata (title, author, and date) using the appropriate functions in the Typst preamble. These settings allow you to control how the information is presented in the document's output.\n\nHere's a complete example:\n\ntyp```typ\n#set title(author: \"Your Name\", date: 2024-10-27, \"Document Title\")\n\n#document(show: document.book, \n  [\n    #title()\n    #pagebreak()\n    #section[Introduction]\n    This is the beginning of the document.\n  ],\n)\n```",
+    "id": 2,
+    "code": "\n#set title(author: \"Your Name\", date: 2024-10-27, \"Document Title\")\n\n#document(show: document.book, \n  [\n    #title()\n    #pagebreak()\n    #section[Introduction]\n    This is the beginning of the document.\n  ],\n)\n",
+    "compiler": "error: unknown variable: title\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-index\\2.typ:2:5\n  \u2502\n2 \u2502 #set title(author: \"Your Name\", date: 2024-10-27, \"Document Title\")\n  \u2502      ^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "Explain how to add a table of contents to a Typst document. Provide a code example.",
+    "answer": "To add a table of contents in Typst, you can use the `#table-of-contents()` function. This function automatically generates the table based on the sectioning elements defined in your document. It's usually placed near the beginning of the document or after the title page.\n\nHere's an example:\n\ntyp```typ\n#set title(author: \"Your Name\", date: 2024-10-27, \"Document Title\")\n\n#document(show: document.book, \n  [\n    #title()\n    #pagebreak()\n    #table-of-contents()\n    #pagebreak()\n    #section[Introduction]\n    This is the introduction.\n  ],\n)\n```",
+    "id": 3,
+    "code": "\n#set title(author: \"Your Name\", date: 2024-10-27, \"Document Title\")\n\n#document(show: document.book, \n  [\n    #title()\n    #pagebreak()\n    #table-of-contents()\n    #pagebreak()\n    #section[Introduction]\n    This is the introduction.\n  ],\n)\n",
+    "compiler": "error: unknown variable: title\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-index\\3.typ:2:5\n  \u2502\n2 \u2502 #set title(author: \"Your Name\", date: 2024-10-27, \"Document Title\")\n  \u2502      ^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How do you insert images in a Typst document? Provide a code example and explain how to specify the image path.",
+    "answer": "Images are inserted using the `#image()` function. The function requires the path to the image file. The path can be relative to the Typst document or an absolute path. You can also specify other properties such as width, height, and alignment.\n\nHere's an example:\n\ntyp```typ\n#image(\"../image.png\", width: 80%)\n```\n\nIn this case, \"../image.png\" specifies a relative path, assuming the image is located in the parent directory relative to the Typst file. You can adjust the width to scale the image.",
+    "id": 4,
+    "code": "\n#image(\"../../image.png\", width: 80%)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain the concept of document metadata in Typst and provide a code snippet to set the document's title and author.",
+    "answer": "Document metadata refers to the information about the document itself, such as its title, author, date, and other relevant details. This metadata can be used for various purposes, including generating a title page, populating document properties, and enabling proper indexing.\n\nHere's a code snippet to set the document's title and author:\n\ntyp```typ\n#set title(author: \"Jane Doe\", \"My Awesome Document\")\n```",
+    "id": 5,
+    "code": "\n#set title(author: \"Jane Doe\", \"My Awesome Document\")\n",
+    "compiler": "error: unknown variable: title\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-index\\5.typ:2:5\n  \u2502\n2 \u2502 #set title(author: \"Jane Doe\", \"My Awesome Document\")\n  \u2502      ^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How would you add a page break in Typst to separate different sections of your document? Provide a code example.",
+    "answer": "You can add a page break using the `#pagebreak()` function. This function forces the content following it to start on a new page. It's useful for separating chapters, sections, or any other distinct parts of the document.\n\nHere's an example:\n\ntyp```typ\n#section[Chapter 1]\nContent of chapter 1.\n#pagebreak()\n#section[Chapter 2]\nContent of chapter 2.\n```",
+    "id": 6,
+    "code": "\n#section[Chapter 1]\nContent of chapter 1.\n#pagebreak()\n#section[Chapter 2]\nContent of chapter 2.\n",
+    "compiler": "error: unknown variable: section\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-index\\6.typ:2:1\n  \u2502\n2 \u2502 #section[Chapter 1]\n  \u2502  ^^^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "Describe the purpose of the `show` function in a Typst `#document` block, and explain how to display the document as a book. Provide a code example.",
+    "answer": "The `show` function within a `#document` block dictates the overall styling and structure of the document. It accepts a function that customizes the document's appearance and layout. To display a document as a book, you can use the `document.book` function.\n\nHere's how to show your document as a book:\n\ntyp```typ\n#set title(author: \"Your Name\", \"My Book\")\n#document(show: document.book, [\n  #title()\n  #pagebreak()\n  #section[Chapter 1]\n  This is the first chapter.\n])\n```",
+    "id": 7,
+    "code": "\n#set title(author: \"Your Name\", \"My Book\")\n#document(show: document.book, [\n  #title()\n  #pagebreak()\n  #section[Chapter 1]\n  This is the first chapter.\n])\n",
+    "compiler": "error: unknown variable: title\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-index\\7.typ:2:5\n  \u2502\n2 \u2502 #set title(author: \"Your Name\", \"My Book\")\n  \u2502      ^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How can you customize the appearance of your sections in a Typst document? Give an example of changing the section heading style.",
+    "answer": "You can customize the appearance of sections by modifying the style of the sectioning elements (e.g., `#section`, `#subsection`). You can use the `#set` function to change the appearance of the section heading. This is typically done by defining a new style for the section element.\n\nHere's an example of changing the section heading style to use a different font and color:\n\ntyp```typ\n#set heading(numbering: \"1.\", font: \"Arial\", color: blue)\n\n#section[Introduction]\nThis is the introduction.\n```",
+    "id": 8,
+    "code": "\n#set heading(numbering: \"1.\", font: \"Arial\", color: blue)\n\n#section[Introduction]\nThis is the introduction.\n",
+    "compiler": "error: unexpected argument: font\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-index\\8.typ:2:30\n  \u2502\n2 \u2502 #set heading(numbering: \"1.\", font: \"Arial\", color: blue)\n  \u2502                               ^^^^^^^^^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "Explain how to include a table of contents in your Typst document, making sure it updates automatically. Provide a code example.",
+    "answer": "To include an automatically updating table of contents, use the `#table-of-contents()` function. The table of contents will dynamically reflect the structure of your document based on the headings you define. Typst automatically detects and includes all `#section`, `#subsection`, etc., headings.\n\nHere's how to add a table of contents:\n\ntyp```typ\n#set title(author: \"Your Name\", \"Document with TOC\")\n\n#document(show: document.book, [\n  #title()\n  #pagebreak()\n  #table-of-contents()\n  #pagebreak()\n  #section[Introduction]\n  This is the introduction.\n])\n```",
+    "id": 9,
+    "code": "\n#set title(author: \"Your Name\", \"Document with TOC\")\n\n#document(show: document.book, [\n  #title()\n  #pagebreak()\n  #table-of-contents()\n  #pagebreak()\n  #section[Introduction]\n  This is the introduction.\n])\n",
+    "compiler": "error: unknown variable: title\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-index\\9.typ:2:5\n  \u2502\n2 \u2502 #set title(author: \"Your Name\", \"Document with TOC\")\n  \u2502      ^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How can I set the page size in Typst?",
+    "answer": "You can set the page size using the `page` set rule.  You can use predefined sizes like \"a4\", \"us-letter\", or specify custom dimensions using `width` and `height`.\n\n```typ\n#set page(\"us-letter\")\n```\n\n```typ\n#set page(width: 15cm, height: 20cm)\n```",
+    "id": 0,
+    "code": "\n#set page(\"us-letter\")\n\n\n#set page(width: 15cm, height: 20cm)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how to change the margins of a page in Typst. Provide examples.",
+    "answer": "The `margin` argument within the `page` set rule controls page margins. You can set a single value for all margins or use a dictionary to specify individual margins (top, bottom, left, right) or the x (left and right) and y (top and bottom) values. The `rest` key can be used to set the remaining margins to a common size.\n\n```typ\n#set page(margin: 2cm)\n```\n\n```typ\n#set page(margin: (top: 3cm, bottom: 2cm, x: 2.5cm))\n```\n\n```typ\n#set page(margin: (left: 1.5in, rest: 1in))\n```",
+    "id": 1,
+    "code": "\n#set page(margin: 2cm)\n\n\n#set page(margin: (top: 3cm, bottom: 2cm, x: 2.5cm))\n\n\n#set page(margin: (left: 1.5in, rest: 1in))\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I set different margins for even and odd pages in a Typst document?",
+    "answer": "You can specify different horizontal margins for even and odd pages using the `inside` and `outside` keys within the `margin` dictionary of the `page` set rule.  The `inside` margin points towards the spine, and the `outside` margin points towards the edge of the bound book. Use the binding argument in the page set rule to change where the inside and outside are in case your document is bound on the right.\n\n```typ\n#set text(lang: \"es\")\n#set page(binding: right)\n#set page(margin: (inside: 2.5cm, outside: 2cm, y: 1.75cm))\n```",
+    "id": 2,
+    "code": "\n#set text(lang: \"es\")\n#set page(binding: right)\n#set page(margin: (inside: 2.5cm, outside: 2cm, y: 1.75cm))\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I add a header and a footer to my Typst document pages?",
+    "answer": "Headers and footers are added using the `header` and `footer` arguments within the `page` set rule. You can pass any content (text, images, etc.) to these arguments. Headers are bottom-aligned by default.\n\n```typ\n#set page(\"a5\", margin: (x: 2.5cm, y: 3cm))\n#set page(header: [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences])\n#lorem(150)\n```",
+    "id": 3,
+    "code": "\n#set page(\"a5\", margin: (x: 2.5cm, y: 3cm))\n#set page(header: [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences])\n#lorem(150)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I create a different header or footer on the first page of my Typst document?",
+    "answer": "You can conditionally show or hide headers/footers on specific pages using the `context` keyword and the `counter` function within the `header` or `footer` arguments of the `page` set rule.\n\n```typ\n#set page(\"a5\", margin: (x: 2.5cm, y: 3cm))\n#set page(header: context {if counter(page).get().first() > 1 [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences]}) \n#lorem(150)\n```",
+    "id": 4,
+    "code": "\n#set page(\"a5\", margin: (x: 2.5cm, y: 3cm))\n#set page(header: context {if counter(page).get().first() > 1 [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences]}) \n#lorem(150)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I customize the appearance of page numbers in a Typst document?",
+    "answer": "You can insert and customize page numbers using the `numbering` argument within the `page` set rule.  You can specify the numbering pattern using a string (e.g., \"1\", \"i\", \"\u2014 1 \u2014\", \"1 of 1\").  For more complex customizations, you need to create a custom footer and use the `counter(page).display()` function to display the page number. The `number-align` argument allows you to align the page number to the left, center or right.\n\n```typ\n#set page(\"iso-b6\", margin: 1.75cm)\n#set page(numbering: \"\u2014 1 \u2014\")\n```\n\n```typ\n#set page(\"iso-b6\", margin: 1.75cm)\n#set page(footer: context [*American Society of Proceedings* #h(1fr) #counter(page).display(\"1/1\", both: true)])\n```",
+    "id": 5,
+    "code": "\n#set page(\"iso-b6\", margin: 1.75cm)\n#set page(numbering: \"\u2014 1 \u2014\")\n\n\n#set page(\"iso-b6\", margin: 1.75cm)\n#set page(footer: context [*American Society of Proceedings* #h(1fr) #counter(page).display(\"1/1\", both: true)])\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I reset or modify the page number counter in Typst?",
+    "answer": "You can manipulate the page counter using the `counter(page).update()` function.  You can set the counter to a specific value or update it based on its previous value using a function.\n\n```typ\n#counter(page).update(1) // Resets the page counter to 1\n```\n\n```typ\n#counter(page).update(n => n + 5) // Skips 5 pages\n```\n\nTo get the actual page number instead of the value of the page counter, use the `here().page()` method.\n\n```typ\n#context here().page()\n```",
+    "id": 6,
+    "code": "\n#counter(page).update(1) // Resets the page counter to 1\n\n\n#counter(page).update(n => n + 5) // Skips 5 pages\n\n\n#context here().page()\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I add columns to my Typst document?",
+    "answer": "You can add columns to your document using the `columns` argument within the `page` set rule. To adjust the amount of space between the columns, add a set rule on the `columns` function, specifying the `gutter` parameter. To create columns within a nested layout, use the `columns` function directly.\n\n```typ\n#set page(columns: 2)\n#set columns(gutter: 12pt)\n#lorem(30)\n```\n\n```typ\n#rect(width: 6cm, height: 3.5cm, columns(2, gutter: 12pt)[In the dimly lit gas station, a solitary taxi stood silently, its yellow paint fading with time. Its windows were dark, its engine idle, and its tires rested on the cold concrete.])\n```",
+    "id": 7,
+    "code": "\n#set page(columns: 2)\n#set columns(gutter: 12pt)\n#lorem(30)\n\n\n#rect(width: 6cm, height: 3.5cm, columns(2, gutter: 12pt)[In the dimly lit gas station, a solitary taxi stood silently, its yellow paint fading with time. Its windows were dark, its engine idle, and its tires rested on the cold concrete.])\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I create a single page with a different page setup, like landscape orientation, within a document?",
+    "answer": "You can use the `page` function as a function with your content and the desired overrides as other arguments. This inserts new pages with your overridden settings to place your content. The page settings from the set rule will be restored after the call.\n\n```typ\n#set page(\"a6\")\n#page(flipped: true)[= Multiplication table #table(columns: 5 * (1fr,), ..for x in range(1, 10) {for y in range(1, 6) {(str(x*y),)}})]\n```",
+    "id": 8,
+    "code": "\n#set page(\"a6\")\n#page(flipped: true)[= Multiplication table #table(columns: 5 * (1fr,), ..for x in range(1, 10) {for y in range(1, 6) {(str(x*y),)}})]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I create a custom footer with a page number and other elements in Typst?",
+    "answer": "To create a custom footer with a page number and other elements, use the `footer` argument within the `page` set rule.  Within the footer content, use the `counter(page).display()` function to insert the page number, allowing for custom formatting and the inclusion of other elements.\n\n```typ\n#set page(\"iso-b6\", margin: 1.75cm)\n#set page(footer: context [*American Society of Proceedings* #h(1fr) #counter(page).display(\"1/1\", both: true)])\n```\n\n```typ\n#set page(\"iso-b6\", margin: 1.75cm)\n#set page(footer: context [*Fun Typography Club* #h(1fr) #let (num,) = counter(page).get() #let circles = num * (box(circle(radius: 2pt, fill: navy,)),) #box(inset: (bottom: 1pt), circles.join(h(1pt)))])\n```",
+    "id": 9,
+    "code": "\n#set page(\"iso-b6\", margin: 1.75cm)\n#set page(footer: context [*American Society of Proceedings* #h(1fr) #counter(page).display(\"1/1\", both: true)])\n\n\n#set page(\"iso-b6\", margin: 1.75cm)\n#set page(footer: context [*Fun Typography Club* #h(1fr) #let (num,) = counter(page).get() #let circles = num * (box(circle(radius: 2pt, fill: navy,)),) #box(inset: (bottom: 1pt), circles.join(h(1pt)))])\n",
+    "compiler": "error: expected semicolon or line break\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-page-setup\\9.typ:7:90\n  \u2502\n7 \u2502 #set page(footer: context [*Fun Typography Club* #h(1fr) #let (num,) = counter(page).get() #let circles = num * (box(circle(radius: 2pt, fill: navy,)),) #box(inset: (bottom: 1pt), circles.join(h(1pt)))])\n  \u2502                                                                                           ^\n\nerror: expected semicolon or line break\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-page-setup\\9.typ:7:152\n  \u2502\n7 \u2502 #set page(footer: context [*Fun Typography Club* #h(1fr) #let (num,) = counter(page).get() #let circles = num * (box(circle(radius: 2pt, fill: navy,)),) #box(inset: (bottom: 1pt), circles.join(h(1pt)))])\n  \u2502                                                                                                                                                         ^",
+    "usable": false
+  },
+  {
+    "instruction": "I want to create a title page without a header or footer. How can I achieve this?",
+    "answer": "You can use the `context` keyword with an `if` statement to conditionally remove the header and footer on the first page (title page). First, set the general header and footer, and then use a conditional statement within the `header` and `footer` arguments to check if the current page is the first page using the `counter(page)` function. If it's the first page, don't display the header or footer; otherwise, display the intended content.\n\n```typ\n#set page(header: context {if counter(page).get().first() > 1 [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences]}) \n#set page(footer: context {if counter(page).get().first() > 1 [#counter(page).display(\"1/1\", both: true)]})\n\n= My Title Page\n\n#pagebreak()\n\n#lorem(150)\n```",
+    "id": 10,
+    "code": "\n#set page(header: context {if counter(page).get().first() > 1 [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences]}) \n#set page(footer: context {if counter(page).get().first() > 1 [#counter(page).display(\"1/1\", both: true)]})\n\n= My Title Page\n\n#pagebreak()\n\n#lorem(150)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I ensure that a specific element, like a table, doesn't have a header on the same page?",
+    "answer": "You can use the query system to check if a specific element (identified by a label) exists on the current page and, based on the result, either show or hide the header. First, define the label for the element (e.g., a table). Then, within the `header` argument, use the `query` function to find instances of the label and the `counter(page)` function to check if any of those instances are on the current page.\n\n```typ\n#set page(header: context {let matches = query(<big-table>) let current = counter(page).get() let has-table = matches.any(m => counter(page).at(m.location()) == current) if not has-table [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences]}) \n\n#lorem(100)\n#pagebreak()\n\n#table(columns: 2 * (1fr,), [A], [B], [C], [D],) <big-table>\n```",
+    "id": 11,
+    "code": "\n#set page(header: context {let matches = query(<big-table>) let current = counter(page).get() let has-table = matches.any(m => counter(page).at(m.location()) == current) if not has-table [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences]}) \n\n#lorem(100)\n#pagebreak()\n\n#table(columns: 2 * (1fr,), [A], [B], [C], [D],) <big-table>\n",
+    "compiler": "error: expected semicolon or line break\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-page-setup\\11.typ:2:59\n  \u2502\n2 \u2502 #set page(header: context {let matches = query(<big-table>) let current = counter(page).get() let has-table = matches.any(m => counter(page).at(m.location()) == current) if not has-table [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences]}) \n  \u2502                                                            ^\n\nerror: expected semicolon or line break\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-page-setup\\11.typ:2:93\n  \u2502\n2 \u2502 #set page(header: context {let matches = query(<big-table>) let current = counter(page).get() let has-table = matches.any(m => counter(page).at(m.location()) == current) if not has-table [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences]}) \n  \u2502                                                                                              ^\n\nerror: expected semicolon or line break\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-page-setup\\11.typ:2:169\n  \u2502\n2 \u2502 #set page(header: context {let matches = query(<big-table>) let current = counter(page).get() let has-table = matches.any(m => counter(page).at(m.location()) == current) if not has-table [Lisa Strassner's Thesis #h(1fr) National Academy of Sciences]}) \n  \u2502                                                                                                                                                                          ^",
+    "usable": false
+  },
+  {
+    "instruction": "How do I add a simple page number at the bottom center of each page?",
+    "answer": "The simplest way to add a page number at the bottom center is by using the `numbering` argument in the `page` set rule. However, to position the page number in the bottom center, you have to create a custom footer and use the `counter(page).display()` function and the `align` function. The `number-align` argument sets the alignment of the numbering. \n\n```typ\n#set page(footer: align(center, #counter(page).display(\"1\", both: true)))\n```",
+    "id": 12,
+    "code": "\n#set page(footer: align(center, #counter(page).display(\"1\", both: true)))\n",
+    "compiler": "error: the character `#` is not valid in code\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-page-setup\\12.typ:2:32\n  \u2502\n2 \u2502 #set page(footer: align(center, #counter(page).display(\"1\", both: true)))\n  \u2502                                 ^",
+    "usable": false
+  },
+  {
+    "instruction": "How to create a document in US Letter size with a 1-inch margin on all sides?",
+    "answer": "To create a document in US Letter size with 1-inch margins, use the following code:\n\n```typ\n#set page(\"us-letter\", margin: 1in)\n```",
+    "id": 13,
+    "code": "\n#set page(\"us-letter\", margin: 1in)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I create a document with two columns and a gutter of 10pt?",
+    "answer": "To create a document with two columns and a gutter of 10pt, use the following code:\n\n```typ\n#set page(columns: 2)\n#set columns(gutter: 10pt)\n\n#lorem(200)\n```",
+    "id": 14,
+    "code": "\n#set page(columns: 2)\n#set columns(gutter: 10pt)\n\n#lorem(200)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I set different left and right margins for a book, with the left margin being 3cm and the right margin being 2cm?",
+    "answer": "You can use the `margin` argument with a dictionary to specify different left and right margins. Assuming a left-to-right binding:\n\n```typ\n#set page(margin: (left: 3cm, right: 2cm))\n\n#lorem(200)\n```\n\nIf the book is bound right to left:\n\n```typ\n#set text(lang: \"ar\")\n#set page(binding: right)\n#set page(margin: (left: 3cm, right: 2cm))\n\n#lorem(200)\n```",
+    "id": 15,
+    "code": "\n#set page(margin: (left: 3cm, right: 2cm))\n\n#lorem(200)\n\n\n#set text(lang: \"ar\")\n#set page(binding: right)\n#set page(margin: (left: 3cm, right: 2cm))\n\n#lorem(200)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How to add a header with the title of the document and the page number right aligned?",
+    "answer": "You need to create a custom header and use the `align` function.\n\n```typ\n#set page(header: [Document Title #h(1fr) #counter(page)])\n```",
+    "id": 16,
+    "code": "\n#set page(header: [Document Title #h(1fr) #counter(page)])\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "I want to display \"Page X of Y\" in the bottom center of my document. How can I do that?",
+    "answer": "To display \"Page X of Y\" in the bottom center, you'll need a custom footer using the `context` keyword and the `counter(page).display()` function with `both: true`:\n\n```typ\n#set page(footer: context {align(center, [#counter(page).display(\"1 of 1\", both: true)])})\n```",
+    "id": 17,
+    "code": "\n#set page(footer: context {align(center, [#counter(page).display(\"1 of 1\", both: true)])})\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I place an element at the top right corner of the page in Typst?",
+    "answer": "You can use the `#place` function to position an element. To place an element at the top right, specify `top + right` as the placement location. Here's an example:\n\n```typ\n#set page(height: 60pt)\nHello, world!\n\n#place(\n  top + right, // place at the page right and top\n  square(\n    width: 20pt,\n    stroke: 2pt + blue\n  ),\n)\n```",
+    "id": 0,
+    "code": "\n#set page(height: 60pt)\nHello, world!\n\n#place(\n  top + right, // place at the page right and top\n  square(\n    width: 20pt,\n    stroke: 2pt + blue\n  ),\n)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how the `place` function works in Typst. What is its purpose?",
+    "answer": "The `place` function in Typst allows you to position an object relative to its parent and the current position, effectively ignoring the layout. The placed object will not influence the overall layout of the document. This is useful for creating custom elements and layouts that don't conform to standard flow.\n\nFor example:\n```typ\n#set page(height: 60pt)\nHello, world!\n\n#place(\n  top + right, // place at the page right and top\n  square(\n    width: 20pt,\n    stroke: 2pt + blue\n  ),\n)\n```",
+    "id": 1,
+    "code": "\n#set page(height: 60pt)\nHello, world!\n\n#place(\n  top + right, // place at the page right and top\n  square(\n    width: 20pt,\n    stroke: 2pt + blue\n  ),\n)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I create a floating note using the `place` function in Typst? Provide an example.",
+    "answer": "You can create a floating note using `place` with the `float: true` option. This will position the note relative to a specified location without affecting the surrounding text flow.  Here's an example:\n\n```typ\n#set page(height: 150pt)\n#let note(where, body) = place(\n  center + where,\n  float: true,\n  clearance: 6pt,\n  rect(body),\n)\n\n#lorem(10)\n#note(bottom)[Bottom 1]\n#note(bottom)[Bottom 2]\n#lorem(40)\n#note(top)[Top]\n#lorem(10)\n```",
+    "id": 2,
+    "code": "\n#set page(height: 150pt)\n#let note(where, body) = place(\n  center + where,\n  float: true,\n  clearance: 6pt,\n  rect(body),\n)\n\n#lorem(10)\n#note(bottom)[Bottom 1]\n#note(bottom)[Bottom 2]\n#lorem(40)\n#note(top)[Top]\n#lorem(10)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I manually adjust the position of an element using `dx` and `dy` with the `place` function in Typst? Provide an example.",
+    "answer": "You can use the `dx` and `dy` arguments within the `place` function to manually change an element's position relative to its intended location. `dx` adjusts the horizontal position, and `dy` adjusts the vertical position. Here's an example:\n\n```typ\n#set page(height: 100pt)\n#for i in range(16) {\n  let amount = i * 4pt\n  place(center, dx: amount - 32pt, dy: amount)[A]\n}\n```",
+    "id": 3,
+    "code": "\n#set page(height: 100pt)\n#for i in range(16) {\n  let amount = i * 4pt\n  place(center, dx: amount - 32pt, dy: amount)[A]\n}\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What is the purpose of the `move` function in Typst?",
+    "answer": "The `move` function in Typst allows you to shift the position of an element relative to its original location. This can be useful for creating offsets or visual effects without affecting the surrounding layout. Here's an example:\n```typ\n#rect(inset: 0pt, move(\n  dx: 6pt, dy: 6pt,\n  rect(\n    inset: 8pt,\n    fill: white,\n    stroke: black,\n    [Abra cadabra]\n  )\n))\n```",
+    "id": 4,
+    "code": "\n#rect(inset: 0pt, move(\n  dx: 6pt, dy: 6pt,\n  rect(\n    inset: 8pt,\n    fill: white,\n    stroke: black,\n    [Abra cadabra]\n  )\n))\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I mirror text horizontally using the `scale` function in Typst?",
+    "answer": "You can mirror text horizontally by setting the `x` scale to -100% using the `scale` function. Here's an example:\n\n```typ\n#scale(x: -100%)[This is mirrored.]\n```",
+    "id": 5,
+    "code": "\n#scale(x: -100%)[This is mirrored.]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I scale content in Typst? Provide an example to scale a box to 75%.",
+    "answer": "You can scale content using the `scale` function.  The `scale` function takes `x` and `y` parameters to scale the content horizontally and vertically. To scale a box to 75%, you can use the following code:\n\n```typ\nA#box(scale(75%)[A])A \\ \nB#box(scale(75%, origin: bottom + left)[B])B\n```",
+    "id": 6,
+    "code": "\nA#box(scale(75%)[A])A \\ \nB#box(scale(75%, origin: bottom + left)[B])B\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How does the `hide` function work in Typst? Give an example.",
+    "answer": "The `hide` function in Typst makes content invisible while still reserving the space it would have occupied in the layout. This is useful for creating conditional content or other layout tricks. Here's an example:\n\n```typ\nHello Jane \\ \n#hide[Hello] Joe\n```",
+    "id": 7,
+    "code": "\nHello Jane \\ \n#hide[Hello] Joe\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Can you explain how the `origin` parameter works within the `scale` function?",
+    "answer": "The `origin` parameter in the `scale` function controls the point around which the scaling occurs. By default, the origin is at the top-left corner. You can change it to, for instance, `bottom + left` to scale relative to the bottom-left corner. This affects how the element is scaled and positioned. The example provided also uses the origin parameter:\n```typ\nA#box(scale(75%)[A])A \\ \nB#box(scale(75%, origin: bottom + left)[B])B\n```",
+    "id": 8,
+    "code": "\nA#box(scale(75%)[A])A \\ \nB#box(scale(75%, origin: bottom + left)[B])B\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How would you use the `place` function to create a simple watermark at the bottom-right of a page in Typst?",
+    "answer": "You can use the `place` function to create a watermark. Here's an example to put a watermark at the bottom right:\n\n```typ\n#set page(height: 200pt, width: 200pt)\n#place(bottom + right, rect(fill: rgb(0.9, 0.9, 0.9), inset: 10pt, [Watermark]))\nHello, world!\n```",
+    "id": 9,
+    "code": "\n#set page(height: 200pt, width: 200pt)\n#place(bottom + right, rect(fill: rgb(0.9, 0.9, 0.9), inset: 10pt, [Watermark]))\nHello, world!\n",
+    "compiler": "error: expected integer or ratio, found float\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-place\\9.typ:3:38\n  \u2502\n3 \u2502 #place(bottom + right, rect(fill: rgb(0.9, 0.9, 0.9), inset: 10pt, [Watermark]))\n  \u2502                                       ^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How do I embed a code expression within my Typst markup, and what syntax is used?",
+    "answer": "You can embed code expressions into your markup using a hash (#) followed by the expression. The markup parsing resumes after the expression is finished.  If a character would continue the expression but should be interpreted as text, you can end the expression with a semicolon (;).\n\ntyp```\n#emph[Hello] \n#emoji.face \n#\"hello\".len()\n```",
+    "id": 0,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how to embed expressions that don't work with the hash syntax in markup.",
+    "answer": "To embed expressions that are not compatible with the hash syntax (e.g., binary operator expressions) into markup, you can use parentheses.\n\ntyp```\n#(1 + 2)\n```",
+    "id": 1,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What are the two kinds of blocks in Typst, and how do they differ? Provide examples.",
+    "answer": "Typst provides two kinds of blocks: code blocks and content blocks.\n\n*   **Code Blocks**: Used for writing code with multiple statements, variable declarations, etc.  Expressions within a code block are separated by line breaks or semicolons.  The block's value is the result of joining the output of its expressions. Bindings yield `none`, which can be joined without effect.\n\ntyp```\n{{ let x = 1; x + 2 }}\n```\n\n*   **Content Blocks**: Used to handle markup/content as a programmatic value. Delimited by square brackets. The result is a value of type `[content]`. Arbitrary numbers of content blocks can be passed as trailing arguments to functions.\n\ntyp```\n{[*Hey* there!]}\n```",
+    "id": 2,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I use code blocks and content blocks together, and what is the result?",
+    "answer": "Code and content blocks can be nested arbitrarily. In the example below, `[hello ]` is joined with the output of `a + [ the ] + b` yielding `[hello from the *world*]`.\n\ntyp```\n#{ \n  let a = [from] \n  let b = [*world*] \n  [hello ] \n  a + [ the ] + b \n}\n```",
+    "id": 3,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how to define variables and functions using `let` bindings in Typst, providing examples.",
+    "answer": "Variables are defined with `let` bindings. The variable is assigned the value of the expression that follows the `=` sign. If no value is assigned, the variable is initialized as `none`. The `let` keyword can also create a custom named function. Variables can be accessed for the rest of the containing block (or the rest of the file if there is no containing block).\n\ntyp```\n#let name = \"Typst\"\nThis is #name's documentation.\nIt explains #name.\n\n#let add(x, y) = x + y\nSum is #add(2, 3).\n```",
+    "id": 4,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I use `let` bindings to destructure arrays and dictionaries in Typst?  Include examples.",
+    "answer": "Let bindings can destructure arrays and dictionaries. The left-hand side of the assignment mirrors the structure of the array or dictionary. The `..` operator collects the remainder of an array or dictionary's items.\n\ntyp```\n#let (x, y) = (1, 2)\nThe coordinates are #x, #y.\n\n#let (a, .., b) = (1, 2, 3, 4)\nThe first element is #a.\nThe last element is #b.\n\n#let books = (\n  Shakespeare: \"Hamlet\",\n  Homer: \"The Odyssey\",\n  Austen: \"Persuasion\",\n)\n\n#let (Austen,) = books\nAusten wrote #Austen.\n\n#let (Homer: h) = books\nHomer wrote #h.\n\n#let (Homer, ..other) = books\n#for (author, title) in other [\n  #author wrote #title.\n]\n```",
+    "id": 5,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How to discard elements in destructuring patterns and use them in function argument lists and assignments?",
+    "answer": "You can use the underscore to discard elements in a destructuring pattern. Destructuring also works in argument lists of functions and on the left-hand side of normal assignments, which can be useful for swapping variables.\n\ntyp```\n#let (_, y, _) = (1, 2, 3)\nThe y coordinate is #y.\n\n#let left = (2, 4, 5)\n#let right = (3, 2, 6)\n#left.zip(right).map(\n  ((a,b)) => a + b\n)\n\n#{ \n  let a = 1 \n  let b = 2 \n  (a, b) = (b, a) \n  [a = #a, b = #b] \n}\n```",
+    "id": 6,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how to use conditional statements in Typst with examples.",
+    "answer": "Typst supports `if`, `else if`, and `else` expressions.  When the condition evaluates to `true`, the `if` body is yielded; otherwise, the `else` body is yielded. Each branch can have a code or content block as its body.\n\ntyp```\n#if 1 < 2 [\n  This is shown\n] else [\n  This is not.\n]\n```",
+    "id": 7,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Provide examples of different conditional structures in Typst.",
+    "answer": "\ntyp```\n#if condition {..}\n#if condition [..]\n#if condition [..] else {..}\n#if condition [..] else if condition {..} else [..]\n```",
+    "id": 8,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What are the two types of loops in Typst, and how do they work?",
+    "answer": "Typst supports two types of loops: `for` and `while` loops.\n\n*   `for` loops iterate over a specified collection.\n*   `while` loops iterate as long as a condition is fulfilled.\n\nBoth loops join the results from each iteration into one value.\n\ntyp```\n#for c in \"ABC\" [\n  #c is a letter.\n]\n\n#let n = 2\n#while n < 10 {\n  n = (n * 2) - 1\n  (n,)\n}\n```",
+    "id": 9,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What collections can `for` loops iterate over in Typst, and how does destructuring work within these loops?",
+    "answer": "`for` loops can iterate over:\n\n*   `array`: Iterates over the items. Destructuring syntax described in `Let binding` can also be used here.\n*   `dict`: Iterates over key-value pairs. Pairs can be destructured using `for (key, value) in dict {..}`. This is more efficient than `dict.pairs()`.\n*   `string`: Iterates over the grapheme clusters of the string.\n*   `bytes`: Iterates over the bytes, which can be converted from a string or read from a file without encoding.\n\ntyp```\n#for value in array {..}\n#for pair in dict {..}\n#for (key, value) in dict {..}\n#for letter in \"abc\" {..}\n#for byte in bytes(\"\ud83d\ude00\") {..}\n```",
+    "id": 10,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I control the execution of loops in Typst?",
+    "answer": "To control loop execution, Typst provides `break` and `continue` statements. `break` performs an early exit from the loop, while `continue` skips to the next iteration.\n\ntyp```\n#for letter in \"abc nope\" {\n  if letter == \" \" {\n    break\n  }\n  letter\n}\n```",
+    "id": 11,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What can be the body of a loop?",
+    "answer": "The body of a loop can be a code or content block.\n\ntyp```\n#for .. in collection {..}\n#for .. in collection [..]\n#while condition {..}\n#while condition [..]\n```",
+    "id": 12,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you access fields of a value in Typst?",
+    "answer": "You can use dot notation to access fields on a value. For values of type `[content]`, you can also use the `fields()` function to list the fields.\n\ntyp```\n#let it = [= Heading]\n#it.body\n#it.depth\n#it.fields()\n```",
+    "id": 13,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What types of values can you access fields on, and what kind of fields are available?",
+    "answer": "You can access fields on:\n\n*   A `dictionary` that has the specified key.\n*   A `symbol` that has the specified modifier.\n*   A `module` containing the specified definition.\n*   `content` consisting of an element that has the specified field.  The available fields match the arguments of the element function that were given when the element was constructed.\n\ntyp```\n#let dict = (greet: \"Hello\")\n#dict.greet\n#emoji.face\n```",
+    "id": 14,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain methods in Typst, including how to call them and the equivalent function call.",
+    "answer": "A method call is a convenient way to call a function that is scoped to a value's type. The structure of a method call is `value.method(..args)`, and its equivalent full function call is `type(value).method(value, ..args)`.\n\ntyp```\n#str.len(\"abc\") is the same as\n#\"abc\".len()\n```",
+    "id": 15,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Are there special considerations when using methods that modify a value?",
+    "answer": "Yes, some methods (e.g., `array.push`) modify the value they are called on. These must be called in method form. When the method is only called for its side effect, its return value should be ignored (and not participate in joining). The canonical way to discard a value is with a `let` binding: `let _ = array.remove(1)`.",
+    "id": 16,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do modules work in Typst? Explain the different ways to include and import them, providing examples.",
+    "answer": "You can split your Typst projects into multiple files called modules. There are three ways to include or import modules:\n\n*   **Including**: `include \"bar.typ\"` evaluates the file and returns the resulting `[content]`.\n*   **Importing**: `import \"bar.typ\"` inserts the resulting `[module]` into the current scope as `bar` (filename without extension). You can rename the imported module with `as`: `import \"bar.typ\" as baz`. You can import nested items using dot notation: `import \"bar.typ\": baz.a`.\n*   **Importing specific items**: `import \"bar.typ\": a, b` extracts variables `a` and `b` (that must be defined in `bar.typ`) and defines them in the current file. Replacing `a, b` with `*` loads all variables. You can rename items with `as`: `import \"bar.typ\": a as one, b as two`.\n\nInstead of a path, you can also use a module value.\n\ntyp```\n#include \"bar.typ\"\n#import \"bar.typ\"\n#import \"bar.typ\" as baz\n#import \"bar.typ\": baz.a\n#import \"bar.typ\": a, b\n#import \"bar.typ\": a as one, b as two\n#import emoji: face\n#face.grin\n```",
+    "id": 17,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do packages work in Typst? Provide an example of importing a package.",
+    "answer": "To reuse building blocks across projects, you can create and import Typst packages. A package import is specified as a triple of a namespace, a name, and a version.\n\ntyp```\n#import \"@preview/example:0.1.0\": add\n#add(2, 7)\n```",
+    "id": 18,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "List the available unary and binary operators in Typst, including their effects, arity, and precedence.",
+    "answer": "Here's a table of Typst operators:\n\n| Operator | Effect | Arity | Precedence |\n| :-------: | :--------------------------------- | :------: | :----------: |\n|  `-`     | Negation | Unary | 7 |\n|  `+`     | No effect (exists for symmetry) | Unary | 7 |\n|  `*`     | Multiplication | Binary | 6 |\n|  `/`     | Division | Binary | 6 |\n|  `+`     | Addition | Binary | 5 |\n|  `-`     | Subtraction | Binary | 5 |\n|  `==`    | Check equality | Binary | 4 |\n|  `!=`    | Check inequality | Binary | 4 |\n|  `<`     | Check less-than | Binary | 4 |\n|  `<=`    | Check less-than or equal | Binary | 4 |\n|  `>`     | Check greater-than | Binary | 4 |\n|  `>=`    | Check greater-than or equal | Binary | 4 |\n|  `in`    | Check if in collection | Binary | 4 |\n|  `not in` | Check if not in collection | Binary | 4 |\n|  `not`   | Logical \"not\" | Unary | 3 |\n|  `and`   | Short-circuiting logical \"and\" | Binary | 3 |\n|  `or`    | Short-circuiting logical \"or\" | Binary | 2 |\n|  `=`     | Assignment | Binary | 1 |\n|  `+=`    | Add-Assignment | Binary | 1 |\n|  `-=`    | Subtraction-Assignment | Binary | 1 |\n|  `*=`    | Multiplication-Assignment | Binary | 1 |\n|  `/=`    | Division-Assignment | Binary | 1 |",
+    "id": 19,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I add horizontal spacing in Typst?",
+    "answer": "You can add horizontal spacing using the `h()` function. Here's an example:\n\n```typ\nHorizontal #h(1cm) spacing.\n```",
+    "id": 0,
+    "code": "\nHorizontal #h(1cm) spacing.\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I add vertical spacing in Typst?",
+    "answer": "You can add vertical spacing using the `v()` function. Here's an example:\n\n```typ\n#v(1cm)\nAnd some vertical too!\n```",
+    "id": 1,
+    "code": "\n#v(1cm)\nAnd some vertical too!\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What are some absolute length units available in Typst, and how can I use them?",
+    "answer": "Typst supports various absolute length units like points (pt), millimeters (mm), centimeters (cm), and inches (in). These are not affected by the outer content and size of the parent. Here's an example:\n\n```typ\n#set rect(height: 1em)\n#table(\n  columns: 2,\n  [Points], rect(width: 72pt),\n  [Millimeters], rect(width: 25.4mm),\n  [Centimeters], rect(width: 2.54cm),\n  [Inches], rect(width: 1in),\n)\n```",
+    "id": 2,
+    "code": "\n#set rect(height: 1em)\n#table(\n  columns: 2,\n  [Points], rect(width: 72pt),\n  [Millimeters], rect(width: 25.4mm),\n  [Centimeters], rect(width: 2.54cm),\n  [Inches], rect(width: 1in),\n)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain the concept of 'em' unit in Typst and how it relates to font size.",
+    "answer": "The 'em' unit is relative to the current font size.  `1em` is equal to the current font size. This is a very convenient unit and often used in Typst. Here's an example:\n\n```typ\n#set rect(height: 1em)\n#table(\n  columns: 2,\n  [Centimeters], rect(width: 2.54cm),\n  [Relative to font size], rect(width: 6.5em)\n)\n\nDouble font size: #box(stroke: red, baseline: 40%, height: 2em, width: 2em)\n```",
+    "id": 3,
+    "code": "\n#set rect(height: 1em)\n#table(\n  columns: 2,\n  [Centimeters], rect(width: 2.54cm),\n  [Relative to font size], rect(width: 6.5em)\n)\n\nDouble font size: #box(stroke: red, baseline: 40%, height: 2em, width: 2em)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I combine different length units in Typst?",
+    "answer": "You can combine different length units. Here's an example:\n\n```typ\nCombined: #box(rect(height: 5pt + 1em))\n\n#(5pt + 1em).abs\n#(5pt + 1em).em\n```",
+    "id": 4,
+    "code": "\nCombined: #box(rect(height: 5pt + 1em))\n\n#(5pt + 1em).abs\n#(5pt + 1em).em\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How does the percentage (%) unit work in Typst?",
+    "answer": "The percentage (%) unit represents a ratio relative to the parent size in that dimension. For example, `1%` means 1% from the parent size. Here's an example:\n\n```typ\nThis line width is 50% of available page size (without margins):\n\n#line(length: 50%)\n\nThis line width is 50% of the box width: #box(stroke: red, width: 4em, inset: (y: 0.5em), line(length: 50%))\n```",
+    "id": 5,
+    "code": "\nThis line width is 50% of available page size (without margins):\n\n#line(length: 50%)\n\nThis line width is 50% of the box width: #box(stroke: red, width: 4em, inset: (y: 0.5em), line(length: 50%))\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I create a line that spans 50% of the available page width in Typst?",
+    "answer": "You can use the `line()` function with the `length` property set to 50%.  Here's an example:\n\n```typ\n#line(length: 50%)\n```",
+    "id": 6,
+    "code": "\n#line(length: 50%)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What are relative lengths in Typst and how can I use them?",
+    "answer": "You can combine absolute and ratio lengths into relative lengths.  Here's an example:\n\n```typ\n#rect(width: 100% - 50pt)\n\n#(100% - 50pt).length \\ \n#(100% - 50pt).ratio\n```",
+    "id": 7,
+    "code": "\n#rect(width: 100% - 50pt)\n\n#(100% - 50pt).length \\ \n#(100% - 50pt).ratio\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain the usage of fractional lengths in Typst.",
+    "answer": "Single fractional length takes the maximum size possible to fill the parent.  Here's an example:\n\n```typ\nLeft #h(1fr) Right\n\n#rect(height: 1em)[\n  #h(1fr)\n]\n```",
+    "id": 8,
+    "code": "\nLeft #h(1fr) Right\n\n#rect(height: 1em)[\n  #h(1fr)\n]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do multiple fractional lengths work inside a parent element in Typst?",
+    "answer": "When you use several fractions inside one parent, they will take all remaining space proportional to their number.  For example, `h(1fr)` and `h(2fr)` will take space in a 1:2 ratio. Here's an example:\n\n```typ\nLeft #h(1fr) Left-ish #h(2fr) Right\n```",
+    "id": 9,
+    "code": "\nLeft #h(1fr) Left-ish #h(2fr) Right\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do fractional lengths interact with nested layouts in Typst? ",
+    "answer": "Fractions work in the parent element only, and should not be relied upon in nested layouts. Here's an example illustrating the behavior:\n\n```typ\nWord: #h(1fr) #box(height: 1em, stroke: red)[\n  #h(2fr)\n]\n```",
+    "id": 10,
+    "code": "\nWord: #h(1fr) #box(height: 1em, stroke: red)[\n  #h(2fr)\n]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "I want to create a table where one column is 72pt wide and another is 25.4mm wide. How can I do that in Typst?",
+    "answer": "You can use the `table` function with the `rect` function to define the column widths using absolute lengths. Here's an example:\n\n```typ\n#table(\n  columns: 2,\n  [Points], rect(width: 72pt),\n  [Millimeters], rect(width: 25.4mm),\n)\n```",
+    "id": 11,
+    "code": "\n#table(\n  columns: 2,\n  [Points], rect(width: 72pt),\n  [Millimeters], rect(width: 25.4mm),\n)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I create a box with a width relative to the font size?",
+    "answer": "You can use the 'em' unit to create a box with a width relative to the current font size. For instance, to create a box with a width of 6.5 times the current font size:\n\n```typ\n#rect(width: 6.5em)\n```",
+    "id": 12,
+    "code": "\n#rect(width: 6.5em)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How to make a line that spans the entire width of the available space in Typst?",
+    "answer": "You can create a line that spans the entire available width using `length: 100%`. For example:\n\n```typ\n#line(length: 100%)\n```",
+    "id": 13,
+    "code": "\n#line(length: 100%)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I combine percentages and absolute lengths for setting the width of an element?",
+    "answer": "You can use subtraction to combine percentages and absolute lengths. For example, to create an element that is 100% of the parent width minus 50pt:\n\n```typ\n#rect(width: 100% - 50pt)\n```",
+    "id": 14,
+    "code": "\n#rect(width: 100% - 50pt)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Can you give an example of using fractions to create a simple layout with two columns where one column takes up twice the space of the other?",
+    "answer": "Yes, you can. Here's how to use fractions to create a two-column layout with a 1:2 ratio:\n\n```typ\nLeft #h(1fr) Left-ish #h(2fr) Right\n```",
+    "id": 15,
+    "code": "\nLeft #h(1fr) Left-ish #h(2fr) Right\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I change the font family of the entire document using a set rule?",
+    "answer": "You can change the font family of the entire document using the `set` rule in conjunction with the `text` function. Here's how:\n\ntyp```typ\n#set text(font: \"Arial\")\n\n= Introduction\nThis is text in Arial.\n```",
+    "id": 0,
+    "code": "\n#set text(font: \"Arial\")\n\n= Introduction\nThis is text in Arial.\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how to apply a set rule to change the heading numbering style, and provide an example.",
+    "answer": "You can use a `set` rule with the `heading` function to modify the numbering style of headings.  The numbering style is defined using the `numbering` parameter.\n\ntyp```typ\n#set heading(numbering: \"1.\")\n\n= Chapter 1\n== Section 1.1\n```",
+    "id": 1,
+    "code": "\n#set heading(numbering: \"1.\")\n\n= Chapter 1\n== Section 1.1\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do set rules behave within blocks, and what's an example of scoping a set rule to a specific part of a document (like a list)?",
+    "answer": "Set rules are scoped to the block they are defined in.  When a set rule is inside a block, it only affects elements within that block.  Outside the block, the original styling (or a higher-level set rule) applies.\n\ntyp```typ\n#set list(marker: \"*\") // Applies to the whole document\n\n- Item 1\n- Item 2\n\n#list(marker: \"+\") [\n  - Item A\n  - Item B\n] // Only affects this list\n\n- Item 3\n```",
+    "id": 2,
+    "code": "\n#set list(marker: \"*\") // Applies to the whole document\n\n- Item 1\n- Item 2\n\n#list(marker: \"+\") [\n  - Item A\n  - Item B\n] // Only affects this list\n\n- Item 3\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I apply a set rule conditionally based on a condition?",
+    "answer": "You can use a set-if rule to apply styling conditionally.  This is done by using an `if` statement in conjunction with a `set` rule inside of a custom function.\n\ntyp```typ\n#let warning(body, important: false) = {\n  set text(red) if important\n  [\u26a0\ufe0f #body]\n}\n\n#warning[This is a regular note.]\n#warning(important: true)[This is a critical warning!]\n```",
+    "id": 3,
+    "code": "\n#let warning(body, important: false) = {\n  set text(red) if important\n  [\u26a0\ufe0f #body]\n}\n\n#warning[This is a regular note.]\n#warning(important: true)[This is a critical warning!]\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain show rules and their basic structure, including how to change the color of headings.",
+    "answer": "Show rules allow you to deeply customize the appearance of elements. The basic form is `show element-selector: transformation`. The element-selector specifies what element to modify (e.g., `heading`). The transformation can be a set rule or a custom function.\n\nTo change the color of headings, you could use:\n\ntyp```typ\n#show heading: set text(blue)\n\n= My Heading\n```",
+    "id": 4,
+    "code": "\n#show heading: set text(blue)\n\n= My Heading\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I create a show rule that uses a custom function to completely redefine the appearance of headings, and provide a practical example?",
+    "answer": "You can use a show rule with a custom function to fully redefine the appearance of an element. The function receives the element as input.  Here's an example that centers the heading and adds a font style:\n\ntyp```typ\n#show heading: it => [\n  #set align(center)\n  #set text(font: \"Times New Roman\", size: 1.5em)\n  #emph(it.body)\n]\n\n= My Fancy Heading\n```",
+    "id": 5,
+    "code": "\n#show heading: it => [\n  #set align(center)\n  #set text(font: \"Times New Roman\", size: 1.5em)\n  #emph(it.body)\n]\n\n= My Fancy Heading\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What are the different types of selectors that can be used in show rules, and explain them?",
+    "answer": "Show rules offer several selectors to target elements for styling:\n\n*   **Everything**: `show: rest => ...` applies to everything after the rule. This is useful for applying complex layouts to your whole document without wrapping everything in a giant function call.\n*   **Text**: `show \"Text\": ...` styles, transforms, or replaces specific text.  For example, `show \"Warning\": set text(red)`.\n*   **Regex**: `show regex(\"\\w+\"): ...` applies to text matching a regular expression. For example, `show regex(\"[0-9]+\"): smallcaps` would make all numbers small caps.\n*   **Function with fields**: `show heading.where(level: 1): ...` applies to elements with matching fields. For example, you might want to only change the style of level-1 headings.\n*   **Label**: `show <intro>: ...` applies to elements with a specific label. See the documentation of the label type for more details.",
+    "id": 6,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I use a show rule to change the text \"Project\" to small caps, and provide the corresponding Typst code?",
+    "answer": "You can use a show rule to change specific text.  Here's the code to change \"Project\" to small caps:\n\ntyp```typ\n#show \"Project\": smallcaps\n\nWe started Project in 2019.\n```",
+    "id": 7,
+    "code": "\n#show \"Project\": smallcaps\n\nWe started Project in 2019.\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can I replace the text \"badly\" with \"great\" using a show rule, and provide the corresponding Typst code?",
+    "answer": "You can replace text using a show rule by using a string literal as the right-hand side of the rule.\n\ntyp```typ\n#show \"badly\": \"great\"\n\nThis went badly.\n```",
+    "id": 8,
+    "code": "\n#show \"badly\": \"great\"\n\nThis went badly.\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do I apply a specific style to all level-2 headings in my document using show rules?",
+    "answer": "You can use the `where` selector with a show rule to target elements based on their fields. To style all level-2 headings, you could use this:\n\ntyp```typ\n#show heading.where(level: 2): set text(blue)\n\n== Section 2.1\n```",
+    "id": 9,
+    "code": "\n#show heading.where(level: 2): set text(blue)\n\n== Section 2.1\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Can you provide an example of a show rule that modifies text matching a regular expression, such as making all numbers in a paragraph bold?",
+    "answer": "Yes, you can use the `regex` selector in a show rule.  Here's an example that makes all numbers bold:\n\ntyp```typ\n#show regex(\"\\\\d+\"): emph\n\nThe price is 100 and the quantity is 2.\n```",
+    "id": 10,
+    "code": "\n#show regex(\"\\\\d+\"): emph\n\nThe price is 100 and the quantity is 2.\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How would you use a show rule with a label selector to style an element with the label \"my-section\"?",
+    "answer": "You can use the label selector in a show rule as follows:\n\ntyp```typ\n#show <my-section>: set text(blue)\n\n#label(\"my-section\")\n= Section with Label\n```",
+    "id": 11,
+    "code": "\n#show <my-section>: set text(blue)\n\n#label(\"my-section\")\n= Section with Label\n",
+    "compiler": "warning: label `<my-section>` is not attached to anything\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-styling\\11.typ:4:1\n  \u2502\n4 \u2502 #label(\"my-section\")\n  \u2502  ^^^^^^^^^^^^^^^^^^^",
+    "usable": true
+  },
+  {
+    "instruction": "What are the three syntactical modes in Typst and how do you switch between them?",
+    "answer": "Typst has three syntactical modes: Markup, math, and code. You switch between them using prefixes or surrounding characters:\n\n-   Code: Prefix the code with `#` (e.g., `#[Number: #(1 + 2)]`)\n-   Math: Surround the equation with `[$..$]` (e.g., `[$-x$ is the opposite of $x$]`).\n-   Markup: Surround the markup with `[[..]]` (e.g., `{let name = [*Typst!*]}`).",
+    "id": 0,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how to use strong emphasis in Typst.",
+    "answer": "You can use strong emphasis in Typst by surrounding text with asterisks. For example: `[*This is strong emphasis*]`",
+    "id": 1,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you create a link in Typst?",
+    "answer": "You can create a link in Typst using the `[link]` markup. For example: `[https://typst.app/]`",
+    "id": 2,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you create a heading in Typst?",
+    "answer": "You can create a heading in Typst using the `=` symbol. For example: `= My Heading`",
+    "id": 3,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain how to create a bullet list in Typst.",
+    "answer": "You can create a bullet list in Typst using the `-` symbol. For example: `- Item 1\n- Item 2`",
+    "id": 4,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you create a numbered list in Typst?",
+    "answer": "You can create a numbered list in Typst using the `+` symbol. For example: `+ Item 1\n+ Item 2`",
+    "id": 5,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you create a term list in Typst?",
+    "answer": "You can create a term list in Typst using the `/` symbol. For example: `/ Term: Description`",
+    "id": 6,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you write inline math in Typst?",
+    "answer": "You can write inline math in Typst by surrounding the equation with `[$]` characters without extra spaces. For example, to display x squared inline: `[$x^2$]`",
+    "id": 7,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you write block-level math in Typst?",
+    "answer": "You can write block-level math in Typst by surrounding the equation with `[$]` characters with spaces before and after. For example: `[$ x^2 $]`",
+    "id": 8,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you insert a line break in math mode?",
+    "answer": "You can insert a line break in math mode using the `\\` character.  For example: `[$x \\ y$]`",
+    "id": 9,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you escape a character in Typst markup?",
+    "answer": "You escape a character in Typst by preceding it with a backslash. For example, to display a dollar sign, use `\\$1.50`.",
+    "id": 10,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you comment out a single line in Typst?",
+    "answer": "You can comment out a single line in Typst by starting it with `//`. For example:\n```typ\n// This is a comment\n```",
+    "id": 11,
+    "code": "\n// This is a comment\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you comment out multiple lines in Typst?",
+    "answer": "You can comment out multiple lines in Typst by enclosing them between `/*` and `*/`. For example:\n```typ\n/*\nThis is a multi-line comment.\nIt spans multiple lines.\n*/\n```",
+    "id": 12,
+    "code": "\n/*\nThis is a multi-line comment.\nIt spans multiple lines.\n*/\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you insert a Unicode character in Typst using its hexadecimal code?",
+    "answer": "You can insert a Unicode character in Typst using its hexadecimal escape sequence: `\\u{XXXX}` where XXXX is the hexadecimal code.  For example, to insert a grinning face emoji:\n```typ\nI got an ice cream for \\$1.50! \\u{1f600}\n```",
+    "id": 13,
+    "code": "\nI got an ice cream for \\$1.50! \\u{1f600}\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Explain the difference between relative and absolute paths in Typst.",
+    "answer": "In Typst, paths are used to reference external resources. There are two types:\n\n-   **Relative paths**: These paths search from the location of the Typst file where the feature is invoked.  (e.g. `#image(\"images/logo.png\")`)\n-   **Absolute paths**: These paths search from the root of the project and start with a leading `/`. (e.g. `#image(\"/assets/logo.png\")`)",
+    "id": 14,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you set the project root using the CLI?",
+    "answer": "You can set a specific folder as the root of your project using the CLI's `--root` flag.  For example:\n```bash\ntypst compile --root .. file.typ\n```\nThis sets the parent directory of the current directory as the project root.",
+    "id": 15,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "What are the limitations on file access for packages in Typst?",
+    "answer": "A package can only load files from its own directory. Absolute paths within a package point to the package root, not the project root. Therefore, a package cannot directly load files from the project directory unless the files are passed to the package via a named parameter.",
+    "id": 16,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "Provide an example of using code mode in Typst to calculate the sum of 1 and 2, and display the result.",
+    "answer": "You can use code mode to perform calculations. Here's an example:\n```typ\n#eval(1 + 2) // Output: 3\n```",
+    "id": 17,
+    "code": "\n#eval(1 + 2) // Output: 3\n",
+    "compiler": "error: expected string, found integer\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-syntax\\17.typ:2:6\n  \u2502\n2 \u2502 #eval(1 + 2) // Output: 3\n  \u2502       ^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How can you define a variable and use it in a Typst document?",
+    "answer": "You can define a variable in Typst using the `let` keyword. Here's an example:\n```typ\n#let my_name = \"Typst\";\nHello, #my_name!\n```",
+    "id": 18,
+    "code": "\n#let my_name = \"Typst\";\nHello, #my_name!\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you create and display a simple array in Typst?",
+    "answer": "You can create an array using parentheses and commas. Here's an example:\n```typ\n#let my_array = (1, 2, 3);\n#my_array // Output: (1, 2, 3)\n```",
+    "id": 19,
+    "code": "\n#let my_array = (1, 2, 3);\n#my_array // Output: (1, 2, 3)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you create and display a dictionary in Typst?",
+    "answer": "You can create a dictionary using parentheses, commas, and colons. Here's an example:\n```typ\n#let my_dict = (a: \"hi\", b: 2);\n#my_dict // Output: (a: \"hi\", b: 2)\n```",
+    "id": 20,
+    "code": "\n#let my_dict = (a: \"hi\", b: 2);\n#my_dict // Output: (a: \"hi\", b: 2)\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you use a conditional statement in Typst?",
+    "answer": "You can use an `if` statement in Typst. Here's an example:\n```typ\n#let x = 5;\n#if x > 3 {\n  \"x is greater than 3\"\n} else {\n  \"x is not greater than 3\"\n}\n```",
+    "id": 21,
+    "code": "\n#let x = 5;\n#if x > 3 {\n  \"x is greater than 3\"\n} else {\n  \"x is not greater than 3\"\n}\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you iterate through a loop in Typst?",
+    "answer": "You can use `for` loops. Here's an example that iterates through an array:\n```typ\n#for x in (1, 2, 3) {\n  x * 2, // Output: 2, 4, 6,\n}\n```",
+    "id": 22,
+    "code": "\n#for x in (1, 2, 3) {\n  x * 2, // Output: 2, 4, 6,\n}\n",
+    "compiler": "error: unexpected comma\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-syntax\\22.typ:3:7\n  \u2502\n3 \u2502   x * 2, // Output: 2, 4, 6,\n  \u2502        ^",
+    "usable": false
+  },
+  {
+    "instruction": "How do you define a function in Typst?",
+    "answer": "You can define a function in Typst using the `let` keyword. Here's an example of a named function:\n```typ\n#let double(x) = 2 * x;\n#double(5) // Output: 10\n```",
+    "id": 23,
+    "code": "\n#let double(x) = 2 * x;\n#double(5) // Output: 10\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you use a named function call?",
+    "answer": "You call named function directly by using the function name and passing its arguments. For example, if you have a function defined as `#let square(x) = x * x`, you would call it like this: `#square(4)` which results in 16.",
+    "id": 24,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you include an external Typst module?",
+    "answer": "You can include an external Typst module using the `include` function.  For example:\n```typ\n#include \"my_module.typ\"\n```\nAssuming `my_module.typ` is in the same directory.",
+    "id": 25,
+    "code": "\n#include \"my_module.typ\"\n",
+    "compiler": "error: file not found (searched at \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-syntax\\my_module.typ)\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-syntax\\25.typ:2:9\n  \u2502\n2 \u2502 #include \"my_module.typ\"\n  \u2502          ^^^^^^^^^^^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How do you import a module?",
+    "answer": "You can import a module by using the `import` function. For example:\n```typ\n#import \"my_module.typ\"\n```\nAssuming `my_module.typ` is in the same directory.",
+    "id": 26,
+    "code": "\n#import \"my_module.typ\"\n",
+    "compiler": "error: file not found (searched at \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-syntax\\my_module.typ)\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-syntax\\26.typ:2:8\n  \u2502\n2 \u2502 #import \"my_module.typ\"\n  \u2502         ^^^^^^^^^^^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How do you import specific items from a module?",
+    "answer": "You can import specific items (e.g., functions, variables) from a module using the `import` function and specifying the items with a colon syntax.  For example:\n```typ\n#import \"my_module.typ\": function_a, variable_b\n```\nThis imports `function_a` and `variable_b` from `my_module.typ`.",
+    "id": 27,
+    "code": "\n#import \"my_module.typ\": function_a, variable_b\n",
+    "compiler": "error: file not found (searched at \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-syntax\\my_module.typ)\n  \u250c\u2500 \\\\?\\C:\\Users\\f2004\\HiDrive\\Sync_Duales_Studium\\WHS\\4\\Chat\\supervisedFinetuning\\out_2025-06-25_12-49\\f-syntax\\27.typ:2:8\n  \u2502\n2 \u2502 #import \"my_module.typ\": function_a, variable_b\n  \u2502         ^^^^^^^^^^^^^^^",
+    "usable": false
+  },
+  {
+    "instruction": "How can you use the raw text markup in Typst?",
+    "answer": "You can use the raw text markup to display text exactly as it is, without any special formatting. Here's an example:\n```typ\n`print(1)` // Displays: print(1) without any interpretation\n```",
+    "id": 28,
+    "code": "\n`print(1)` // Displays: print(1) without any interpretation\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How can you use the smart quotes feature?",
+    "answer": "Typst automatically converts regular quotes to smart quotes. For example:\n```typ\n'This is a single quote.'\n\"This is a double quote.\"\n```\nTypst will automatically transform them into the correct typographical quotes.",
+    "id": 29,
+    "code": "\n'This is a single quote.'\n\"This is a double quote.\"\n",
+    "compiler": "",
+    "usable": true
+  },
+  {
+    "instruction": "How do you use the symbol shorthand in Typst to create a horizontal ellipsis?",
+    "answer": "Typst provides symbol shorthand for frequently used symbols. To create a horizontal ellipsis, you can use `...`. For example:  `...`.",
+    "id": 30,
+    "code": "",
+    "compiler": "",
+    "usable": true
+  }
+]

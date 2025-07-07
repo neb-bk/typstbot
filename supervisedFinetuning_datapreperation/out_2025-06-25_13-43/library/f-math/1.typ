@@ -1,0 +1,2 @@
+
+$ "distance" = "speed" dot "time" $
