@@ -1,0 +1,36 @@
+{
+  "hubId": "compile-typst",
+  "active": true,
+  "name": "Typst compiler",
+  "schema": "skill-1.0.0",
+  "version": "1.0.0",
+  "description": "A plugin to compile the generated code via typst",
+  "author": "BenKB",
+  "author_url": "https://github.com/neb-bk",
+  "license": "MIT",
+  "examples": [
+    {
+      "prompt": "How do i create a basic table in typst? It should have two columns, each with one header and data cell.",
+      "call": "{\"code\": #table( \n columns: 2, \n [*Header 1*],[*Header 2*], \n [Data 1], [Data 2], \n )}"
+    },
+    {
+      "prompt": "Does this typst code compile: #set text( font: \"New Computer Modern\" ) \n = Background \n Glaciers are very cool.",
+      "call": "{\"code\": #set text( font: \"New Computer Modern\" ) \n = Background \n Glaciers are very cool.}"
+    },
+    {
+      "prompt": "Give me some typst code for including an image as a figure.",
+      "call": "{\"code\": #figure( \n image(\"path/to/image.png\", width: 80%), \n caption: [This is the caption of the figure.], \n )<figureRef>}"
+    }
+  ],
+  "setup_args": {},
+  "entrypoint": {
+    "file": "handler.js",
+    "params": {
+      "code": {
+        "description": "Typst code to be compiled",
+        "type": "string"
+      }
+    }
+  },
+  "imported": true
+}
