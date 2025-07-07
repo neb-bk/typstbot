@@ -4,4 +4,5 @@ Darunter fallen Daten für:
 - Rag
 - Finetuning
 - ...
+
 Außerdem ist das eigene Plugin für AnythingLLM zum Kompilieren von Typst Code enthalten. 
