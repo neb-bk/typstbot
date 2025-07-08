@@ -1,0 +1,39 @@
+To resolve the “file not found” error when including your image in Typst, follow these steps:
+
+1. Verify the Image Path
+Ensure the image test.png is located in the correct directory relative to your document. If your document is in the root of your project, the image should be in:
+
+
+
+Copy block
+
+
+images/test.png
+If the image is in a different folder (e.g., assets/images/test.png), adjust the path in your code accordingly.
+
+2. Check File Existence
+Confirm the file test.png exists in the images folder. If not, place it there or adjust the path.
+
+3. Use Correct Syntax
+In Typst, use the following syntax to include the image with a caption:
+
+
+
+Copy block
+
+
+#image("images/test.png", width: 200, height: 200)
+caption("My test image")
+Ensure the path is relative to the document’s location.
+
+4. Build Process
+If you’re using a build tool (e.g., typst build), make sure the image is included in the project directory. Sometimes, temporary directories (like C:\Users\f2004\AppData\Local\Temp) are used for intermediate files, but the image should be in the project folder, not the temporary one.
+
+5. Alternative: Absolute Path
+If the image is in a different location, use an absolute path (if allowed by your environment), but this is less common in Typst.
+
+Example Fix
+If your document is in C:\project\main.typ and the image is in C:\project\images\test.png, the code is correct. If the image is missing, place it in the images folder.
+
+Final Note
+If the error persists, check the file extension (ensure it’s .png) and verify no typos in the filename. Let me know if you need further help!

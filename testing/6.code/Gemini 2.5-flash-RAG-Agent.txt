@@ -1,0 +1,30 @@
+Here’s the updated Typst code addressing your requests:
+
+
+
+Copy block
+
+
+#set page(
+  header: grid(
+    columns: (1fr, auto, 1fr), // Added a middle column for "Document"
+    inset: (
+      x: 0pt,
+      y: 7pt,
+    ),
+    align(left)[_ My Document Title _], // Replaced #title with a placeholder. You can change "My Document Title" to your actual title.
+    align(center)[Document], // Added "Document" in the center
+    align(right)[#image("images/logo.png", width: 15%)], // Reduced image width to 15%
+    v(5pt), // Added 5pt of vertical space to move the content higher from the line
+    grid.hline()
+  ),
+)
+Explanation of changes:
+
+Image size: I changed width: 30% to width: 15% within the #image function. You can adjust this percentage further if needed.
+Spacing from the line: I added v(5pt) right before grid.hline(). This inserts 5 points of vertical space, pushing the horizontal line down and making the header content appear higher relative to it.
+“Document” in between:
+I modified columns: (1fr, 1fr) to columns: (1fr, auto, 1fr). This creates three columns: a flexible left column, an auto-sized middle column (which will size itself to its content, “Document” in this case), and a flexible right column.
+I then inserted align(center)[Document] between your title and image elements in the grid.
+#title error: The unknown variable: title error indicates that #title is not a predefined variable in that context. I’ve replaced _ #title _ with _ My Document Title _ as a placeholder. You should replace "My Document Title" with the actual text you want for your title.
+Regarding the file not found error: The error file not found (searched at ...images\logo.png) means that when Typst tries to compile, it can’t find the logo.png file at the specified path. You’ll need to ensure that the images folder containing logo.png is in the same directory as your Typst file, or provide the correct absolute or relative path to the image.

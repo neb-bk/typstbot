@@ -1,0 +1,31 @@
+Certainly! Here's a complete Typst code snippet that creates a clean 3-column table with bold headers and rows for two humans, displaying their name, age, and gender.
+The headers are visibly separated using formatting (bold) and horizontal lines:
+
+typst
+Kopieren
+Bearbeiten
+#table(
+  columns: 3,
+  align: center,
+  inset: 0.5em,
+  stroke: 1pt,
+  fill: white,
+  bottom: (row) => if row == 0 { line(width: 1pt) } else { none },
+  [
+    [*Name*, *Age*, *Gender*],  // Bold header row
+    ["Alice Smith", "29", "Female"],
+    ["John Doe", "35", "Male"],
+  ]
+)
+Features:
+Bold headers: Achieved with [*...*].
+
+Horizontal separator: A line below the header using bottom styling.
+
+3 columns, centered content.
+
+Inset for padding inside the cells.
+
+Stroke for borders around the cells (optional but helps visually separate).
+
+Let me know if you want styling like background colors, alignment tweaks, or if you'd like to use Typst's table.row and table.cell constructs for more control.

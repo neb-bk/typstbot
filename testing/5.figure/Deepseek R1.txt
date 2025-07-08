@@ -1,0 +1,43 @@
+To insert your image with a caption and make it referenceable in Typst, use the following solution:
+
+typst
+// Place this where you want the figure to appear
+#figure(
+  image("images/test.png", width: 80%),
+  caption: [My test image],
+) <fig:test-image>
+
+// Reference elsewhere in your document like this:
+As shown in @fig:test-image, ...
+Key components:
+
+image("images/test.png") - Loads your image (adjust path if needed)
+
+width: 80% - Optional scaling (remove or adjust as needed)
+
+caption: [My test image] - Sets your figure caption
+
+<fig:test-image> - Creates reference label (prefix fig: is convention)
+
+@fig:test-image - Reference syntax for citations
+
+Features:
+
+Automatic figure numbering
+
+Caption appears below image
+
+Central alignment by default
+
+Reference updates automatically if figure number changes
+
+To customize:
+
+typst
+#figure(
+  align(center, image("images/test.png")),
+  caption: [My test image],
+  numbering: "Figure 1", // Custom numbering format
+  supplement: [See: ],   // Prefix for references
+) <fig:test-image>
+Ensure your image path is relative to your Typst document's location. The reference will appear as "Figure 1" (or your custom numbering) in the generated PDF.

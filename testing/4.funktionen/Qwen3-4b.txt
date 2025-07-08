@@ -1,0 +1,19 @@
+Here’s a Type function in Typst that takes a string and a separator, then outputs the string with each character separated by the provided separator:
+
+
+
+Copy block
+
+
+fn charSeparated(str: str, sep: str) => join(chars(str), sep)
+Explanation:
+chars(str) converts the input string into a list of individual characters.
+join(..., sep) combines the list of characters into a single string, inserting the sep between each character.
+Example:
+
+
+Copy block
+
+
+charSeparated("hello", "-") // Output: "h-e-l-l-o"
+This function is concise, leverages Typst’s built-in functions, and adheres to the requirements.

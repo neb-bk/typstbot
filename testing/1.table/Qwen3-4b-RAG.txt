@@ -1,0 +1,26 @@
+To meet the requirement of displaying a table with bold headers that are visibly separated from the rest of the table, we can use the table function in Typst, incorporating a stroke (border) to emphasize the separation and bold font for the header row.
+
+Here is the well-structured and clear implementation:
+
+
+
+Copy block
+
+
+table(
+  headers: ["Name", "Age", "Gender"],
+  rows: [
+    ["John Doe", 30, "Male"],
+    ["Jane Smith", 25, "Female"]
+  ],
+  stroke: "black",  // Adds a black border around the table
+  font: "bold",     // Applies bold formatting to the header row
+  fill: "white"     // Optional: Sets the background color for better readability
+)
+✅ Explanation:
+headers: Defines the column names (headers) of the table.
+rows: Contains the data rows of the table.
+stroke: Adds a border (in this case, black) around the entire table to visually separate it from surrounding content.
+font: Sets the font weight to bold, ensuring the header row stands out.
+fill: (Optional) Sets the background color of the table cells, which can improve readability if the table is used on a dark background.
+This setup ensures that the headers are bold, visibly separated from the data rows, and the overall table is well-structured and easy to read.

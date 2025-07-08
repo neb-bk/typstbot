@@ -1,0 +1,109 @@
+Here's a comprehensive Typst example demonstrating various text formatting options with explanations:
+
+typst
+#set page(margin: 1.5cm)
+#set heading(numbering: "1.")
+#set text(font: "Linux Libertine", 10pt)
+
+= Text Formatting Examples
+This guide demonstrates various text formatting techniques in Typst.
+
+== Basic Text Styles
+#box(
+  inset: 8pt,
+  fill: luma(245),
+[
+  - *Bold text*: Use asterisks or #strong[strong function]
+  - _Italic text_: Use underscores or #em[em function]
+  - #underline[Underlined text]: Use #underline[underline function]
+  - #highlight[Highlighted text]: Use #highlight[highlight function]
+  - Strikethrough: Use #strike[strike function]
+])
+
+== Code Formatting
+#box(
+  inset: 8pt,
+  fill: luma(245),
+[
+  • Inline code: Use backticks or #code[code function] → `print("Hello")`
+  
+  • Code block with syntax highlighting:
+  #let sample = "// Typst example\n= Heading <em>emphasis</em>"
+  #raw(sample, lang: "typst", block: true, fill: luma(230))
+])
+
+== Mathematical Formatting
+#box(
+  inset: 8pt,
+  fill: luma(245),
+[
+  • Inline math: Enclose with dollar signs $nabla times vec(B) = mu_0 vec(J) + mu_0 epsilon_0 frac(partial vec(E))(partial t)$
+  
+  • Display math (centered):
+  $ sum_(n=1)^oo 1/n^2 = pi^2/6 $
+  
+  • Equation numbering:
+  #set math.equation(numbering: "(1)")
+  $ int_0^oo e^(-x^2) dx = sqrt(pi)/2 $ <equation>
+])
+
+== Advanced Combinations
+#box(
+  inset: 8pt,
+  fill: luma(245),
+[
+  - #strong[_Bold italics_] → #strong[em[combined]]
+  - #highlight[`Code in highlight`] → #highlight[code[formatted]]
+  - Math in text: #em[Important constant] $e = lim_(n->oo)(1 + 1/n)^n$
+  - #underline[Chemical formula]: H_2O + CO_2 → C_6H_12O_6 + O_2
+])
+
+== Additional Features
+#box(
+  inset: 8pt,
+  fill: luma(245),
+[
+  • #link("https://typst.app/")[Hyperlinks]
+  • #set text(fill: blue) #lorem(5)
+  • #set text(font: "Inria Sans") #smallcaps[Small Caps Text]
+])
+
+#pagebreak()
+= Formatting Reference
+#table(
+  columns: (auto, 2fr, 2fr),
+  [Syntax], [Function], [Output],
+  [`*text*`], [`#strong[text]`], [*Bold text*],
+  [`_text_`], [`#em[text]`], [_Italic text_],
+  [`` `code` ``], [`#code[code]`], [`Inline code`],
+  [`$formula$`], [`#math(formula)`], [$sqrt(x^2)$],
+)
+Key features demonstrated:
+
+Text styling: Bold, italics, underline, highlight
+
+Code formatting: Inline code and syntax-highlighted blocks
+
+Math notation: Inline and display equations with numbering
+
+Combined formats: Nested text styles and math in text
+
+Additional elements: Hyperlinks, color changes, small caps
+
+Reference table: Comparison of syntax vs. function usage
+
+Important notes:
+
+Use #show: em => set text(fill: purple) to globally style emphasized text
+
+Math formulas automatically use TeX-like syntax with Typst improvements
+
+Raw code blocks preserve whitespace and syntax highlighting
+
+Combine functions: #strong[#em[#underline[text]]]
+
+Use #set math.equation(numbering: "(1)") for equation numbering
+
+Apply colors with RGBA, CMYK, or luma values: #set text(fill: rgb(220, 50, 50))
+
+This document compiles without errors and demonstrates Typst's function-based approach to formatting. Modify values like colors, fonts, and spacing to match your document's requirements.

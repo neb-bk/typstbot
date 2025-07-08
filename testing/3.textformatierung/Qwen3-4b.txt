@@ -1,0 +1,58 @@
+Here’s a sample Typst document demonstrating various text formatting options:
+
+
+
+Copy block
+
+
+# Text Formatting Example
+
+This is a **bold** text example.  
+This is *italic* text.  
+This is `code` in a code block.  
+This is a math formula: $E = mc^2$.
+
+## Combined formatting
+
+**This text is bold and *italic***.  
+`This is code in a math formula` $x^2 + y^2 = r^2$.
+
+## List with formatting
+
+1. **Bold item** with *italic* text
+2. `Code` in a list
+3. $ \frac{1}{2} + \frac{1}{3} = \frac{5}{6} $
+
+## Special characters
+
+- Ampersand: &
+- Asterisk: *
+- At sign: @
+- Caret: ^
+- Tilde: ~
+- Dollar: $
+- Percent: %
+- Hash: #
+- Plus: +
+- Equals: =
+- Pipe: |
+- Colon: :
+- Semicolon: ;
+- Comma: ,
+- Period: .
+- Question mark: ?
+- Exclamation mark: !
+This example includes:
+
+Bold text (**text**)
+Italic text (*text*)
+Code blocks (`text`)
+Math formulas (
+.
+.
+.
+)
+Combined formatting
+Special characters
+List items with formatting
+The code should compile without errors and demonstrate the basic formatting capabilities of Typst.

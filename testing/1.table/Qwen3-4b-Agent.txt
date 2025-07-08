@@ -1,0 +1,18 @@
+Here’s a Typst table with bold headers and three columns:
+
+
+
+Copy block
+
+
+table(
+  bold("Name") | bold("Age") | bold("Gender"),
+  "Alice" | 30 | "Female",
+  "Bob" | 25 | "Male"
+)
+This will render as:
+
+NAME	AGE	GENDER
+Alice	30	Female
+Bob	25	Male
+The headers are bold and clearly separated from the data rows. Let me know if you’d like any styling adjustments!

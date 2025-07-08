@@ -1,0 +1,33 @@
+Here’s the Typst code for a table with three columns, bold headers, and a clear separation between the headers and the rest of the table content:
+
+
+
+Copy block
+
+
+#table(
+  columns: 3,
+  // Apply a uniform light gray stroke to all internal and external lines by default
+  stroke: 0.5pt + gray,
+  
+  // Header row: make text bold
+  [ *Name* ], [ *Age* ], [ *Gender* ],
+  
+  // Add a thicker black stroke below the header row to visibly separate it.
+  // table.hline(1) places a horizontal line after the first row (index 0).
+  table.hline(1, stroke: 1.5pt + black),
+  
+  // Data rows for two humans
+  [Alice], [30], [Female],
+  [Bob], [25], [Male],
+)
+Explanation:
+
+#table(columns: 3, ...): This initiates a table with three columns.
+stroke: 0.5pt + gray: This sets a default light gray stroke for all internal grid lines and the outer border of the table, giving it a clean look.
+[ *Name* ], [ *Age* ], [ *Gender* ]: These are the contents of your header row. The *...* syntax makes the text bold.
+table.hline(1, stroke: 1.5pt + black): This is the key part for separating the header.
+table.hline() is a function specifically for adding horizontal lines to a table.
+The 1 as the first argument indicates that the line should be placed after the first logical row of the table (which is the header row, being at index 0).
+stroke: 1.5pt + black overrides the default light gray stroke for this specific line, making it thicker and black for strong visual separation.
+[Alice], [30], [Female], [Bob], [25], [Male]: These are your data rows, providing the name, age, and gender for two individuals.

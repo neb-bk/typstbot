@@ -1,0 +1,29 @@
+Here is a sample text demonstrating different text formatting:
+
+This is a bold word. This is an italicized word. This is some code inline.
+
+Here’s a block of code:
+
+
+python
+
+Copy block
+
+
+def hello_world():
+    print("Hello, world!")
+And here’s a simple math formula: The quadratic formula is given by 
+�
+=
+−
+�
+±
+�
+2
+−
+4
+�
+�
+2
+�
+.

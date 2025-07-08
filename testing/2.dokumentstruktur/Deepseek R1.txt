@@ -1,0 +1,138 @@
+Here's a complete Typst document with a title page, table of contents, chapters, and listings section. The solution uses Typst's built-in features for structured document creation:
+
+typst
+#set page(margin: 1in)
+#set heading(numbering: "1.")
+#set document(title: "Research Document")
+
+// Title page
+#pagebreak()
+#align(center)[
+  #text(size: 24pt, weight: "bold")[Research Document]
+  #v(1em)
+  #text(size: 18pt)[Author Name]
+  #v(1em)
+  #text(size: 14pt)[University of Knowledge]
+  #v(2em)
+  #text(size: 12pt)[Date: #date()]
+]
+
+// Table of Contents
+#pagebreak()
+#align(center, text(size: 16pt, weight: "bold")[Table of Contents])
+#outline(depth: 2)
+#v(2em)
+
+// Main content chapters
+#heading(level: 1, name: "Introduction")[Introduction]
+This chapter introduces the research topic and objectives.
+
+#pagebreak()
+#heading(level: 1, name: "Background")[Background]
+Literature review and related work discussion.
+
+#pagebreak()
+#heading(level: 1, name: "Algorithm")[Algorithm]
+#figure(
+  caption: [System Architecture],
+  image("placeholder.jpg", width: 60%),
+)
+Description of the proposed methodology.
+
+#pagebreak()
+#heading(level: 1, name: "Conclusion")[Conclusion]
+Summary of findings and future work.
+
+// Listings section
+#pagebreak()
+#align(center, text(size: 16pt, weight: "bold")[Listings])
+
+#heading(level: 1)[List of Figures]
+#list(
+  heading: none,
+  figure.where(kind: figure),
+)
+
+#heading(level: 1)[List of Tables]
+#list(
+  heading: none,
+  table.where(kind: table),
+)
+
+// Sample table (for demonstration)
+#table(
+  caption: [Experimental Results],
+  columns: 3,
+  [Header 1], [Header 2], [Header 3],
+  [Data A1],  [Data A2],  [Data A3],
+  [Data B1],  [Data B2],  [Data B3],
+)
+Key features of this implementation:
+
+Title Page:
+
+Centered title, author, and institution information
+
+Automatic date insertion
+
+Starts on a new page
+
+Table of Contents:
+
+Automatically generated with #outline
+
+Shows two levels of headings
+
+Centered title
+
+Chapter Structure:
+
+Numbered chapters (Introduction, Background, Algorithm, Conclusion)
+
+Page breaks between chapters
+
+Named headings for table of contents
+
+Listings Section:
+
+Dedicated section for figures and tables
+
+Automatic figure listing with #list(figure.where(kind: figure))
+
+Automatic table listing with #list(table.where(kind: table))
+
+Sample table with caption included
+
+Additional Features:
+
+Proper page margins
+
+Heading numbering
+
+Document metadata
+
+Figure placement with caption
+
+Table with caption
+
+To use this document:
+
+Replace placeholder text with your content
+
+Add real images instead of "placeholder.jpg"
+
+Add more tables/figures as needed
+
+Customize styling (margins, fonts, etc.) in the set rules
+
+The document will automatically:
+
+Generate the table of contents
+
+Number headings
+
+Collect and display figures/tables in the listings section
+
+Maintain proper page breaks between sections
+
+All elements use Typst's native functions for structured document creation, ensuring compatibility and proper typesetting.

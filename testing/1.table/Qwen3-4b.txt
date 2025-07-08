@@ -1,0 +1,23 @@
+Here’s a Typst table with three columns, bold headers, and two rows of data:
+
+
+Copied!
+
+table(
+  columns: [
+    column("Name", align: center),
+    column("Age", align: center),
+    column("Gender", align: center)
+  ],
+  rows: [
+    row([bold("Name"), bold("Age"), bold("Gender")]),
+    row(["Alice", "30", "Female"]),
+    row(["Bob", "25", "Male"])
+  ]
+)
+Explanation:
+columns: Defines three columns with centered alignment.
+rows: Contains the header row (bold text) and two data rows.
+bold(): Applies bold formatting to the header cells.
+align: center: Centers the text in each column for consistency.
+This code will render a clean table with distinct, bold headers and properly aligned data.

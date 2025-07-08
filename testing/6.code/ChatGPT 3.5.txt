@@ -1,0 +1,39 @@
+Absolutely! Let's go through each of your requirements and improve your Typst code accordingly:
+
+✅ Your Goals
+Make the logo image smaller.
+
+Add more vertical spacing between the title/image and the horizontal line.
+
+Add the word "Document" centered between the title and the image.
+
+✅ Improved Code
+typst
+Kopieren
+Bearbeiten
+set page(
+  header: box(
+    bottom: 8pt, // Adds spacing between header and body (horizontal line is at the bottom of header)
+    grid(
+      columns: (1fr, auto, 1fr), // Three columns: title | label | logo
+      align(left)[_ #title _],
+      align(center)[Document],
+      align(right)[#image("images/logo.png", width: 20%)], // Smaller image
+      spacing: 6pt, // Vertical spacing between rows (like grid.hline and content)
+    )
+  )
+)
+✅ Explanation
+width: 20%: This makes the logo image smaller than the previous 30%. You can tweak it more if needed.
+
+grid(columns: (1fr, auto, 1fr)): This creates a three-column layout:
+
+Left: Title
+
+Center: "Document" text
+
+Right: Logo
+
+box(bottom: 8pt, ...): This wraps the grid in a box that adds space below the header—moving the content higher above the horizontal line.
+
+spacing: 6pt: Adds some breathing room between the content and any grid lines like grid.hline() (which we removed here since you're adjusting spacing manually).

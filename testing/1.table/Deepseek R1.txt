@@ -1,0 +1,62 @@
+Here's a professional Typst solution with a well-styled table that meets your requirements:
+
+typ
+#table(
+  columns: (auto, auto, auto),
+  header-row: true,
+  header-row: style.bold,
+  stroke: (bottom: 1pt + black),  // Visible separation below header
+  fill: (row: -1, gray.lighten(80%)),  // Optional: subtle header background
+  [
+    [Name], [Age], [Gender]
+  ],
+  [
+    ["John Doe"], ["30"], ["Male"]
+  ],
+  [
+    ["Jane Smith"], ["28"], ["Female"]
+  ]
+)
+Key features:
+
+Header styling:
+
+Bold text (style.bold)
+
+Bottom border for clear separation (stroke: (bottom: 1pt + black))
+
+Optional light gray background (fill parameter)
+
+Structure:
+
+Explicit column definitions with auto width
+
+Dedicated header-row configuration
+
+Clean separation between header and content
+
+Data:
+
+Two human entries with name, age, and gender
+
+Properly formatted content cells
+
+Best practices:
+
+Uses Typst's table functions instead of raw markup
+
+Compiles without errors
+
+Maintains semantic structure
+
+To customize further:
+
+Adjust border thickness by changing 1pt value
+
+Modify background color by changing gray.lighten(80%)
+
+Add cell padding using table.cell(padding: (x, y))
+
+Align columns with align property in columns tuple
+
+The table will automatically adjust to your document's content width while maintaining clear visual hierarchy between headers and data.

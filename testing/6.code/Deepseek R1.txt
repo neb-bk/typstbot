@@ -1,0 +1,51 @@
+Based on your requirements, I've modified your header grid to include the "Document" text between the title and logo, reduced the image size, and increased spacing between the content and horizontal line. Here's the updated code:
+
+typst
+set page(
+  header: grid(
+    columns: (1fr, auto, 1fr),
+    gutter: (0pt, 6pt),  // Added vertical spacing between rows
+    inset: (
+      top: 10pt,   // Increased top padding
+      bottom: 4pt, // Reduced bottom padding
+      x: 0pt,
+    ),
+    // Left-aligned title
+    align(left)[_ #title _],
+    // Centered "Document" text
+    align(center)[Document],
+    // Smaller right-aligned logo
+    align(right)[#image("images/logo.png", width: 20%)],
+    // Horizontal line with top margin
+    grid.hline(stroke: (thickness: 0.5pt), above: 4pt)
+  ),
+)
+Key improvements made:
+
+Image size reduced from 30% to 20% width
+
+Added "Document" text centered between title and logo using a 3-column grid layout
+
+Increased vertical spacing:
+
+Added 6pt gutter between rows
+
+Increased top padding to 10pt
+
+Added 4pt space above the horizontal line
+
+Reduced bottom padding to 4pt
+
+Improved line styling with explicit thickness
+
+The grid now has three columns (left content, centered text, right content) with:
+
+Title left-aligned in first column
+
+"Document" centered in middle column
+
+Smaller logo right-aligned in third column
+
+Horizontal line spanning all columns with additional spacing above it
+
+This creates a balanced header with proper spacing and the additional text element you requested. You can adjust the spacing values (gutter, inset, above) further if needed.

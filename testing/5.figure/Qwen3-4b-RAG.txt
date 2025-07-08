@@ -1,0 +1,19 @@
+To add your image with a caption and make it referenceable, use the figure function with a label. Here’s the code:
+
+
+
+Copy block
+
+
+#figure(
+  image("images/test.png"),
+  caption: [
+    "My test image"
+  ],
+) <test-image>
+Explanation:
+Image Path: "images/test.png" is used as the file path.
+Caption: The caption "My test image" is enclosed in square brackets as a content block.
+Label: <test-image> labels the figure for referencing.
+Reference: Use @test-image elsewhere in the document to cross-reference this image.
+This setup ensures the image is properly displayed with a caption and can be referenced later.

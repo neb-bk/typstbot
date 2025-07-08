@@ -1,0 +1,47 @@
+Sure! Here's a concise Typst document that demonstrates various text formatting options — including bold, italic, code, and inline/display math — using Typst's functions (not plain markup):
+
+typst
+Kopieren
+Bearbeiten
+= Sample Text Formatting in Typst
+
+This is a sample paragraph demonstrating different text formatting in Typst.
+
+Here is some *italic* text using the `emph` function:
+#emph("This is emphasized.")
+
+Here is some **bold** text using the `strong` function:
+#strong("This is bold.")
+
+You can also have both: #strong(emph("Bold and italic text"))
+
+Here is some `inline code` using the `raw` function:
+#raw("let x = 42;")
+
+## Math Examples
+
+Inline math using `$...$`: $E = mc^2$
+
+You can also use display math with the `math` function:
+#math(block: true)[
+  \int_a^b f(x)\,dx = F(b) - F(a)
+]
+
+You can write fractions, roots, sums, and more:
+#math(block: true)[
+  \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
+]
+
+Enjoy formatting your documents in Typst!
+Notes:
+#emph(): for italic (emphasized) text.
+
+#strong(): for bold text.
+
+#raw(): for inline code.
+
+$...$: for inline math.
+
+#math(block: true)[...]: for display (block) math.
+
+Let me know if you want to add lists, headings, tables, or customize styling!

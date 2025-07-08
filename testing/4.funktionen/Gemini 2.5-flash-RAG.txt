@@ -1,0 +1,71 @@
+Here’s a Typst function that takes a string and a separator, then returns the string with each character separated by the given separator.
+
+
+
+Copy block
+
+
+#let separate-chars(text, separator) = {
+  // Ensure the input 'text' is a string.
+  assert(type(text) == str, "Expected 'text' to be a string.")
+  // Ensure the 'separator' is also a string.
+  assert(type(separator) == str, "Expected 'separator' to be a string.")
+
+  // Initialize an empty string to build the result.
+  let result = ""
+
+  // Iterate over each character of the input string by its index.
+  for i in range(text.len()) {
+    // Append the character at the current index to the result.
+    result += text.at(i)
+    
+    // If it's not the last character, append the separator.
+    if i < text.len() - 1 {
+      result += separator
+    }
+  }
+  
+  return result
+}
+
+// --- Examples ---
+
+#set text(font: "IBM Plex Mono", size: 12pt)
+
+#line(length: 100%)
+
+= Usage Examples
+
+#text("Separating 'Hello' with a hyphen:") \
+`#separate-chars("Hello", "-")` \
+#separate-chars("Hello", "-")
+
+#line(length: 100%)
+
+#text("Separating 'Typst' with a space:") \
+`#separate-chars("Typst", " ")` \
+#separate-chars("Typst", " ")
+
+#line(length: 100%)
+
+#text("Separating '12345' with an asterisk:") \
+`#separate-chars("12345", "*")` \
+#separate-chars("12345", "*")
+
+#line(length: 100%)
+
+#text("Using an empty string as a separator (no visible separation):") \
+`#separate-chars("NoSeparator", "")` \
+#separate-chars("NoSeparator", "")
+
+#line(length: 100%)
+
+#text("Handling an empty input string:") \
+`#separate-chars("", "-")` \
+#separate-chars("", "-")
+
+#line(length: 100%)
+
+#text("Handling a single-character input string:") \
+`#separate-chars("X", "-")` \
+#separate-chars("X", "-")

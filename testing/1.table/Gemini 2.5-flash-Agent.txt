@@ -1,0 +1,26 @@
+The error you encountered with hline() (error: unknown variable: hline) occurs because hline() is used to create a horizontal line within a grid or as a standalone element, but it’s not a direct separator for rows within the content list of a table function in that manner. The table function expects content cells directly.
+
+For achieving a visible separation, especially for headers, Typst provides properties like stroke for lines around cells or header_stroke for lines specifically below headers.
+
+The code you found that compiles successfully uses the stroke property to draw lines around all cells, which effectively separates the header row from the data rows.
+
+Here is the Typst code that meets your requirements, as you successfully compiled:
+
+
+
+Copy block
+
+
+#table(
+  columns: 3,
+  stroke: 0.5pt, // Adds lines between all cells for visible separation
+  [*Name*], [*Age*], [*Gender*],
+  "John Doe", "30", "Male",
+  "Jane Smith", "25", "Female"
+)
+Explanation:
+
+columns: 3: Defines that your table will have three columns.
+stroke: 0.5pt: This property adds a 0.5pt thick line around all cells in the table. This is how the headers are visibly separated from the rest of the table, as well as the data rows from each other.
+[*Name*], [*Age*], [*Gender*]: These are the header texts. The *...* syntax makes them bold.
+"John Doe", "30", "Male" and "Jane Smith", "25", "Female": These are the content rows, with each item corresponding to a column.

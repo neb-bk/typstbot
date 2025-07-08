@@ -1,0 +1,19 @@
+Here’s a Typst function that takes a string and a separator, then outputs the string with each character separated by the provided separator:
+
+
+
+Copy block
+
+
+fn separatorString(input: string, sep: string) => input.to_list().join(sep)
+Example Usage:
+
+
+Copy block
+
+
+separatorString("hello", ",")  // Outputs: "h,e,l,l,o"
+separatorString("Typst", "-")  // Outputs: "T,y,p,s,t"
+Explanation:
+input.to_list() converts the input string into a list of individual characters.
+.join(sep) joins the list elements with the specified separator string.

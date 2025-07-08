@@ -1,0 +1,135 @@
+Certainly! Here’s a sample Typst document demonstrating various text formatting options, including bold, italics, code, and mathematical formulas. This should help you get started with common tasks.
+
+
+
+Copy block
+
+
+#set text(font: "New Computer Modern") // A common font for technical documents
+
+= Introduction to Typst Formatting
+
+This document serves as a quick reference for common text formatting in Typst. As a markup language, Typst allows for easy application of styles directly within your text.
+
+== Basic Text Styles
+
+You can easily emphasize text using simple markup. For example, to make text *bold*, you can enclose it in asterisks. If you want to make text _italic_, you can use underscores.
+
+Let's look at an example:
+In this paragraph, we will highlight some *important terms* and _key concepts_ related to document preparation. Typst makes it simple to achieve a professional look with minimal effort.
+
+To start a new paragraph, simply add a blank line between your lines of text.
+
+== Code Snippets
+
+Typst provides excellent support for displaying code. You can include inline code snippets or larger code blocks.
+
+For inline code, use backticks: The `main` function is the entry point of the program. We can define a variable using `#let x = 10`.
+
+For multi-line code blocks, use triple backticks:
+
+```typ
+// This is a Typst code block
+#let greet(name) = {
+  // A simple function definition
+  [Hello, ] + name + [!]
+}
+
+#greet("Typst User")
+== Mathematical Formulas
+
+Typst excels at typesetting beautiful mathematical formulas. You can include them inline with your text or as separate, displayed blocks.
+
+For inline mathematical expressions, use dollar signs: The well-known formula for the area of a circle is [$ A = pi r^2 
+]
+.
+�
+�
+�
+�
+,
+[
+ pi 
+]
+�
+�
+�
+�
+�
+�
+�
+�
+�
+�
+�
+�
+�
+�
+�
+[
+ r $] is the radius.
+
+For block-level equations, use dollar signs with spaces around the content:
+
+[
+�
+=
+�
+�
+2
+]
+
+You can also write more complex equations. For instance, the quadratic formula is given by:
+
+[
+�
+=
+(
+−
+�
++
+−
+�
+�
+�
+�
+(
+�
+2
+−
+4
+�
+�
+)
+)
+/
+(
+2
+�
+)
+]
+
+This formula helps us find the roots of a quadratic equation.
+
+= Conclusion
+
+We hope this sample document provides a clear overview of how to apply different text formatting, include code, and typeset mathematical formulas in Typst. Experiment with these features to create stunning documents!
+
+
+
+Copy block
+
+
+**Explanation of the code:**
+
+*   `#set text(font: "New Computer Modern")`: This line uses a [set rule](https://typst.app/docs/reference/layout/set/) to change the default font for the entire document to "New Computer Modern".
+*   `= Introduction to Typst Formatting`: This creates a top-level heading.
+*   `== Basic Text Styles`: This creates a second-level subheading.
+*   `*bold*`: Encloses text in asterisks to make it **bold**.
+*   `_italic_`: Encloses text in underscores to make it *italic*.
+*   `` `inline code` ``: Encloses text in single backticks for `inline code`.
+*   ```` ```typ ... ``` ````: Encloses a block of code in triple backticks. The `typ` after the opening backticks indicates the language for syntax highlighting.
+*   `[$ math formula $]`: Encloses mathematical content in dollar signs for inline math mode.
+*   `[$ math formula $]`: Encloses mathematical content in dollar signs, with spaces around the content (`[$ E = mc^2 $]`) to display it as a separate, centered block equation.
+
+This example covers the most common formatting needs and should give you a solid foundation for your Typst documents!

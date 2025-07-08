@@ -1,0 +1,60 @@
+To achieve the goal of splitting a string into individual characters and then joining them with a specified separator, we can write a function that uses string operations to perform this task.
+
+✅ Objective
+Given a string s and a separator sep, return a new string where each character of s is separated by sep.
+
+🧠 Approach
+In many programming languages, a string can be split into individual characters by using an empty string as the delimiter. For example:
+
+
+python
+
+Copy block
+
+
+s = "abc"
+s.split("")  # returns ['a', 'b', 'c']
+Once we have a list of individual characters, we can join them using the provided separator.
+
+🧩 Function Implementation
+
+rust
+
+Copy block
+
+
+fn split_string(s: &str, sep: &str) -> String {
+    s.split("").join(sep)
+}
+s.split("") splits the input string into a vector of individual characters.
+join(sep) joins these characters using the provided separator sep.
+This function works correctly for any separator, including empty strings.
+
+🧪 Examples
+
+rust
+
+Copy block
+
+
+let result = split_string("abc", ",");
+println!("{}", result); // Outputs: a,b,c
+
+let result2 = split_string("hello", " ");
+println!("{}", result2); // Outputs: h,e,l,l,o
+
+let result3 = split_string("rust", "");
+println!("{}", result3); // Outputs: r,u,s,t
+📝 Note
+The function assumes that the language or environment supports splitting on an empty string.
+If not, an alternative is to use a method like chars() that returns an iterator of characters, which can be converted into a vector and joined.
+✅ Final Answer
+
+rust
+
+Copy block
+
+
+fn split_string(s: &str, sep: &str) -> String {
+    s.split("").join(sep)
+}

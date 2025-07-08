@@ -1,0 +1,23 @@
+To address your requirements, here’s the modified Typst code:
+
+
+
+Copy block
+
+
+#set columns: 1fr 1fr 1fr
+#set inset: 0pt 10pt 0pt 0pt
+
+grid(
+  columns: 1fr 1fr 1fr,
+  inset: 0pt 10pt 0pt 0pt,
+  align(left)[_ #title _],
+  align(center)[#text("Document")],
+  align(right)[#image("images/logo.png", width: 20%)],
+  grid.hline()
+)
+Changes Made:
+Image Size: Reduced the image width to 20% for a smaller size.
+Vertical Spacing: Increased the inset value to 10pt to move the horizontal line upward, creating more space between the content and the line.
+“Document” Placement: Added the text "Document" in the middle column of a 3-column grid to position it between the title and image.
+This should make the layout more balanced and visually aligned with your requirements. Let me know if you’d like further adjustments!

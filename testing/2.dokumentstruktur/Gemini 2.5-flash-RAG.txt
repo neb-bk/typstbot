@@ -1,0 +1,124 @@
+Here’s a Typst document that includes a title page, a table of contents, the specified chapters, and listings for figures and tables at the end.
+
+The document uses set page to define layouts for different sections (e.g., margins, headers, footers) and locate with counter to control page numbering and header visibility dynamically.
+
+
+
+Copy block
+
+
+#set document(
+  title: "My Comprehensive Document",
+  author: "Jane Doe",
+  date: datetime.today(),
+)
+
+// --- Document-wide font and page size settings ---
+// As per Context 3, let's set US letter size.
+#set page(paper: "us-letter")
+
+// --- Title Page Layout ---
+// Set specific margins for the title page, then reset for content.
+#set page(
+  margin: (x: 1.5in, y: 1in), // Generous margins for a clean title page
+  header: none, // No header on the title page
+  footer: none, // No footer on the title page
+)
+
+#align(center)[
+  #v(4em) // Vertical space from the top
+  #text(2.5em, weight: "bold")[#document.title]
+  #v(2em) // Space between title and author
+  #text(1.5em)[#document.author]
+  #v(1em) // Space between author and date
+  #text(1em)[#document.date.display("[day].[month].[year]")]
+]
+
+#pagebreak() // Move to the next page after the title page
+
+// --- Main Content and TOC Page Layout ---
+// Set standard margins, header (document title), and footer (page number).
+#set page(
+  margin: (x: 1in, y: 1in), // Standard margins for content pages
+  header: locate(loc => {
+    // Only show header (document title) from the third page onwards (after title and TOC)
+    if counter(page).at(loc).first() > 2 {
+      box(align(right)[#text(0.8em)[#document.title]])
+    }
+  }),
+  footer: locate(loc => {
+    // Show page number from the second page onwards (including TOC)
+    if counter(page).at(loc).first() > 1 {
+      box(align(center)[#counter(page).at(loc).first()])
+    }
+  }),
+)
+
+// --- Table of Contents ---
+#align(center)[
+  #text(1.5em, weight: "bold")[Table of Contents]
+]
+#v(1em)
+#tableofcontents()
+
+#pagebreak() // Move to the next page for the first chapter
+
+// --- Chapters ---
+
+#heading(level: 1, outlined: true)[Introduction]
+#lorem(200) // Placeholder text
+#figure(
+  image("https://typst.app/assets/images/typst-logo.svg", width: 50%),
+  caption: "The official Typst logo, representing modern typesetting.",
+) <fig:typst-logo>
+#lorem(100)
+
+#pagebreak()
+#heading(level: 1, outlined: true)[Background]
+#lorem(150)
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr),
+    stroke: .5pt,
+    align: center + horizon,
+    [Category], [Value 1], [Value 2],
+    [Alpha], [10], [25],
+    [Beta], [15], [30],
+    [Gamma], [20], [35],
+  ),
+  caption: "Sample data table illustrating categories and values.",
+  kind: "table", // Important for #outline(target: table)
+) <tbl:sample-data>
+#lorem(100)
+
+#pagebreak()
+#heading(level: 1, outlined: true)[Algorithm]
+#lorem(200)
+#figure(
+  rect(width: 70%, height: 3cm, fill: luma(200), stroke: 1pt), // A simple placeholder diagram
+  caption: "A high-level overview of the algorithm's structure.",
+) <fig:algo-structure>
+#lorem(100)
+
+#pagebreak()
+#heading(level: 1, outlined: true)[Conclusion]
+#lorem(150)
+
+#pagebreak()
+
+// --- Listings (Table of Figures and Table of Tables) ---
+#heading(level: 1, outlined: true)[Listings] // A main heading for the listings section
+
+#align(center)[
+  #text(1.5em, weight: "bold")[List of Figures]
+]
+#v(1em)
+#outline(target: figure) // Generates a list of all figures
+
+#pagebreak() // Start List of Tables on a new page
+
+#align(center)[
+  #text(1.5em, weight: "bold")[List of Tables]
+]
+#v(1em)
+#outline(target: table) // Generates a list of all tables

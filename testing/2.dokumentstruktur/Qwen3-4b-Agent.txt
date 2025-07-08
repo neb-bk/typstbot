@@ -1,0 +1,59 @@
+To properly generate a document with a title, table of contents, sections, and a table within a “Listings” section using Typst, you need to ensure correct syntax and structure. Here’s the corrected and well-organized version of your code:
+
+✅ Correct Typst Code
+
+
+Copy block
+
+
+#title("My Document")
+#toc()
+
+#section("Introduction")
+#para("This is the introduction section.")
+
+#section("Background")
+#para("Background information here.")
+
+#section("Algorithm")
+#para("Algorithm details.")
+
+#section("Conclusion")
+#para("Conclusion summary.")
+
+#section("Listings")
+#table([
+  ["Header 1", "Header 2"],
+  ["Data 1", "Data 2"]
+])
+🔍 Explanation
+#title("My Document")
+Sets the document title correctly. This is the proper way to define the title in Typst.
+
+#toc()
+Generates a table of contents based on the sections defined later.
+
+#section("Section Name")
+Creates a new section with the specified name. This is used for each section in the document.
+
+#para("Text")
+Adds a paragraph of text to the current section.
+
+#section("Listings")
+Creates a section labeled “Listings”.
+
+#table([...])
+Defines a table with rows and columns. Each row is an array of strings. This is the correct syntax for creating a table in Typst.
+
+📝 Notes
+The #listings command is not used for inserting a table. Instead, #table is used to define the table directly.
+The #toc() command will automatically include all sections in the table of contents.
+The structure is clean and follows Typst’s syntax for defining documents.
+📄 Result
+This code will produce a document with:
+
+A title: “My Document”
+A table of contents
+Sections for “Introduction”, “Background”, “Algorithm”, and “Conclusion”
+A “Listings” section containing a single table with two rows and two columns
+Let me know if you need to add more content or formatting!

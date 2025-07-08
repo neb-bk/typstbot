@@ -1,0 +1,44 @@
+I can certainly help you with that! Here's a Typst function that takes a string and a separator, then outputs the string with each character separated by the specified separator.
+
+I will provide the Typst code in an immersive document.
+
+#let character-separated(text, separator: "-") = {
+  // Ensure the input 'text' is indeed a string.
+  assert(type(text) == str, "text must be a string")
+  // Ensure the input 'separator' is indeed a string.
+  assert(type(separator) == str, "separator must be a string")
+
+  // Convert the string into an array of individual characters.
+  let chars = text.split("")
+
+  // Join the characters with the specified separator.
+  // The `join` function is perfect for this.
+  return chars.join(separator)
+}
+
+// --- Examples of how to use the function ---
+
+// Example 1: Basic usage with default separator
+#set text(font: "Inter", 16pt)
+#text("Hello World", character-separated("Hello World"))
+#text("Hello World", character-separated("Typst"))
+
+// Example 2: Using a custom separator (e.g., a dot)
+#text("Custom Separator (.): ", character-separated("Example", "."))
+
+// Example 3: Using a custom separator (e.g., a space)
+#text("Custom Separator (Space): ", character-separated("Another", " "))
+
+// Example 4: Using a multi-character separator
+#text("Multi-character Separator (---): ", character-separated("Test", "---"))
+
+// Example 5: Empty string input
+#text("Empty String: ", character-separated("", "-"))
+
+// Example 6: Single character input
+#text("Single Character: ", character-separated("A", "-"))
+
+
+This Typst function character-separated takes two parameters: text (the string you want to separate) and separator (the string to use as a separator, defaulting to a hyphen -). It splits the input string into individual characters and then joins them back together using your chosen separator.
+
+I've also included several examples within the code to demonstrate how you can use it with different texts and separators.

@@ -1,0 +1,33 @@
+Adjusting Image Size, Header Spacing, and Adding Text
+Here's the updated Typst code with explanations for each change:
+
+Code-Snippet
+
+#set page(
+  header: grid(
+    columns: (1fr, 1fr, 1fr), // Added a third column for the new text
+    row-gutter: 5pt, // Adds space between rows in the grid
+    inset: (
+      x: 0pt,
+      y: 7pt,
+    ),
+    align(left)[_ #title _],
+    align(center)[Document], // New text "Document" in the center column
+    align(right)[#image("images/logo.png", width: 20%)], // Reduced image width
+    grid.hline(),
+  ),
+)
+Explanation of Changes:
+Image Size: I've adjusted the width of your image from 30% to 20%. You can further tweak this percentage to get the exact size you're looking for.
+
+Header Spacing: To move the title and image slightly higher from the horizontal line, I've added row-gutter: 5pt to the grid function. This creates a vertical gap between the rows of your grid, effectively pushing the first row (containing your title and image) up. Feel free to adjust the 5pt value to increase or decrease this spacing.
+
+Adding "Document" Text:
+
+I've modified columns in your grid to (1fr, 1fr, 1fr). This creates three equal-width columns.
+
+Then, I've inserted align(center)[Document] as the second item in the grid, placing it in the newly created middle column. I used align(center) to ensure it's centered between your title and the image.
+
+This revised code should give you the desired layout for your document header.
+
+Let me know if you have any other questions or need further adjustments!

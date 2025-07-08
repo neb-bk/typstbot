@@ -1,0 +1,38 @@
+Certainly! Let’s adjust your header to meet your requirements.
+
+Here’s the modified Typst code for your header, along with explanations for each change:
+
+
+
+Copy block
+
+
+#set page(
+  header: grid(
+    columns: (1fr, auto, 1fr), // Changed to three columns: title, "Document", image
+    row-gutter: 10pt,         // Added vertical space between the content row and the horizontal line
+    inset: (
+      x: 0pt,
+      y: 7pt,
+    ),
+    align(left)[_ #title _],           // First column: Title
+    text(weight: "bold")[Document],   // Second column: The word "Document"
+    align(right)[#image("images/logo.png", width: 15%)], // Third column: Smaller image (changed from 30% to 15%)
+    grid.hline(),                     // Horizontal line (will automatically span all three columns)
+  ),
+)
+Explanation of Changes:
+
+Smaller Image:
+
+We changed width: 30% to width: 15% in the image function. You can adjust this percentage further until you find the perfect size for your logo.
+More Space Above the Horizontal Line:
+
+The grid function now includes row-gutter: 10pt. This adds 10 points of vertical spacing between the first row (containing the title, “Document”, and image) and the second row (containing the grid.hline()). This makes the content appear “higher” relative to the line, providing better visual separation.
+“Document” Text Between Title and Image:
+
+We modified the columns parameter of the grid from (1fr, 1fr) to (1fr, auto, 1fr).
+The first 1fr is for the title (takes 1 fraction of available space).
+auto is for the new “Document” text (takes just enough space for its content).
+The second 1fr is for the image.
+We then inserted text(weight: "bold")[Document] as the second item in the grid, placing it directly between your title and the image. I’ve made it bold for better visibility, but you can remove text(weight: "bold") if you prefer plain text.

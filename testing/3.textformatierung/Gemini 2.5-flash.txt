@@ -1,0 +1,72 @@
+I can certainly help you with that! Here's a sample Typst document demonstrating various text formatting options, including bold, italics, code, and mathematical formulas. You can copy and paste this directly into your Typst file.
+
+This document will show you how to use some common formatting functions in Typst.
+
+#set text(font: "New Computer Modern", lang: "en")
+
+#align(center)[
+  = Typst Formatting Showcase
+]
+
+#h(1em) // Small horizontal space
+
+This document provides a quick overview of common text formatting options in Typst.
+
+== Basic Text Formatting
+
+You can easily make text #strong("bold") using the `strong()` function or by enclosing it in asterisks (`*bold text*`).
+
+For #emph("italic") text, use the `emph()` function or enclose it in underscores (`_italic text_`).
+
+To highlight code snippets or technical terms, you can use the #raw("raw()") function, which renders text in a monospace font. For example, `let x = 10;` is a piece of code.
+
+You can also combine these: #strong[This is #emph[bold and italic] text].
+
+== Mathematical Formulas
+
+Typst makes it easy to include beautiful mathematical formulas.
+
+=== Inline Math
+
+Inline math is placed directly within your paragraph, like this: The famous equation for energy-mass equivalence is $E = mc^2$. Another example is the quadratic formula: $x = (-b \pm sqrt(b^2 - 4ac)) / (2a)$.
+
+=== Display Math
+
+For larger or more prominent equations, use display math. These formulas are centered on their own line.
+
+$$
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n
+$$
+
+This is the Taylor series expansion.
+
+Another example, Euler's identity:
+$$
+e^(i pi) + 1 = 0
+$$
+
+== Lists
+
+Typst also supports various types of lists:
+
+- First item
+- Second item
+  + Sub-item A
+  + Sub-item B
+- Third item
+
+1. Ordered item one
+2. Ordered item two
+   a. Sub-ordered item alpha
+   b. Sub-ordered item beta
+3. Ordered item three
+
+== Custom Colors
+
+You can also apply custom colors to your text using the `text()` function:
+#text(fill: red)[This text is red.]
+#text(fill: blue.darken(20%))[This text is dark blue.]
+
+This sample covers the basics of bolding, italicizing, adding code snippets, and incorporating both inline and display mathematical formulas. It also includes examples of lists and custom text colors for your convenience.
+
+Feel free to experiment with these examples and modify them to suit your needs! Let me know if you have more questions or need further assistance.

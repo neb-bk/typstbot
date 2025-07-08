@@ -24,7 +24,7 @@ Please help me put my picture located under "images/test.png" into my document. 
 I have this typst code right here:
 
 ```
-set page(
+#set page(
   header: grid(
     columns: (1fr, 1fr),
     inset: (

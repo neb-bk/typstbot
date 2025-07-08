@@ -1,0 +1,25 @@
+To insert your picture located at "images/test.png" into your Typst document with a caption and make it referenceable, you should use the #figure function. Here's how you can do it:
+
+Code-Snippet
+#figure(
+  image("images/test.png", width: 80%), // Adjust width as needed
+  caption: [My test image],
+  kind: "image", // Optional, but good for explicit labeling
+)<my-test-image> // This is your label for referencing
+Explanation:
+
+#figure(...): This is the function used to create a figure, which automatically handles numbering and placement.
+image("images/test.png", width: 80%): This embeds your image.
+"images/test.png": This is the path to your image file. Make sure this path is correct relative to your Typst document.
+width: 80%: This is an optional parameter to control the width of the image. You can use other units like 10cm, 300pt, or remove it to use the image's natural size.
+caption: [My test image]: This sets the caption for your image. The text inside the square brackets will appear as the caption.
+kind: "image": This is an optional parameter that explicitly tells Typst this is an "image" figure. This can be useful for more advanced customization of figure numbering or lists of figures.
+<my-test-image>: This is the label for your figure. You can use any descriptive text here. This label allows you to reference this specific image from other parts of your document using #ref(<my-test-image>).
+
+How to reference it:
+Later in your document, you can refer to this image using its label:
+
+Code-Snippet
+As shown in #ref(<my-test-image>), the data indicates...
+
+This will automatically insert the correct figure number (e.g., "Figure 1", "Figure 2", etc.) based on where the figure appears in your document.

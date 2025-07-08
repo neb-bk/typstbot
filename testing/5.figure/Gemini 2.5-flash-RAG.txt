@@ -1,0 +1,28 @@
+To insert your picture located at images/test.png with a caption and make it referenceable, you can use the figure function along with a label.
+
+Here’s how you can do it:
+
+
+
+Copy block
+
+
+#figure(
+  image("images/test.png"),
+  caption: [My test image],
+) <my-test-image>
+Explanation:
+
+#figure(...): This function is used to create a floating figure, which can include images, tables, or other content, and allows you to add a caption and make it referenceable.
+image("images/test.png"): This inserts your image. Make sure the images folder and the test.png file are uploaded to your Typst project.
+caption: [My test image]: This adds the specified caption “My test image” below the figure.
+<my-test-image>: This is a label that uniquely identifies your figure. You can choose any name you like, but it’s good practice to use a descriptive one.
+Now, to reference this image from other parts of your document, you can use the [@] syntax followed by the label name:
+
+
+
+Copy block
+
+
+As shown in @my-test-image, the image depicts something interesting.
+This will automatically generate a reference like “Figure 1” (or whatever number Typst assigns to your figure) in your document.

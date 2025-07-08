@@ -1,0 +1,25 @@
+To include an image with a caption and make it referenceable in Typst, use the figure environment with image, caption, and label. Here’s the code:
+
+
+
+Copy block
+
+
+figure(
+  image("images/test.png"),
+  caption("My test image").label("my-image")
+)
+Explanation:
+image("images/test.png"): Inserts the image from the specified path.
+caption("My test image"): Adds the caption text.
+.label("my-image"): Attaches a label for referencing later.
+Reference elsewhere:
+Use ref("my-image") in other parts of the document to link to this image. For example:
+
+
+
+Copy block
+
+
+See Figure 1: ref("my-image")
+This ensures the image is properly embedded, labeled, and cross-referenced.

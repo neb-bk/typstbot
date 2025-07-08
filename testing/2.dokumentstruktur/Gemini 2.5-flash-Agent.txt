@@ -1,0 +1,70 @@
+Here is the Typst document you requested, including a title page, table of contents, the specified chapters, and a section for listings with a table. The figure example is commented out with instructions, as it requires a valid image path to compile successfully.
+
+
+
+Copy block
+
+
+#set document(title: "My Document", author: "Your Name")
+
+// Set page numbering to start from 1.
+// The previous error "duplicate argument: numbering" was resolved by removing the second 'numbering' argument.
+#set page(numbering: "1")
+
+#set text(font: "New Computer Modern")
+
+// Title Page
+#align(center)[
+  #v(2em) // Vertical space
+  #text(2em, strong("My Document Title")) // Large, bold title
+
+  #v(1em) // Vertical space
+  #text(1.2em, "Your Name") // Author name
+
+  #v(1em) // Vertical space
+  #text(1em, datetime.today().display("[month] [day], [year]")) // Current date
+]
+
+#pagebreak() // Move to the next page for the Table of Contents
+
+// Table of Contents
+#outline()
+
+#pagebreak() // Move to the next page for the first chapter
+
+// Chapters
+= Introduction
+This is the introduction chapter. You can expand on what your document will cover here, introducing the main topic and purpose.
+
+= Background
+This is the background chapter. Here, you would provide context, historical information, or review relevant previous work related to your document's topic.
+
+= Algorithm
+This is the algorithm chapter. Describe the methodology, steps, or the specific algorithm being presented or used in your document. Include details about its design and implementation if applicable.
+
+= Conclusion
+This is the conclusion chapter. Summarize your findings, reiterate the key points of your document, and suggest future work or implications of your research.
+
+#pagebreak() // Move to the next page for listings
+
+// Listings Section
+= Listings
+
+== Table Example
+#table(
+  columns: 2,
+  [*Header 1*], [*Header 2*],
+  [Data 1], [Data 2],
+  [Data 3], [Data 4]
+)
+
+// Figure Example: This block is commented out because "path/to/your/image.png" is a placeholder
+// and would cause a "file not found" error during compilation without an actual image file.
+// To include a figure, uncomment this block and replace "path/to/your/image.png" with the actual path to your image file.
+/*
+== Figure Example
+#figure(
+  image("path/to/your/image.png", width: 50%), // Replace "path/to/your/image.png" with your image file path (e.g., "images/my_diagram.png")
+  caption: "A sample figure demonstrating something."
+)
+*/

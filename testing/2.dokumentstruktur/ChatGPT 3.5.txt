@@ -1,0 +1,93 @@
+Here is a complete Typst document that meets your requirements:
+
+A title page
+
+A table of contents
+
+Four chapters: Introduction, Background, Algorithm, and Conclusion
+
+A list of tables and a list of figures at the end
+
+It uses Typst’s semantic sectioning and built-in functions like heading(), toc(), figure(), and table() appropriately.
+
+typst
+Kopieren
+Bearbeiten
+// Set document metadata
+#set document(
+  title: "Your Document Title",
+  author: "Your Name",
+  date: today()
+)
+
+// Title Page
+#show: false
+#pagebreak()
+#align(center, middle)[
+  #text(#document.title(), size: 2em, weight: bold)
+  \n
+  #text("by " + #document.author(), size: 1.2em)
+  \n
+  #text(#document.date(), size: 1em)
+]
+#pagebreak()
+
+// Table of Contents
+#heading[Table of Contents]
+#toc()
+#pagebreak()
+
+// Chapters
+#heading(level: 1)[Introduction]
+This is the introduction. It provides an overview of the document.
+
+#heading(level: 1)[Background]
+The background section covers relevant prior work and context.
+
+#heading(level: 1)[Algorithm]
+Here, we describe the algorithm in detail.
+
+#heading(level: 2)[Algorithm Description]
+This is a subsection with detailed explanation.
+
+#heading(level: 2)[Example Table]
+Below is a sample table.
+
+#table(
+  columns: 2,
+  [
+    [Header 1, Header 2],
+    [Row 1, Data],
+    [Row 2, More Data]
+  ]
+)
+#caption("Sample Table")
+
+#heading(level: 2)[Example Figure]
+Here is a sample figure.
+
+#figure(
+  image("example-image.png", width: 50%),
+  caption: "An example figure."
+)
+
+#heading(level: 1)[Conclusion]
+The conclusion summarizes the content of the document.
+
+// Lists at the end
+#pagebreak()
+#heading[Listings]
+
+#heading(level: 2)[List of Tables]
+#listings(kind: table)
+
+#heading(level: 2)[List of Figures]
+#listings(kind: figure)
+Notes:
+Replace "example-image.png" with a real image path or remove the figure section if no image is available.
+
+Typst will automatically number headings and handle TOC, listings, and captions.
+
+The #listings() function generates lists of tables and figures if they have captions.
+
+Let me know if you want to add automatic numbering, custom styles, or references!

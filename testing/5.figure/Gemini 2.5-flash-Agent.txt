@@ -1,0 +1,8 @@
+#figure(image("images/test.png"), caption: "My test image", kind: "image") <test-image>
+
+It seems like the Typst compiler cannot find your image file at the specified path images/test.png. This usually happens for a few reasons:
+
+Incorrect Path: The images/test.png path is relative to where your main Typst file (main.typ in this case, as indicated by the error output) is located. Make sure the images folder is in the same directory as your .typ file, and test.png is inside that images folder.
+Typo in Filename or Folder Name: Double-check for any typos in images or test.png.
+File Not Present: Ensure the test.png file actually exists in the images folder.
+You need to make sure the image file is correctly placed relative to your Typst document or provide an absolute path if necessary (though relative paths are generally preferred for portability).

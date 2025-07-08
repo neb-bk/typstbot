@@ -1,0 +1,53 @@
+Below is a Typst function that separates each character in a string with a specified separator. This solution handles Unicode characters correctly and efficiently:
+
+typst
+#let charSeparate(str, sep) = {
+  // Handle empty strings immediately
+  if str == "" { return () }
+
+  // Process multi-character strings
+  let chars = str.chars()
+  let result = chars.first()
+  for c in chars.slice(1..) [
+    #sep
+    #c
+  ]
+  result
+}
+
+// Example usage:
+#charSeparate("Typst", [ - ]) \
+#charSeparate("你好", [ • ]) \
+#charSeparate("a", [ / ]) \
+#charSeparate("", [ * ])
+Key features:
+
+Handles Unicode characters correctly (using Typst's .chars() method)
+
+Works with any separator (text, symbols, or complex content)
+
+Properly handles edge cases:
+
+Empty strings return nothing
+
+Single-character strings return the character without separator
+
+Efficient processing with iteration
+
+Usage examples:
+
+charSeparate("Hello", [ - ]) → H-e-l-l-o
+
+charSeparate("ABC", [$/$]) → A/B/C
+
+charSeparate("🌍🌎🌏", [ → ]) → 🌍→🌎→🌏
+
+The separator can be any valid Typst content:
+
+Text: [ , ]
+
+Symbols: [$/$]
+
+Styled content: [#highlight[|]]
+
+Complex elements: [ \u{2014} ] (em dash)

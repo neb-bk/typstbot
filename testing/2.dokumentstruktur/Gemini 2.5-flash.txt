@@ -1,0 +1,143 @@
+Sure, I can help you create a Typst document with a title page, table of contents, several chapters, and listings at the end.
+
+Here's a Typst document structure that includes all the elements you requested. I've added some placeholder content so you can see how it all fits together.
+
+Code-Snippet
+
+#set document(title: "My Awesome Document", author: "John Doe")
+#set page(numbering: "1", footer: [Page #page-number of #total-pages])
+
+// Title Page
+#set text(align: center)
+#v(30%)
+#text(font: "New Computer Modern", 3em, weight: 700)[My Awesome Document]
+#v(1em)
+#text(2em, weight: 500)[A Comprehensive Study]
+#v(2em)
+#text(1.2em)[John Doe]
+#v(0.5em)
+#text(1.2em)[University of Typst]
+#v(30%)
+#text(1em)[#datetime.today().display("[day].[month].[year]")]
+#pagebreak()
+
+// Table of Contents
+#set text(align: left)
+#outline()
+#pagebreak()
+
+// Chapters
+#set heading(numbering: "1.")
+
+= Introduction
+#label("chap:intro")
+This is the introduction to my awesome document. It provides an overview of the topic and outlines the document's structure.
+
+Here's some more text for the introduction. We can talk about the motivation behind this work and what the reader can expect to learn.
+
+= Background
+#label("chap:background")
+This chapter covers the necessary background information for understanding the rest of the document. We will discuss previous work and key concepts.
+
+Let's imagine we're talking about some fundamental theories or established practices here.
+
+== Related Work
+Here we would delve into specific prior research that is relevant to our topic.
+
+=== Further Reading on Related Work
+More detailed discussion or pointers to external resources.
+
+= Algorithm
+#label("chap:algorithm")
+This chapter details the proposed algorithm. We will describe its components, how it works, and its advantages.
+
+Here's a simple list to demonstrate:
+- Step 1: Initialize variables
+- Step 2: Perform calculations
+- Step 3: Output results
+
+And a small example of a code block (though Typst doesn't execute it, just formats):
+```typst
+#let greet(name) = {
+  "Hello, " + name + "!"
+}
+#greet("World")
+= Conclusion
+#label("chap:conclusion")
+This chapter summarizes the findings of the document and discusses potential future work.
+
+We can reiterate the main points and suggest areas for further research or application.
+
+#pagebreak()
+
+// Listings
+#set heading(numbering: "A.")
+
+= Listings
+Here you can include various listings like a table of figures, a table of tables, or a list of code listings.
+
+== Table of Figures
+#list-of-figures()
+
+== Table of Tables
+#list-of-tables()
+
+// Example of a figure and a table to be listed
+#pagebreak()
+
+#figure(
+image("typst-logo.png", width: 50%),
+caption: [The Typst logo.],
+) fig:typst-logo
+
+#table(
+columns: 3,
+align: (center, center, center),
+[Header 1], [Header 2], [Header 3],
+[Data 1a], [Data 1b], [Data 1c],
+[Data 2a], [Data 2b], [Data 2c],
+)
+#caption[A sample table.] tbl:sample
+
+
+**Explanation of the Code:**
+
+1.  **`#set document(...)`**: This sets global metadata for your document, like the title and author.
+2.  **`#set page(...)`**: This configures page settings, including numbering. I've set it to show "Page X of Y" in the footer.
+3.  **Title Page**:
+    * `#set text(align: center)`: Centers all text on the title page.
+    * `#v(...)`: Inserts vertical space.
+    * `#text(...)`: Styles the text for your title, subtitle, author, etc. `font`, `size`, and `weight` are common parameters.
+    * `#datetime.today().display("[day].[month].[year]")`: Inserts the current date.
+    * `#pagebreak()`: Forces a new page after the title page.
+4.  **Table of Contents**:
+    * `#set text(align: left)`: Resets text alignment to left for the rest of the document.
+    * `#outline()`: This is the magic function that automatically generates a table of contents based on your headings.
+    * `#pagebreak()`: Starts a new page for the first chapter.
+5.  **Chapters**:
+    * `#set heading(numbering: "1.")`: This sets the numbering style for your top-level headings (e.g., "1. Introduction", "2. Background").
+    * `= Introduction`, `= Background`, etc.: These define your main chapters. The single equals sign denotes a top-level heading.
+    * `== Related Work`: Two equals signs create a sub-heading.
+    * `=== Further Reading...`: Three equals signs create a sub-sub-heading.
+    * `#label("chap:intro")`: This creates a label for your chapter, which can be useful for cross-referencing later (though not explicitly used in this example, it's good practice).
+    * Code Block: The triple backticks (`````typst````) create a code block. Typst will format the content inside according to Typst syntax highlighting, but it won't execute the code.
+6.  **Listings**:
+    * `#set heading(numbering: "A.")`: Changes the numbering style for the "Listings" section to use letters (A., B., etc.).
+    * `#list-of-figures()`: Automatically generates a list of all figures with captions and page numbers.
+    * `#list-of-tables()`: Automatically generates a list of all tables with captions and page numbers.
+7.  **Figure and Table Examples**:
+    * `#figure(...)`: Creates a figure. You provide the content (e.g., an image) and a `caption`. The `<fig:typst-logo>` is a label for this specific figure, allowing it to be included in `#list-of-figures()`.
+    * `#image("typst-logo.png", width: 50%)`: Embeds an image. Make sure you have a file named `typst-logo.png` in the same directory as your Typst file, or provide the correct path.
+    * `#table(...)`: Creates a table. You define the `columns`, `align`ment, and then provide the cell content. The `<tbl:sample>` is a label for the table.
+
+**To use this code:**
+
+1.  Save the code above into a file named, for example, `my\_document.typ`.
+2.  (Optional, for the figure) Create a placeholder image file named `typst-logo.png` in the same directory as your `.typ` file. You can find the Typst logo online or create a simple image. If you don't have an image, you can comment out the `#figure` block for now.
+3.  Open your terminal or command prompt, navigate to the directory where you saved the file, and compile it using Typst:
+    ```bash
+    typst compile my_document.typ
+    ```
+This will generate `my_document.pdf`.
+
+This document structure provides a solid foundation for your Typst document. You can now fill in the actual content for each section!

@@ -1,0 +1,46 @@
+Here is a well-structured and complete example of a Type document that includes a title page, a table of contents, and sections for an introduction, background, algorithm, and conclusion, along with a “Listings” section that includes a table of figures and a sample table.
+
+
+
+Copy block
+
+
+title: "Document Title"
+author: "Author Name"
+date: "2023-10-05"
+
+toc()
+
+section "Introduction"
+  paragraph "This is the introduction section. It provides an overview of the topic and sets the stage for the rest of the document."
+section "Background"
+  paragraph "This section gives background information on the subject, helping the reader understand the context and relevance of the topic."
+section "Algorithm"
+  paragraph "Here, the algorithm or methodology is described in detail. This section explains how the solution is implemented."
+section "Conclusion"
+  paragraph "The conclusion summarizes the key points and findings of the document, offering insights and potential future work."
+
+section "Listings"
+  subsection "Table of Figures"
+    query("figure") {
+      foreach(fig in figures) {
+        paragraph fig.name
+      }
+    }
+  subsection "Table"
+    table {
+      row { "Header 1", "Header 2" }
+      row { "Data 1", "Data 2" }
+    }
+Key Features:
+Title Page: The title, author, and date fields define the document’s metadata.
+Table of Contents: The toc() function is used to generate the table of contents based on the sections and subsections.
+Sections:
+Introduction, Background, Algorithm, and Conclusion are structured as logical sections.
+Listings Section:
+Table of Figures: A query("figure") block is used to dynamically list all figures in the document. This is a placeholder for a more advanced implementation.
+Sample Table: A basic table block is included to demonstrate how to add a table to the document.
+Notes:
+The query("figure") is a placeholder and should be adapted based on how you define and mark figures in your document.
+The table block can be expanded with more rows or columns as needed.
+This structure is a good starting point for organizing content in a Type document, with the flexibility to add more elements like figures, lists, or other blocks as required.

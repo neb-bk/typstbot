@@ -1,0 +1,19 @@
+= Sample Text Formatting
+
+This is a sample document demonstrating Typst's text formatting capabilities. Let's explore **bold**, *italic*, and `code` elements, along with math formulas.
+
+In this paragraph, we have:
+- **Bold** text to emphasize important points.
+- *Italic* text for additional context.
+- `Code` blocks for inline programming examples.
+- Inline math: $ E = mc^2 $.
+- Block math: [$ x^2 + y^2 = r^2 $].
+
+Here's a list of formatting types:
+1. **Bold** text: **This is bold**
+2. *Italic* text: *This is italic*
+3. `Code` example: `print("Hello, Typst!")`
+4. Math formula: $ \int_{a}^{b} f(x) \, dx $
+5. Block math: [$ \text{Area} = \pi r^2 $]
+
+Note: Typst uses **asterisks** for bold (`**text**`) and _underscores_ for italics (`_text_`). Code is enclosed in backticks (`code`), and math is wrapped in `$` for inline or block mode.

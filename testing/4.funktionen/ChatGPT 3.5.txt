@@ -1,0 +1,26 @@
+Certainly! Here's a type function in Typst that takes a string and a separator, and returns the string with each character separated by the given separator.
+
+typst
+Kopieren
+Bearbeiten
+#type character_separated(text: str, sep: str) -> str:
+  // Convert string to array of characters, then join with separator
+  let chars = text.array()
+  chars.join(sep)
+✅ Usage example:
+typst
+Kopieren
+Bearbeiten
+#character_separated("Typst", "-")
+// Output: T-y-p-s-t
+🔍 Explanation:
+text.array() splits the string into an array of individual characters.
+
+chars.join(sep) joins them back into a single string, inserting the separator in between.
+
+Let me know if you want this stylized (like spaced out with h(…) boxes or colored).
+
+
+
+
+ChatGPT fragen

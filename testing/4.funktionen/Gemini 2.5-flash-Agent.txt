@@ -1,0 +1,83 @@
+Certainly! Here’s a Typst function sep_string that takes a string and a separator, then returns the string with its characters separated by the given separator.
+
+
+
+Copy block
+
+
+#let sep_string(text, separator) = {
+  // Input validation
+  if type(text) != str {
+    panic("Error: The 'text' argument must be a string.")
+  }
+  if type(separator) != str {
+    panic("Error: The 'separator' argument must be a string.")
+  }
+
+  // Handle empty string gracefully
+  if text.len() == 0 {
+    return ""
+  }
+
+  // Convert the string into an array of its individual characters
+  let chars = ()
+  for char in text {
+    chars.push(char)
+  }
+
+  // Join the characters with the specified separator
+  return chars.join(separator)
+}
+
+
+// --- Examples of how to use the function ---
+
+#set text(font: "IBM Plex Mono") // Using a monospace font for clarity
+
+#block[
+  `#sep_string("hello", "-")` \
+  Output: #sep_string("hello", "-")
+]
+
+#block[
+  `#sep_string("Typst", "_")` \
+  Output: #sep_string("Typst", "_")
+]
+
+#block[
+  `#sep_string("Example", " ")` \
+  Output: #sep_string("Example", " ")
+]
+
+#block[
+  `#sep_string("ABC", "::")` \
+  Output: #sep_string("ABC", "::")
+]
+
+#block[
+  `#sep_string("Unicode测试", "|")` \
+  Output: #sep_string("Unicode测试", "|")
+]
+
+#block[
+  `#sep_string("A", "")` // Empty separator
+  Output: #sep_string("A", "")
+]
+
+#block[
+  `#sep_string("", "-")` // Empty input string
+  Output: "#sep_string("", "-")" (Note: This will output an empty string, which is hard to see directly)
+]
+
+// To demonstrate the empty string output clearly:
+#set text(stroke: green + 1pt)
+Empty string result: #sep_string("", "-")
+#set text(stroke: none) // Reset stroke
+Explanation:
+#let sep_string(text, separator) = { ... }: This defines a new function named sep_string that accepts two arguments: text (the string to be separated) and separator (the string to insert between characters).
+Input Validation: The if type(...) != str checks ensure that both arguments are indeed strings. If not, it uses panic() to throw an error, which is good practice for robust functions.
+Empty String Handling: if text.len() == 0 { return "" } handles the case where an empty string is passed. It directly returns an empty string, as there are no characters to separate.
+let chars = (): An empty content array is initialized. This will store each character of the input string.
+for char in text { chars.push(char) }: Typst allows you to iterate directly over a string, where each char in the loop represents a grapheme cluster (what we typically perceive as a “character,” even for complex Unicode characters). Each character is pushed into the chars array.
+return chars.join(separator): The join() method is called on the chars array. It concatenates all elements of the array into a single string, inserting the separator string between each element.
+This function is versatile and handles both single-character and multi-character separators, as well as Unicode characters.

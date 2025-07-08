@@ -1,0 +1,35 @@
+To achieve the desired layout, you need to make the following adjustments:
+
+1. Change the grid to have three columns
+This allows you to place the title, “Document”, and the image in separate columns, ensuring a clean and organized layout.
+
+2. Adjust the image size
+The image is currently set to 30% width, which may be too large. Reduce this to a more reasonable size, such as 20%.
+
+3. Place elements correctly in the grid
+The title should be aligned to the left in the first column.
+The “Document” text should be centered in the second column.
+The image should be aligned to the right in the third column.
+✅ Final Code (Example in a Markdown-style pseudocode):
+
+markdown
+
+Copy block
+
+
+grid.columns: (1fr, 1fr, 1fr)
+
+grid.row: [
+  align(left)[_ #title _],
+  "Document",
+  align(right)[image:20%]
+]
+
+grid.hline()
+📝 Notes:
+grid.columns: (1fr, 1fr, 1fr) ensures that each column takes an equal share of the width.
+align(left)[_ #title _] places the title on the left.
+"Document" is centered in the middle column.
+align(right)[image:20%] places the image on the right with a width of 20%.
+grid.hline() draws a horizontal line after the grid.
+This layout is clean, readable, and responsive. It ensures the title is prominent, the text is in the center, and the image is appropriately sized and positioned.

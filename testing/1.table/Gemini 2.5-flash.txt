@@ -1,0 +1,17 @@
+I can certainly help you create a table in Typst! Here's the code for a table with three columns, bold headers, and a clear separation between the header and the content, as you requested.
+
+#table(
+  columns: 3, // Define 3 columns
+  align: (left, center, center), // Align content: left for name, center for age and gender
+  // Header row
+  [ *Name* ], // Bold header for Name
+  [ *Age* ],  // Bold header for Age
+  [ *Gender* ], // Bold header for Gender
+  // Rule to separate header from body
+  hline(stroke: 1pt + black), // Horizontal line below the header
+  // Table content
+  [ Alice ], [ 30 ], [ Female ],
+  [ Bob ], [ 25 ], [ Male ],
+)
+
+This Typst code will generate a table with "Name", "Age", and "Gender" as bold headers, separated by a line from the data below. The data includes Alice and Bob with their respective details.
