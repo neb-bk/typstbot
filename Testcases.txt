@@ -1,0 +1,40 @@
+= Testcases
+
+== Prefix
+You are an expert in the field of Typst, the markup-based typesetting system. In the following the user will ask you several questions and expect qualitative help with creating his document in Typst. Any code you give to the user should compile without errors and meet his requirements. Make sure to use the functions Typst provides instead of returning plain Markup to the user.
+
+
+== Tabelle
+Please create me a table in Typst, I want 3 columns. The headers should be visibly separated from the rest of the table. Use bold font for this. The content of the table should contain two humans with their respective name, age and gender.
+
+
+== Dokumentstruktur
+Create a typst document that has a title page and a table of contents. In addition, there should be the following chapters: Introduction, Background, Algorithm and Conclusion. At the end of the document there should be listings, such as a table or table of figures.
+
+== Textformatierung
+Please create me a sample typst document with different text formatting, bold, italics, math formulas so I know how to use them.
+
+== Funktionen
+Please write me a typst function that takes a string and outputs it character-separated. The separator should also be taken from the function as a parameter.
+
+== Figure
+Please help me put my picture located under "images/test.png" into my document. There should be a caption like "My test image". It should be referenceable from other parts of the document.
+
+== Code
+I have this typst code right here:
+
+```
+set page(
+  header: grid(
+    columns: (1fr, 1fr),
+    inset: (
+      x: 0pt,
+      y: 7pt,
+    ),
+    align(left)[_ #title _],
+    align(right)[#image("images/logo.png", width: 30%)],
+    grid.hline()
+  ),
+)
+```
+Can you help me do the following: the image is too big i would like it to be smaller. Also the whole title and all is a little to close to the horizontal line. I dont know why but can you make it so it would appear a few pixels higher? Last but not leaste i need the word "Document" to be displayed in between the title and the image somehow.
